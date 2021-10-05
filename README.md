@@ -1,8 +1,36 @@
-﻿# Hacktoberfest Movie app
+# HacktoberFest-2021 🏆
+
+#### 🎯 HacktoberFest - The month long festival for developers
+
+- This repository aims to give an introduction as to how the Open Source World functions. Use this project to make your first contribution to an open-source project on GitHub. Practice making your first pull request to a public repository before doing the real thing!
+
+- Make sure to grab some cool swags during Hacktoberfest by getting involved in the open-source community and completing some simple tasks in this project.
+
+- This repository is open to all members of the GitHub community. Any member can contribute to this project without being a collaborator. We encourage first time contributors, and also have interesting tasks for experienced developers.
+
+
+# <b>What is Hacktoberfest?</b> 😕
+
+A month-long celebration from October 1st to October 31st presented by Digital Ocean and DEV Community collaborated with GitHub to get people involved in Open Source. Create your very first pull request to any public repository on GitHub and contribute to the open-source developer community.
+
+https://hacktoberfest.digitalocean.com/
+
+# Rules ⚓
+
+To earn your Hacktoberfest tee or tree reward, you must register and make four valid pull requests (PRs) between October 1-31 (in any time zone). PRs can be made to participating public repos on GitHub, those that have the Hacktoberfest topic. If a maintainer reports your pull request as spam or behavior not in line with the project’s code of conduct, you will be ineligible to participate. This year, the first 70,000 participants who successfully complete the challenge will be eligible to receive a prize.
+
+- <b>Read the participation details to learn how to earn your Hacktoberfest tee or tree reward. </b>
+
+- <b>Those who have not registered yet for hacktoberfest can get themselves registered <a href="https://hacktoberfest.digitalocean.com/register">HERE</a></b>
+<hr>
+
+
+# Hacktoberfest Movie app
  
  Link: 
 
-![enter image description here](https://i.imgur.com/6Pi7TTO_d.webp?maxwidth=760&fidelity=grand)
+
+![movie app ](https://user-images.githubusercontent.com/40158577/136094082-f716776b-1e89-48d4-8dab-e5cff411a1b4.png)
 
 ## About The Project:
 
@@ -66,12 +94,6 @@ We would also like to add support for Movies in our app, Find and implement suit
 
 Any small/big but useful changes are welcome. Hope, it would be a great learning experience for you all :D
 
-Idea images:
-
-(Final project may or may not look the same)
-
-![movie app ](https://user-images.githubusercontent.com/40158577/136094082-f716776b-1e89-48d4-8dab-e5cff411a1b4.png)
-
 
 ## Steps To follow: 📜
 
@@ -90,6 +112,37 @@ Idea images:
 **(g) Once the issue is fixed, just give us a Pull Request, and you are done!!**
 
 **Congratulations !!** **🥳**
+
+
+
+
+
+# prizes
+
+
+![Prizes](https://raw.githubusercontent.com/sakpab2602/Hacktoberfest-21/master/Task1/img/prizes.jpeg)
+
+This time around we have different prizes for the top 5 contributors who will be judged on the basis of points distribution criteria in each task!
+The special prizes include : -
+1. Smart-watches
+2. Ear buds
+3. Bags
+
+**To be eligible for prizes register <a href="http://bit.ly/hacktober2021">HERE</a>**
+
+ # Prize distribution criteria
+
+- First 5 contributors who have made pull requests in all 3 mentioned tasks.
+
+- Winners will be selected on the basis of
+
+  - First come first serve (FCFS)
+  - QUALITY OF CODE
+
+- Points will be allotted for each task and highest scorers will be selected as winners. Marks distribution criteria will be mentioned in detail in respective task's `readme.md`
+
+- All decisions made by IETE will be final and binding, no changes will be entertained after the result declaration.
+
 
 View Your contribution at: 
 
