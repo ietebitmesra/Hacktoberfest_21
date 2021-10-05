@@ -1,4 +1,6 @@
-﻿# Task 3
+﻿# Hacktoberfest Movie app
+ 
+ Link: 
 
 ![enter image description here](https://i.imgur.com/6Pi7TTO_d.webp?maxwidth=760&fidelity=grand)
 
@@ -68,11 +70,8 @@ Idea images:
 
 (Final project may or may not look the same)
 
-![enter image description here](https://i.imgur.com/CXdwktm.jpeg)
+![movie app ](https://user-images.githubusercontent.com/40158577/136094082-f716776b-1e89-48d4-8dab-e5cff411a1b4.png)
 
-![Inspiration For Home Page (may or may not be same for final project)](https://i.imgur.com/0MO2hqJ.png)
-
-![enter image description here](https://i.imgur.com/qHBeIA3.png)
 
 ## Steps To follow: 📜
 
@@ -82,7 +81,7 @@ Idea images:
 
 **(c ) Open the cloned repository on your local machine.**
 
-**(d) $cd Task3**
+**(d) $cd Hacktoberfest_21**
 
 **(e) Create a separate branch for that issue $git checkout -b issueName/issueNumber**
 
@@ -92,7 +91,7 @@ Idea images:
 
 **Congratulations !!** **🥳**
 
-View Your contribution at: https://ietebitmesra.github.io/Hacktoberfest-21/Task3/
+View Your contribution at: 
 
 ## Points distribution
 
