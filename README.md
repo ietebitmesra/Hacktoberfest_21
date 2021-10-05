@@ -130,6 +130,8 @@ The special prizes include : -
 
 **To be eligible for prizes register <a href="http://bit.ly/hacktober2021">HERE</a>**
 
+**To View contribution ** : [contribution](https://mayukhpankaj.github.io/IETE-hacktoberfest/)
+
  # Prize distribution criteria
 
 - First 5 contributors who have made pull requests in all 3 mentioned tasks.
