@@ -63,7 +63,7 @@ a {
   .site-navbar .site-navigation .site-menu {
     margin-bottom: 0; }
     .site-navbar .site-navigation .site-menu .active > a span {
-      background: #007bff;
+      background: #1F2041;
       color: #fff;
       border-radius: 30px;
       display: inline-block;
@@ -86,7 +86,7 @@ a {
           transition: .3s all ease;
           border-radius: 30px; }
         .site-navbar .site-navigation .site-menu > li > a:hover > span {
-          background: #007bff;
+          background: #1F2041;
           color: #fff;
           border-radius: 30px;
           display: inline-block; }
