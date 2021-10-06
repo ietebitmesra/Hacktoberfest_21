@@ -131,13 +131,13 @@ border-radius: 20px;
 }
 
 #sec-ul li a:hover{
-  background-color: #007bff;
+  background-color: #1F2041;
   border-radius: 30px;
   padding: 5px 20px;
 }
 
 .active-b{
-  background-color: #007bff;
+  background-color: #1F2041;
   border-radius: 30px;
   padding: 5px 20px;
 }
