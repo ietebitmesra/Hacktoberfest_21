@@ -153,4 +153,3 @@ const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
         r.innerHTML = row;
         table.append(r);
 }
-tableGenerator();
