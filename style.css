@@ -187,3 +187,26 @@ flex-direction: row;
 .tvcard:hover{
   cursor: pointer;
 }
+
+.season_design{
+  background-color: rgb(255, 255, 255,0.2);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: inline-block;
+  font-size: 18px;
+}
+
+.slink:link {
+  color:black;
+}
+
+.slink:visited {
+  color:black;
+}
+
+.slink:hover {
+  color:cyan;
+}
+
+
+
