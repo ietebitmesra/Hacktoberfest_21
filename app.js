@@ -28,7 +28,8 @@ form.addEventListener('submit', async (e)=>{
     const bestMatch = res.data[0].show
 
     // ALL API DATA
-    const id = bestMatch.id;
+    const id = bestMatch.id
+    const show_id = id
     const image = bestMatch.image.medium
     // const premeired = bestMatch.image.medium
     const name = bestMatch.name 
@@ -94,6 +95,15 @@ form.addEventListener('submit', async (e)=>{
     resultDivInfo.append(cast)
     showSecInfo();
     form.reset();
+
+    // SECONDRY INFO
+    const season_num = 1
+    const season_disp = document.querySelector('#season-num');
+    season_disp.innerText = `SEASON: ${season_num}`
+
+    // EPISODE TABLE
+    get_season(show_id, season_num)
+
 })
 
 const popShowSection = document.querySelector("#popular-shows")
@@ -106,3 +116,41 @@ const pop_show_hide = ()=>{
 const showSecInfo = ()=>{
     secInfo.classList.remove('hidden')
 }
+
+const get_season = async(show_id, season_num)=>{
+    const season_data = await axios.get(`https://api.tvmaze.com/shows/${show_id}/seasons`)
+    const season_id = season_data.data[season_num-1].id
+    console.log(season_data)
+    const ep_data = ep_data_fill(season_id)
+}
+
+const ep_data_fill = async(season_id)=>{
+    const episode_data = await axios.get(`https://api.tvmaze.com/seasons/${season_id}/episodes`)
+    console.log(episode_data.data[0])
+    const l = episode_data.data.length
+    for(var i=0; i<l; i++){
+        var number = episode_data.data[i].number;
+        var date = episode_data.data[i].airdate;
+        var name = episode_data.data[i].name;
+        var runtime = episode_data.data[i].runtime;
+        tableGenerator(number, name, date, runtime)
+    }
+}
+
+
+ // GENERATION OF TABLES
+const table = document.querySelector('#data-table')
+const headers = document.querySelector('#table-headers')
+const table_data = document.querySelector('#table-data')
+
+ const heads = '<th style="width: 13%;">Number</th><th style="width: 30%;">Date</th><th style="width: 50%;">Name</th><th style="width: 17%;">Runtime</th>';
+
+
+const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
+    headers.innerHTML = heads;
+        var r = document.createElement('tr')
+        var row = `<td>${ep_number}</td><td>${ep_date}</td><td>${ep_name}</td><td>${ep_runtime}</td>`
+        r.innerHTML = row;
+        table.append(r);
+}
+tableGenerator();

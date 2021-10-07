@@ -167,51 +167,23 @@
       <div id="show-prim-info"></div>
     </div>
     <div id="sec-info" class="hidden">
-        <ul style="list-style: none;" id="sec-ul">
+        <ul style="list-style: none;" id="sec-ul" class="inline-ul">
           <li class="active-b"><a href="#"><span>Episodes</span></a></li>
           <li><a href="#"><span>Seasons</span></a></li>
           <li><a href="#"><span>Cast</span></a></li>
         </ul>
-        <table style="width: 70%;">
-          <tbody>
-            <tr>
-              <th>Number</th>
-              <th>Date</th>
-              <th>Name</th>
-              <th>Score</th>
-            </tr>
-            <tr>
-              <td style="width: 13%;">1</td>
-              <td style="width:20%;">11/11/11</td>
-              <td style="width: 50%">Episode name</td>
-              <td style="width: 17%;">9.0 ⭐️</td>
-            </tr>
-            <tr>
-              <td style="width: 13%;">2</td>
-              <td style="width:20%px;">11/11/11</td>
-              <td style="width: 50%">Episode name</td>
-              <td style="width: 17%;">8.3 ⭐️</td>
-            </tr>
-            <tr>
-              <td style="width: 13%;">3</td>
-              <td style="width:20%px;">11/11/11</td>
-              <td style="width: 50%">Episode name</td>
-              <td style="width: 17%;">7.2 ⭐️</td>
-            </tr>
-            <tr>
-              <td style="width: 13%;">4</td>
-              <td style="width:20%px;">11/11/11</td>
-              <td style="width: 50%">Episode name</td>
-              <td style="width: 17%;">8.6 ⭐️</td>
-            </tr>
-            <tr>
-              <td style="width: 13%;">5</td>
-              <td style="width:20%px;">11/11/11</td>
-              <td style="width: 50%">Episode name</td>
-              <td style="width: 17%;">9.2 ⭐️</td>
-            </tr>
-          </tbody>
-        </table>
+        <ul id="season" style="list-style: none" class="inline-ul list-links">
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+        </ul>
+        <h5 id="season-num" style="font-weight: bold;" class="mt-5"></h5>
+        <table id="data-table" style="width: 80%;">
+          <tr id="table-headers"></tr>
+          <div id="table-data"></div>
+        </table> 
     </div>
    </section>
 
