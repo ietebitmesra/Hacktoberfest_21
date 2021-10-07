@@ -45,8 +45,8 @@ form.addEventListener('submit', async (e)=>{
     let rating = "Rating: " + bestMatch.rating.average + "&nbsp&nbsp";
     let star_ct = bestMatch.rating.average;
 
-    let star_layer0="☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆";
-    let star_layer1="★ ★ ★ ★ ★ ★ ★ ★ ★ ★";
+    let star_layer0="☆☆☆☆☆☆☆☆☆☆";
+    let star_layer1="★★★★★★★★★★";
 
     const summary = bestMatch.summary
     let strippedString = summary.replace(/(<([^>]+)>)/gi, "");
@@ -113,6 +113,7 @@ form.addEventListener('submit', async (e)=>{
 
     let wid=star_bottom.offsetWidth;
     wid=wid*star_ct*0.1;
+    wid=Math.ceil(wid); //to make it slightly more accurate
     star_top.style.width=wid+'px';
     avg_rating.style.minWidth=wid+50+'px';
 
