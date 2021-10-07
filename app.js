@@ -13,10 +13,7 @@
 
 
 const form = document.querySelector('#searchForm');
-const resultDiv = document.querySelector('#main-info')
-const resultDivImg = document.querySelector('#show-image')
-const resultDivInfo = document.querySelector('#show-prim-info')
-
+const resultDiv = document.querySelector('div#main-info');
 
 //FORM SUBMISSION EVENT LISTENER
 form.addEventListener('submit', async (e)=>{
@@ -56,8 +53,7 @@ form.addEventListener('submit', async (e)=>{
     let strippedString2 = rating.replace(/(<([^>]+)>)/gi, "");
 
     // Hiding popular shows section
-        pop_show_hide();
-
+    pop_show_hide();
  
     // CREATE DOM ELEMENTS HERE
     const img = document.createElement('IMG');    
@@ -73,9 +69,11 @@ form.addEventListener('submit', async (e)=>{
     // STYLE CREATED ELEMENTS HERE
     h1.style.fontSize = '50px';
 
-    p1.style.fontFamily= 'Courgette, cursive';
+    p1.style.fontfamily = 'Open Sans';
+    p1.style.fontSize = '25px';
+    p1.style.color = 'white';
     p1.style.fontSize= '22px';
-    p1.style.fontWeight= '100'
+    p1.style.fontWeight= '100';
 
     p2.style.fontSize = '20px';
 
@@ -88,26 +86,19 @@ form.addEventListener('submit', async (e)=>{
     var div = document.createElement('div');
 
     // APPEND ELEMENTS TO CREATED DIV
-    div.append(img)
-    div.append(h1)
-    div.append(p1)
-    div.append(p2)
-    div.append(cast)
+    div.append(img);
+    div.append(h1);
+    div.append(p1);
+    div.append(p2);
+    div.append(cast);
     resultDiv.append(div);
+    showSecInfo();
+    form.reset();
 
     if (resultDiv.childElementCount >= 1) {
         resultDiv.removeChild(resultDiv.childNodes[0]);
     }
-
-    // APPEND ELEMENTS TO WEB PAGE
-    resultDivImg.append(img)
-    resultDivInfo.append(h1)
-    resultDivInfo.append(p1)
-    resultDivInfo.append(p2)
-    resultDivInfo.append(cast)
-    showSecInfo();
-    form.reset();
-})
+});
 
 const popShowSection = document.querySelector("#popular-shows")
 const secInfo = document.querySelector("#sec-info")

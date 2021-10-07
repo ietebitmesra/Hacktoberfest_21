@@ -171,8 +171,11 @@ flex-direction: row;
     }
 }
 
-#main-info{display:flex;}
-
 #show-image img{border-radius: 10px;}
 
 #show-prim-info{margin-left: 50px;}
+
+#main-info {
+  display: flex;
+  flex-direction: column;
+}
