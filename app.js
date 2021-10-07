@@ -82,15 +82,21 @@ form.addEventListener('submit', async (e)=>{
     cast.style.display = 'block'
     cast.style.fontColor = "white"
 
+    var div = document.createElement('div');
 
-    // APPEND ELEMENTS TO WEB PAGE
-    resultDiv.append(img)
-    resultDiv.append(h1)
-    resultDiv.append(p1)
-    resultDiv.append(p2)
-    resultDiv.append(cast)
+    // APPEND ELEMENTS TO CREATED DIV
+    div.append(img)
+    div.append(h1)
+    div.append(p1)
+    div.append(p2)
+    div.append(cast)
+    resultDiv.append(div);
     showSecInfo();
     form.reset();
+
+    if (resultDiv.childElementCount >= 1) {
+        resultDiv.removeChild(resultDiv.childNodes[0]);
+    }
 })
 
 const popShowSection = document.querySelector("#popular-shows")

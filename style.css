@@ -33,6 +33,7 @@ input#searchText {
   border-radius: 30px;
   padding: 7px;
   outline: none;
+  background: white;
 }
 
 button#searchBtn {
