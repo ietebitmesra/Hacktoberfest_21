@@ -77,9 +77,6 @@ height: 90%;
 width: 90%;
 margin: 40px auto;
 padding: 30px;
-border-radius: 40px;
-border-style: solid;
-border-color: black;
 }
 
 .container-fluid{
@@ -132,13 +129,13 @@ border-radius: 20px;
 }
 
 #sec-ul li a:hover{
-  background-color: #007bff;
+  background-color: #1F2041;
   border-radius: 30px;
   padding: 5px 20px;
 }
 
 .active-b{
-  background-color: #007bff;
+  background-color: #1F2041;
   border-radius: 30px;
   padding: 5px 20px;
 }
@@ -173,3 +170,9 @@ flex-direction: row;
       width: 80%;
     }
 }
+
+#main-info{display:flex;}
+
+#show-image img{border-radius: 10px;}
+
+#show-prim-info{margin-left: 50px;}

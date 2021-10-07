@@ -1,3 +1,4 @@
+
 # HacktoberFest-2021 🏆
 
 #### 🎯 HacktoberFest - The month long festival for developers
@@ -171,12 +172,16 @@ Then add a title and description to your pull request that explains your preciou
 
 
 
-# Hacktoberfest Movie app
+# Hacktoberfest tv-series search app
  
  Link: https://ietebitmesra.github.io/Hacktoberfest_21/
 
+Idea images:
+(Final project may or may not look the same)
 
-![movie app ](https://user-images.githubusercontent.com/40158577/136094082-f716776b-1e89-48d4-8dab-e5cff411a1b4.png)
+![enter image description here](https://i.ibb.co/GMDG6BY/Screenshot-2021-10-06-at-11-07-22-PM.png)
+
+![enter image description here](https://i.ibb.co/984dNgX/Screenshot-2021-10-06-at-11-13-43-PM.png)
 
 ## About The Project:
 
@@ -306,3 +311,4 @@ View Your contribution at:
 **Humble Request !important**
 
 All the enthusiastic contributors are requested to add their part carefully following the proper code block which is to be to be copy-pasted and then edited. Also, before sending a PR, it would be great if you yourself render the html page at least once to see how your changes are manifested. There have been instances where a single contribution destroyed the entire layout of the page, even affecting others' contributions.
+
