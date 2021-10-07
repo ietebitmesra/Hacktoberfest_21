@@ -14,6 +14,9 @@
 
 const form = document.querySelector('#searchForm');
 const resultDiv = document.querySelector('#main-info')
+const resultDivImg = document.querySelector('#show-image')
+const resultDivInfo = document.querySelector('#show-prim-info')
+
 
 //FORM SUBMISSION EVENT LISTENER
 form.addEventListener('submit', async (e)=>{
@@ -84,11 +87,11 @@ form.addEventListener('submit', async (e)=>{
 
 
     // APPEND ELEMENTS TO WEB PAGE
-    resultDiv.append(img)
-    resultDiv.append(h1)
-    resultDiv.append(p1)
-    resultDiv.append(p2)
-    resultDiv.append(cast)
+    resultDivImg.append(img)
+    resultDivInfo.append(h1)
+    resultDivInfo.append(p1)
+    resultDivInfo.append(p2)
+    resultDivInfo.append(cast)
     showSecInfo();
     form.reset();
 })
