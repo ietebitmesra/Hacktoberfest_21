@@ -183,3 +183,7 @@ flex-direction: row;
 #show-prim-info{margin-left: 50px;}
 
 .list-links::after{color:#ffffff}
+
+.tvcard:hover{
+  cursor: pointer;
+}
