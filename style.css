@@ -13,7 +13,7 @@ a.logo {
   font-family: 'Dancing Script', cursive;
 }
 
-form#searchForm {
+form.searchForm {
   width: 55%;
   /* height: 100px; */
   padding: 10px 20px;

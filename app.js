@@ -12,7 +12,7 @@
 //MAKE PROPER COMMENTS WHERE-EVER NECESSARY
 
 
-const form = document.querySelector('#searchForm');
+const form = document.querySelector('.searchForm');
 const resultDiv = document.querySelector('#main-info')
 const resultDivImg = document.querySelector('#show-image')
 const resultDivInfo = document.querySelector('#show-prim-info')
@@ -43,19 +43,14 @@ form.addEventListener('submit', async (e)=>{
     }
     cast_names = cast_names.substring(0,cast_names.length-2)
 
-    let rating = "Ratings: "+bestMatch.rating.average;
-    let starsLength = Math.floor(bestMatch.rating.average);
-   let i=starsLength-1;
-   let j=10-starsLength;
+    let rating = "Rating: " + bestMatch.rating.average + "&nbsp&nbsp";
+    let star_ct = bestMatch.rating.average;
 
-   for (i; i >= 0; --i) 
-   rating= rating + " ⭐️";
+    let star_layer0="☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆";
+    let star_layer1="★ ★ ★ ★ ★ ★ ★ ★ ★ ★";
 
-   for(j;j>=1;--j)
-   rating=rating +" ✰"
     const summary = bestMatch.summary
     let strippedString = summary.replace(/(<([^>]+)>)/gi, "");
-    let strippedString2 = rating.replace(/(<([^>]+)>)/gi, "");
 
     // Hiding popular shows section
         pop_show_hide();
@@ -68,10 +63,23 @@ form.addEventListener('submit', async (e)=>{
     h1.innerText = name;
     const p1 = document.createElement('p');
     p1.innerText = strippedString;
-    const p2 = document.createElement('p');
-    p2.innerText = strippedString2;
     const cast = document.createElement('cast');
     cast.innerText = cast_names;
+    
+
+    const avg_rating = document.createElement('p');
+    avg_rating.innerHTML= rating;
+    const stars = document.createElement('span');
+    const star_bottom= document.createElement('div');
+    const star_top= document.createElement('div');
+    star_bottom.innerHTML=star_layer0;
+    star_top.innerHTML=star_layer1;
+    stars.append(star_bottom); 
+    stars.append(star_top);
+    avg_rating.append(stars);
+    
+
+
     // STYLE CREATED ELEMENTS HERE
     h1.style.fontSize = '50px';
 
@@ -79,28 +87,35 @@ form.addEventListener('submit', async (e)=>{
     p1.style.fontSize= '22px';
     p1.style.fontWeight= '100'
 
-    p2.style.fontSize = '20px';
-
     cast.style.fontFamily = 'Arial, Helvetica, sans-serif'
     cast.style.fontWeight = '100'
     cast.style.fontSize = '20px';
     cast.style.display = 'block'
     cast.style.fontColor = "white"
 
+    avg_rating.style.fontSize='20px';
+    star_bottom.style='z-index: 1;  position:absolute; display: inline-block; overflow: hidden; white-space: nowrap;';
+    star_top.style='z-index: 2;   position:absolute ; overflow: hidden; white-space: nowrap; height:24px; display: inline-block; color:gold;';
 
     // APPEND ELEMENTS TO WEB PAGE
     resultDivImg.append(img)
     resultDivInfo.append(h1)
     resultDivInfo.append(p1)
-    resultDivInfo.append(p2)
+    resultDivInfo.append(avg_rating)
     resultDivInfo.append(cast)
     showSecInfo();
     form.reset();
+
 
     // SECONDRY INFO
     const season_num = 1
     const season_disp = document.querySelector('#season-num');
     season_disp.innerText = `SEASON: ${season_num}`
+
+    let wid=star_bottom.offsetWidth;
+    wid=wid*star_ct*0.1;
+    star_top.style.width=wid+'px';
+    avg_rating.style.minWidth=wid+50+'px';
 
     // EPISODE TABLE
     get_season(show_id, season_num)
