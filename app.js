@@ -16,6 +16,7 @@ const form = document.querySelector('#searchForm');
 const resultDiv = document.querySelector('#main-info')
 const resultDivImg = document.querySelector('#show-image')
 const resultDivInfo = document.querySelector('#show-prim-info')
+const searchResult = document.querySelector('#searchResult')
 
 
 //FORM SUBMISSION EVENT LISTENER
