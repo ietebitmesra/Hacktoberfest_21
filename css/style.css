@@ -206,10 +206,11 @@ a {
 }
 
 .cardshow{
-  border-radius: 38px;
-background: linear-gradient(145deg, #30706e, #295f5d);
-box-shadow:  32px 32px 49px #214e4c,
-             -32px -32px 49px #398482;
+border-radius: 38px;
+background: linear-gradient(145deg, #409a97, #36827f);
+box-shadow:  32px 32px 49px #2c6b68,
+             -32px -32px 49px #4cb5b2;
+color: #fff;
 }
 
 .site-mobile-menu {
