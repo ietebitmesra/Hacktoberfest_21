@@ -26,9 +26,19 @@ function show_info(show_name){
     btn_clicked.click();
 }
 
+//CLEARDIV
+function clear_old_data(){
+    //console.log('clear called');
+    document.getElementById('show-image').innerHTML="";
+    document.getElementById('show-prim-info').innerHTML="";
+    document.getElementById('data-table').innerHTML="";
+}
+
 //FORM SUBMISSION EVENT LISTENER
 form.addEventListener('submit', async (e)=>{
     e.preventDefault();
+    //check
+    clear_old_data();
     // API CALL
     const searchTerm = document.querySelector('#searchText').value;
     const res = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)
@@ -114,7 +124,7 @@ form.addEventListener('submit', async (e)=>{
     form.reset();
 
 
-    // SECONDRY INFO
+    // SECONDARY INFO
     const season_num = 1
     const season_disp = document.querySelector('#season-num');
     season_disp.innerText = `SEASON: ${season_num}`
@@ -152,6 +162,9 @@ const ep_data_fill = async(season_id)=>{
     const episode_data = await axios.get(`https://api.tvmaze.com/seasons/${season_id}/episodes`)
     console.log(episode_data.data[0])
     const l = episode_data.data.length
+    headers.innerHTML = heads;
+    //console.log(headers);
+    table.append(headers);
     for(var i=0; i<l; i++){
         var number = episode_data.data[i].number;
         var date = episode_data.data[i].airdate;
@@ -171,9 +184,9 @@ const heads = '<th style="width: 13%;padding-left:30px">Number</th><th style="wi
 
 
 const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
-    headers.innerHTML = heads;
-        var r = document.createElement('tr')
-        var row = `<td style="padding-left:30px">${ep_number}</td><td>${ep_date}</td><td>${ep_name}</td><td>${ep_runtime}</td>`
-        r.innerHTML = row;
-        table.append(r);
+    var r = document.createElement('tr')
+    var row = `<td style="padding-left:30px">${ep_number}</td><td>${ep_date}</td><td>${ep_name}</td><td>${ep_runtime}</td>`
+    r.innerHTML = row;
+    table.append(r);
 }
+
