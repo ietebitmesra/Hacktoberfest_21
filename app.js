@@ -31,7 +31,7 @@ function clear_old_data(){
     //console.log('clear called');
     document.getElementById('show-image').innerHTML="";
     document.getElementById('show-prim-info').innerHTML="";
-    document.getElementById('table-data').innerHTML="";
+    document.getElementById('data-table').innerHTML="";
 }
 
 //FORM SUBMISSION EVENT LISTENER
