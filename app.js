@@ -31,7 +31,10 @@ function clear_old_data(){
     //console.log('clear called');
     document.getElementById('show-image').innerHTML="";
     document.getElementById('show-prim-info').innerHTML="";
-    document.getElementById('data-table').innerHTML="";
+    // document.getElementById('data-table').innerHTML=`
+    // <tr id="table-headers"></tr>
+    // <div id="table-data"></div>
+    // `
 }
 
 //FORM SUBMISSION EVENT LISTENER
@@ -162,6 +165,8 @@ const ep_data_fill = async(season_id)=>{
     const episode_data = await axios.get(`https://api.tvmaze.com/seasons/${season_id}/episodes`)
     console.log(episode_data.data[0])
     const l = episode_data.data.length
+    headers.innerHTML = heads;
+    console.log(headers);
     for(var i=0; i<l; i++){
         var number = episode_data.data[i].number;
         var date = episode_data.data[i].airdate;
@@ -181,7 +186,6 @@ const heads = '<th style="width: 13%;padding-left:30px">Number</th><th style="wi
 
 
 const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
-    headers.innerHTML = heads;
     var r = document.createElement('tr')
     var row = `<td style="padding-left:30px">${ep_number}</td><td>${ep_date}</td><td>${ep_name}</td><td>${ep_runtime}</td>`
     r.innerHTML = row;
