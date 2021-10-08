@@ -215,6 +215,10 @@ flex-direction: row;
   color: black;
 } 
 
+.table_design td{
+  border: 0px solid white;
+}
+
 .table_design th{
   background-color: #263f52;
   color: white;
