@@ -187,3 +187,8 @@ flex-direction: row;
 .tvcard:hover{
   cursor: pointer;
 }
+
+#movie_result {
+  margin: 40px;
+}
+
