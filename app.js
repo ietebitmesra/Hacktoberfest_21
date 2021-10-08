@@ -30,6 +30,7 @@ function show_info(show_name){
 function clear_old_data(){
     //console.log('clear called');
     document.getElementById('show-image').innerHTML="";
+    document.getElementById('show-prim-info').innerHTML="";
 }
 
 //FORM SUBMISSION EVENT LISTENER
