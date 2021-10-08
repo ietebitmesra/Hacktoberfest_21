@@ -213,14 +213,7 @@ box-shadow:  32px 32px 49px #2c6b68,
 color: #fff;
 }
 
-.card {
-  position: relative;
-  display: block;
-  height: 100%;  
-  border-radius: calc(var(--curve) * 1px);
-  overflow: hidden;
-  text-decoration: none;
-}
+
 
 .card__image {      
   width: 100%;
