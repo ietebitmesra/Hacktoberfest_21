@@ -167,13 +167,13 @@ const table = document.querySelector('#data-table')
 const headers = document.querySelector('#table-headers')
 const table_data = document.querySelector('#table-data')
 
- const heads = '<th style="width: 13%;">Number</th><th style="width: 30%;">Date</th><th style="width: 50%;">Name</th><th style="width: 17%;">Runtime</th>';
+ const heads = '<th style="width: 13%;padding-left:30px">Number</th><th style="width: 30%;">Date</th><th style="width: 50%;">Name</th><th style="width: 17%;">Runtime</th>';
 
 
 const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
     headers.innerHTML = heads;
         var r = document.createElement('tr')
-        var row = `<td>${ep_number}</td><td>${ep_date}</td><td>${ep_name}</td><td>${ep_runtime}</td>`
+        var row = `<td style="text-align:center">${ep_number}</td><td>${ep_date}</td><td>${ep_name}</td><td>${ep_runtime}</td>`
         r.innerHTML = row;
         table.append(r);
 }
