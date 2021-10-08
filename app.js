@@ -19,6 +19,13 @@ const resultDivInfo = document.querySelector('#show-prim-info')
 const searchResult = document.querySelector('#searchResult')
 
 
+//SHOW INFO WHEN CLICKED
+function show_info(show_name){
+    document.querySelector('#searchText').value=show_name;
+    let btn_clicked=document.querySelector('#searchBtn');
+    btn_clicked.click();
+}
+
 //FORM SUBMISSION EVENT LISTENER
 form.addEventListener('submit', async (e)=>{
     e.preventDefault();
