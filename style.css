@@ -193,6 +193,7 @@ flex-direction: row;
   padding-top: 5px;
   padding-bottom: 5px;
   display: inline-block;
+  border-radius: 10px;
   font-size: 18px;
 }
 
@@ -207,6 +208,25 @@ flex-direction: row;
 .slink:hover {
   color:cyan;
 }
+
+
+.table_design{
+  background-color: #feffff;
+  color: black;
+} 
+
+.table_design th{
+  background-color: #263f52;
+  color: white;
+  border: solid black 0px;
+  font-size: 16px;
+}
+
+.table_design tr:nth-child(odd){
+  background-color: #c3c4c4;
+}
+
+
 
 
 
