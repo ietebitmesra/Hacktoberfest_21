@@ -1,5 +1,11 @@
 $(function() {
 
+    var typed = new Typed(".typing", {
+        strings: ["TV Shows", "Web Series", "Movies", "Shows", "Dramas", "Episodes", "Seasons"],
+        typeSpeed: 110,
+        backSpeed: 60,
+        loop: true
+    });
   var siteSticky = function() {
 		$(".js-sticky-header").sticky({topSpacing:0});
 	};
