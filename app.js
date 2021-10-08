@@ -26,9 +26,16 @@ function show_info(show_name){
     btn_clicked.click();
 }
 
+//CLEARDIV
+function clear_div(){
+    console.log('this is used for clearing');
+}
+
 //FORM SUBMISSION EVENT LISTENER
 form.addEventListener('submit', async (e)=>{
     e.preventDefault();
+    //check
+    clear_div();
     // API CALL
     const searchTerm = document.querySelector('#searchText').value;
     const res = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)
@@ -177,3 +184,4 @@ const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
         r.innerHTML = row;
         table.append(r);
 }
+
