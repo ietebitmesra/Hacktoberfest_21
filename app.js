@@ -27,15 +27,16 @@ function show_info(show_name){
 }
 
 //CLEARDIV
-function clear_div(){
-    console.log('this is used for clearing');
+function clear_old_data(){
+    //console.log('clear called');
+    document.getElementById('show-image').innerHTML="";
 }
 
 //FORM SUBMISSION EVENT LISTENER
 form.addEventListener('submit', async (e)=>{
     e.preventDefault();
     //check
-    clear_div();
+    clear_old_data();
     // API CALL
     const searchTerm = document.querySelector('#searchText').value;
     const res = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)
