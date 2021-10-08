@@ -31,6 +31,7 @@ function clear_old_data(){
     //console.log('clear called');
     document.getElementById('show-image').innerHTML="";
     document.getElementById('show-prim-info').innerHTML="";
+    document.getElementById('table-data').innerHTML="";
 }
 
 //FORM SUBMISSION EVENT LISTENER
@@ -123,7 +124,7 @@ form.addEventListener('submit', async (e)=>{
     form.reset();
 
 
-    // SECONDRY INFO
+    // SECONDARY INFO
     const season_num = 1
     const season_disp = document.querySelector('#season-num');
     season_disp.innerText = `SEASON: ${season_num}`
@@ -181,9 +182,9 @@ const heads = '<th style="width: 13%;padding-left:30px">Number</th><th style="wi
 
 const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
     headers.innerHTML = heads;
-        var r = document.createElement('tr')
-        var row = `<td style="padding-left:30px">${ep_number}</td><td>${ep_date}</td><td>${ep_name}</td><td>${ep_runtime}</td>`
-        r.innerHTML = row;
-        table.append(r);
+    var r = document.createElement('tr')
+    var row = `<td style="padding-left:30px">${ep_number}</td><td>${ep_date}</td><td>${ep_name}</td><td>${ep_runtime}</td>`
+    r.innerHTML = row;
+    table.append(r);
 }
 
