@@ -1,7 +1,7 @@
 $(function() {
 
     var typed = new Typed(".typing", {
-        strings: ["TV Shows", "Web Series", "Movies", "Shows", "Dramas", "Episodes", "Seasons"],
+        strings: ["TV Shows", "Web Series", "Movies"],
         typeSpeed: 110,
         backSpeed: 60,
         loop: true
