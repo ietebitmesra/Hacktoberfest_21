@@ -163,7 +163,8 @@ const ep_data_fill = async(season_id)=>{
     console.log(episode_data.data[0])
     const l = episode_data.data.length
     headers.innerHTML = heads;
-    console.log(headers);
+    //console.log(headers);
+    table.append(headers);
     for(var i=0; i<l; i++){
         var number = episode_data.data[i].number;
         var date = episode_data.data[i].airdate;
