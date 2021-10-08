@@ -21,6 +21,11 @@ body {
     opacity: 1;
     visibility: visible; }
 
+@font-face {
+  font-family: Hacktoberfest;
+  src: url(../fonts/hacktoberfest/hacktoberfest.otf);
+}
+
 p {
   color: #b3b3b3;
   font-weight: 300; }
