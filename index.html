@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -53,7 +55,7 @@
             <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" ><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
           
           <div class="col-11 col-xl-2">
-            <h1 text-align="center"><a href="index.html" class="text-white mb-0">HacktoberFest</a></h1>
+            <h1 text-align="center"><a href="index.html" class="text-white mb-0" style="font-family: Hacktoberfest; font-weight: bolder;">HacktoberFest</a></h1>
           </div>
           <div class="col-12 col-md-10 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
@@ -77,7 +79,9 @@
     </header>
     <!-- NAVBAR END -->
     <section>
-       
+      <br>
+      <h5 style='text-align: center; font-weight: bolder; color: #fff;'>We can help you search your favourite <span class="typing"></span></h5>
+      <br>
     <form id="showSearchForm" class="searchBar_pos1 searchForm" name="query">
         <input type="search" id="searchText"  placeholder="What show are you looking for?">
         <button type="submit" id="searchBtn">
@@ -91,15 +95,15 @@
         <div class="row">
                 <!-- Show Cards Star Here (1) -->
                 <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="card border-0 mb-2 tvcard" style="max-width: 18rem;" onclick="show_info('The Big Bang Theory')" >
-                        <img src="https://i.ibb.co/CvMrjMK/MV5-BY2-Fm-ZTY5-YTkt-OWRl-Yy00-Nm-Iy-LWE0-Zm-Qt-ZDg2-Yjlm-Mzcz-ZDZi-Xk-Ey-Xk-Fqc-Gde-QXVy-Njg4-Nz-Ay.jpg" class="card-img-top border-0" alt="...">
+                    <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 18rem;" onclick="show_info('The Big Bang Theory')" >
+                        <img src="https://i.ibb.co/CvMrjMK/MV5-BY2-Fm-ZTY5-YTkt-OWRl-Yy00-Nm-Iy-LWE0-Zm-Qt-ZDg2-Yjlm-Mzcz-ZDZi-Xk-Ey-Xk-Fqc-Gde-QXVy-Njg4-Nz-Ay.jpg" class="card-img-top border-0 card__image" alt="...">
                         <div class="card-body" >
                           <h5 class="card-title">The Big Bang Theory</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="card border-0 mb-2 tvcard" style="max-width: 18rem;" onclick="show_info('Friends')">
+                    <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 18rem;" onclick="show_info('Friends')">
                         <img src="https://i.ibb.co/CKC0DHp/pg1004-1024x1024.jpg" class="card-img-top border-0" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Friends</h5>
@@ -108,7 +112,7 @@
                 </div>
                 <!-- (6) -->
                 <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="card border-0 mb-2 tvcard" style="max-width: 18rem;" onclick="show_info('Rick and Morty')">
+                    <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 18rem;" onclick="show_info('Rick and Morty')">
                         <img src="https://i.ibb.co/TBHbbT2/rick-morty.png" class="card-img-top border-0" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Rick and Morty</h5>
@@ -118,16 +122,17 @@
                 <!-- Show Cards ENDS Here -->
                 <!-- (2) -->
                 <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="card border-0 mb-2 tvcard" style="max-width: 18rem;" onclick="show_info('Breaking Bad')">
+                    <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 18rem;" onclick="show_info('Breaking Bad')">
                         <img src="https://i.ibb.co/wBYfB5m/Untitled-design.png" class="card-img-top border-0" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Breaking Bad</h5>
                         </div>
                     </div>
                 </div>
+          <br><br>
                 <!-- (3) -->
                 <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="card border-0 mb-2 tvcard" style="max-width: 18rem;" onclick="show_info('Narcos')">
+                    <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 18rem;" onclick="show_info('Narcos')">
                         <img src="https://i.ibb.co/XLRrfLD/Untitled-design-2.png" class="card-img-top border-0" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Narcos</h5>
@@ -136,7 +141,7 @@
                 </div>
                 <!-- (4) -->
                 <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="card border-0 mb-2 tvcard" style="max-width: 18rem;" onclick="show_info('The Queens Gambit')">
+                    <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 18rem;" onclick="show_info('The Queens Gambit')">
                         <img src="https://i.ibb.co/f0vpCq4/Untitled-design-1.png" class="card-img-top border-0" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">The Queen's Gambit</h5>
@@ -145,7 +150,7 @@
                 </div>
                 <!-- (5) -->
                 <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="card border-0 mb-2 tvcard" style="max-width: 18rem;" onclick="show_info('Dexter')">
+                    <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 18rem;" onclick="show_info('Dexter')">
                         <img src="https://i.ibb.co/G2Bh9WS/Untitled-design-3.png" class="card-img-top border-0" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Dexter</h5>
@@ -153,7 +158,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="card border-0 mb-2 tvcard" style="max-width: 18rem;" onclick="show_info('The Office')">
+                    <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 18rem;" onclick="show_info('The Office')">
                         <img src="https://i.ibb.co/rF6C5T8/Untitled-design-4.png" class="card-img-top border-0" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">The Office</h5>

@@ -21,6 +21,11 @@ body {
     opacity: 1;
     visibility: visible; }
 
+@font-face {
+  font-family: Hacktoberfest;
+  src: url(../fonts/hacktoberfest/hacktoberfest.otf);
+}
+
 p {
   color: #b3b3b3;
   font-weight: 300; }
@@ -183,6 +188,32 @@ a {
           margin-top: 0px;
           visibility: visible;
           opacity: 1; }
+
+.typing {
+  color: #fff;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #14ff82, 0 0 40px #14ff82, 0 0 50px #14ff82, 0 0 60px #14ff82, 0 0 70px #14ff82;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #198754, 0 0 40px #198754, 0 0 50px #198754, 0 0 60px #198754, 0 0 70px #198754, 0 0 80px #198754;
+  }
+}
+
+.cardshow{
+border-radius: 38px;
+background: linear-gradient(145deg, #409a97, #36827f);
+/* box-shadow:  32px 32px 49px #2c6b68,
+             -32px -32px 49px #4cb5b2; */
+color: #fff;
+}
+
+
 
 .site-mobile-menu {
   width: 300px;
