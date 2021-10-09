@@ -2,6 +2,7 @@ const API_KEY = "f985a3ae5df8738bf04a55864c33128c";
 const formMovies = document.querySelector('#movieSearchForm');
 const resultSection = document.querySelector('#movie_result');
 const favorteMovieSection  = document.querySelector('#favourite-movies')
+const similar_movie_section = document.querySelector('#similar-movies')
 
 formMovies.addEventListener('submit', async(e) => {
     e.preventDefault();
@@ -93,6 +94,7 @@ formMovies.addEventListener('submit', async(e) => {
     resultDiv.append(resultDivInfo);
     resultSection.append(resultDiv);
     formMovies.reset();
+    similar_movie_section.classList.remove('hidden')
 
     if (resultSection.childElementCount >= 1) {
         resultSection.removeChild(resultSection.firstChild);
