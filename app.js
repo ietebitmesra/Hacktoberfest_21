@@ -196,7 +196,13 @@ function populate_season_count(s_info){
     let season_tot=s_info.data;
     console.log('Season wise data:',season_tot);
     let S_List=document.getElementById('season');
-    console.log('Index status:',S_List);
-    let ns=season_tot.length;
-    console.log(ns);
+    //console.log('Index status:',S_List);
+    let n_season=season_tot.length;
+    console.log(n_season);
+    for(let i=0;i<n_season;i++){
+        let list_it=document.createElement('li');
+        console.log(list_it);
+        let s_link=document.createElement('a');
+        console.log(s_link);
+    }
 }
