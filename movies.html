@@ -172,81 +172,61 @@
    </section>
 
    <!-- SIMILAR MOVIES -->
-   <div id="similar-movies" class="m-5 hidden">
-     <h5 class="display-5"><b>Similar Movies</b></h5>
-    <div id="carouselExampleControls" class="carousel slide mt-3" data-bs-ride="carousel">
-      <div class="carousel-inner" id="rec_car_items">
-        <div class="carousel-item active" data-bs-interval="5000" id="rec_car_item1">
-            <div class="recs">
-              <div class="recom-div">
-                  <img src="" alt="">
-                  <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
+   <div class="container text-center my-3 hidden">
+    <h2 class="display-5">Similar Movies</h2>
+    <div class="row mx-auto my-auto justify-content-center">
+        <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" role="listbox" >
+                <div class="carousel-item active" data-bs-interval="5000" id="rec_car_item1">
+                  <div class="recs">
+                    <div class="recom-div">
+                      <img src="https://i.ibb.co/mBpMg6g/Untitled-design-7.png" alt="">
+                      <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
+                    </div>
+                  </div>
                 </div>
-                <div class="recom-div">
-                  <img src="" alt="">
-                  <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
+                <div class="carousel-item">
+                    <div class="recs">
+                    <div class="recom-div">
+                      <img src="https://i.ibb.co/jDVfWhq/Untitled-design-6.png" alt="">
+                      <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
+                    </div>
+                  </div>
                 </div>
-                <div class="recom-div">
-                  <img src="" alt="">
-                  <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
+                <div class="carousel-item">
+                    <div class="recs">
+                    <div class="recom-div">
+                      <img src="https://i.ibb.co/kQQSqF9/1-Y8v-XN1m-Je-EHy-XWJt-FICji-Q.jpg" alt="">
+                      <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
+                    </div>
+                  </div>
                 </div>
-                <div class="recom-div">
-                  <img src="" alt="">
-                  <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
+                <div class="carousel-item">
+                    <div class="recs">
+                    <div class="recom-div">
+                      <img src="https://4.bp.blogspot.com/-HWjmRxWUAtE/Ut271G6Uw2I/AAAAAAAAACE/4pjte3eaoF4/s1600/wolf-of-wall-street-movie-uk-poster.jpg" alt="">
+                      <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="recs">
+                    <div class="recom-div">
+                      <img src="https://i.ibb.co/Gk7q74r/Untitled-design-5.png" alt="">
+                      <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
+                    </div>
+                  </div>
                 </div>
             </div>
+            <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
         </div>
-        <div class="carousel-item" data-bs-interval="5000" id="rec_car_item2">
-            <div class="recs">
-              <div class="recom-div">
-                  <img src="" alt="">
-                  <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
-                </div>
-                <div class="recom-div">
-                  <img src="" alt="">
-                  <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
-                </div>
-                <div class="recom-div">
-                  <img src="" alt="">
-                  <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
-                </div>
-                <div class="recom-div">
-                  <img src="" alt="">
-                  <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item" data-bs-interval="5000" id="rec_car_item3">
-          <div class="recs">
-              <div class="recom-div">
-                  <img src="" alt="">
-                  <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
-                </div>
-                <div class="recom-div">
-                  <img src="" alt="">
-                  <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
-                </div>
-                <div class="recom-div">
-                  <img src="" alt="">
-                  <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
-                </div>
-                <div class="recom-div">
-                  <img src="" alt="">
-                  <span style="display: flex; justify-content: space-between;"><p></p> <p></p></span>
-                </div>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-   </div>
-   </div>
+    </div>
+</div>
   
     
 
