@@ -1,6 +1,7 @@
 const apiKey = "f985a3ae5df8738bf04a55864c33128c";
 const formMovies = document.querySelector('#movieSearchForm');
 const resultSection = document.querySelector('#movie_result');
+const favorteMovieSection  = document.querySelector('#favourite-movies')
 
 formMovies.addEventListener('submit', async(e) => {
     e.preventDefault();
@@ -80,6 +81,8 @@ formMovies.addEventListener('submit', async(e) => {
     avg_rating.style.fontSize='20px';
     star_bottom.style='z-index: 1;  position:absolute; display: inline-block; overflow: hidden; white-space: nowrap;';
     star_top.style='z-index: 2;   position:absolute ; overflow: hidden; white-space: nowrap; height:24px; display: inline-block; color:gold;';
+
+    favorteMovieSection.classList.add('hidden')
     
     resultDivImg.append(img);
     resultDivInfo.append(title);

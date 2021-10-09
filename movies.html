@@ -27,9 +27,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="style.css">
     <title>HacktoberFest</title>
   </head>
   <body style="background: #2D6967">
@@ -85,15 +84,15 @@
     </form>
    </section>
 
-   <section id="movie_result">
+   <section id="favourite-movies">
     <div class="container1">
       <div class="row">
               <!-- Show Cards Star Here (1) -->
               <div class="col-lg-3 col-sm-6 col-12">
-                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('Intersteller')" >
-                      <img src="https://d8mkdcmng3.imgix.net/7a5f/dvd-and-bluray-dvd-films-thriller-interstellar-dvd.jpg?auto=format&bg=0FFF&fit=fill&h=600&q=100&w=600&s=b4adb6ccfbcb54df52194d536c0b67eb" class="card-img-top border-0 card__image" alt="...">
+                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('BigHero 6')" >
+                      <img src="https://i.ibb.co/mBpMg6g/Untitled-design-7.png" class="card-img-top border-0 card__image" alt="...">
                       <div class="card-body" >
-                        <h5 class="card-title">Intersteller</h5>
+                        <h5 class="card-title">BigHero 6</h5>
                       </div>
                   </div>
               </div>
@@ -117,20 +116,20 @@
               <!-- Show Cards ENDS Here -->
               <!-- (2) -->
               <div class="col-lg-3 col-sm-6 col-12">
-                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('The Shawshank Redemption')">
-                      <img src="https://m.media-amazon.com/images/I/51zUbui+gbL._AC_.jpg" class="card-img-top border-0" alt="...">
+                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('Pulp Fiction')">
+                      <img src="https://i.ibb.co/BrQjFQW/Pulp-Fiction1.png" class="card-img-top border-0" alt="...">
                       <div class="card-body">
-                        <h5 class="card-title">The Shawshank Redemption</h5>
+                        <h5 class="card-title">Pulp Fiction</h5>
                       </div>
                   </div>
               </div>
         <br><br>
               <!-- (3) -->
               <div class="col-lg-3 col-sm-6 col-12">
-                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('Avengers: Infinity War')">
-                      <img src="https://m.media-amazon.com/images/I/711vSozMAAL._SL1200_.jpg" class="card-img-top border-0" alt="...">
+                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('The Dark Knight')">
+                      <img src="https://i.ibb.co/Gk7q74r/Untitled-design-5.png" class="card-img-top border-0" alt="...">
                       <div class="card-body">
-                        <h5 class="card-title">Avengers: Infinity War</h5>
+                        <h5 class="card-title">The Dark Knight</h5>
                       </div>
                   </div>
               </div>
@@ -146,7 +145,7 @@
               <!-- (5) -->
               <div class="col-lg-3 col-sm-6 col-12">
                   <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('the pursuit of happiness')">
-                      <img src="http://i1.wp.com/www.icrt.com.tw/wordpress/wp-content/uploads/2014/12/the-pursuit-of-happyness-will-smith-movie-banner.jpg" class="card-img-top border-0" alt="...">
+                      <img src="https://i.ibb.co/kQQSqF9/1-Y8v-XN1m-Je-EHy-XWJt-FICji-Q.jpg" class="card-img-top border-0" alt="...">
                       <div class="card-body">
                         <h5 class="card-title">The Pursuit of Happiness</h5>
                       </div>
@@ -154,13 +153,18 @@
               </div>
               <div class="col-lg-3 col-sm-6 col-12">
                   <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('Inside Out')">
-                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHMI3ilHfRuH1SyQBLE5bdWj9549RI4Ud1lwIm_9BAYAUXW_2Y3YsOuUkl6t2I3cr3FqA&usqp=CAU" class="card-img-top border-0" alt="...">
+                      <img src="https://i.ibb.co/jDVfWhq/Untitled-design-6.png" class="card-img-top border-0" alt="...">
                   <div class="card-body">
                       <h5 class="card-title">Inside Out</h5>
               </div>
           </div>
       </div>
-  </div>  
+      </div>
+    </div>  
+   </section>
+
+   <section id="movie_result">
+    
    </section>
 
    <script src="movies.js"></script>
