@@ -191,8 +191,8 @@ const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
     table.append(r);
 }
 
-function hi(){
-    console.log('hi');
+function test(){
+    console.log('test');
 }
 
 function populate_season_count(s_info){
@@ -208,10 +208,9 @@ function populate_season_count(s_info){
         let list_item=document.createElement('li');
         let s_link=document.createElement('a');
         s_link.href='#';
-        s_link.setAttribute("onclick", "hi()");
+        s_link.setAttribute("onclick", "test()");
         let sn='S';
         let ct=i+1;
-        s_link.onClickCommand = hi();
         if(ct<10){
             sn=sn+'0'+ct;
         }
