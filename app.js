@@ -192,7 +192,8 @@ const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
 }
 
 function refill_table(s){
-    console.log('test');
+    console.log('clicked season id: '+ s);
+    ep_data_fill(s);
 }
 
 function populate_season_count(s_info){
