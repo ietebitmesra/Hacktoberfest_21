@@ -224,7 +224,7 @@ function populate_season_count(s_info){
         }
         s_link.innerHTML=sn;
         list_item.appendChild(s_link);
-        console.log(list_item);
+        //console.log(list_item);
         S_List.appendChild(list_item);
     }
     //console.log(S_List);
