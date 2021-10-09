@@ -165,6 +165,7 @@ const ep_data_fill = async(season_id)=>{
     const l = episode_data.data.length
     headers.innerHTML = heads;
     //console.log(headers);
+    table.innerHTML='';
     table.append(headers);
     for(var i=0; i<l; i++){
         var number = episode_data.data[i].number;
@@ -191,6 +192,11 @@ const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
     table.append(r);
 }
 
+function refill_table(s){
+    //console.log('clicked season id: '+ s);
+    ep_data_fill(s);
+}
+
 function populate_season_count(s_info){
     //console.log('Season info:',s_info);
     let season_tot=s_info.data;
@@ -203,10 +209,13 @@ function populate_season_count(s_info){
     for(let i=0;i<n_season;i++){
         let list_item=document.createElement('li');
         let s_link=document.createElement('a');
-        s_link.href='#';
-        s_link.className += "slink";
+        s_link.href='#!';
+        let season_id=season_tot[i].id;
+        let refill_command="refill_table("+season_id+")";
+        s_link.setAttribute("onclick", refill_command);
         let sn='S';
         let ct=i+1;
+        s_link.classList.add("slink");
         if(ct<10){
             sn=sn+'0'+ct;
         }
