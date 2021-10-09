@@ -6,6 +6,7 @@ body {
   margin: 0;
   background-color: #2D6967 ;
   height: auto;
+  overflow-x: hidden;
 }
 
 a.logo {
@@ -234,7 +235,34 @@ flex-direction: row;
   background-color: #c3c4c4;
 }
 
+.carousel{
+  width: 1100px;
+  height: 140px;
 
+}
 
+#recommendations > div{
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.recom-div > img{
+  width: 250px;
+  height: 140px;
+  border-radius: 10px;
+  box-shadow: 9px 9px 20px, 7px 7px 10px, 5px 5px 7px, 3px 3px 1px, 1px 1px;
+}
+.recom-div > span{
+  margin-top: 15px;
+  padding: 10px;
+}
+
+.recs{display: flex;}
+
+.recom-div{margin:10px}
+
+.recom-div > span > p:nth-child(1){
+  margin-right: 30px;
+}
 
 
