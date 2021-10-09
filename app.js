@@ -42,7 +42,7 @@ form.addEventListener('submit', async (e)=>{
     // API CALL
     const searchTerm = document.querySelector('#searchText').value;
     const res = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)
-    console.log(res)
+    //console.log(res)
     const bestMatch = res.data[0].show
 
     // ALL API DATA
@@ -136,12 +136,12 @@ form.addEventListener('submit', async (e)=>{
     avg_rating.style.minWidth=wid+50+'px';
 
     // EPISODE TABLE
-    get_season(show_id, season_num)
+    get_season(show_id, season_num);
 
 })
 
-const popShowSection = document.querySelector("#popular-shows")
-const secInfo = document.querySelector("#sec-info")
+const popShowSection = document.querySelector("#popular-shows");
+const secInfo = document.querySelector("#sec-info");
 
 const pop_show_hide = ()=>{
     popShowSection.classList.add('hidden');
@@ -153,14 +153,15 @@ const showSecInfo = ()=>{
 
 const get_season = async(show_id, season_num)=>{
     const season_data = await axios.get(`https://api.tvmaze.com/shows/${show_id}/seasons`)
+    //console.log(season_data);
+    populate_season_count(season_data);
     const season_id = season_data.data[season_num-1].id
-    console.log(season_data)
     const ep_data = ep_data_fill(season_id)
 }
 
 const ep_data_fill = async(season_id)=>{
     const episode_data = await axios.get(`https://api.tvmaze.com/seasons/${season_id}/episodes`)
-    console.log(episode_data.data[0])
+    //console.log(episode_data.data[0])
     const l = episode_data.data.length
     headers.innerHTML = heads;
     //console.log(headers);
@@ -190,3 +191,32 @@ const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
     table.append(r);
 }
 
+function populate_season_count(s_info){
+    //console.log('Season info:',s_info);
+    let season_tot=s_info.data;
+    console.log('Season wise data:',season_tot);
+    let S_List=document.getElementById('season');
+    //console.log('Index status:',S_List);
+    let n_season=season_tot.length;
+    //console.log(n_season);
+    S_List.innerHTML='';
+    for(let i=0;i<n_season;i++){
+        let list_item=document.createElement('li');
+        let s_link=document.createElement('a');
+        s_link.href='#';
+        s_link.className += "slink";
+        let sn='S';
+        let ct=i+1;
+        if(ct<10){
+            sn=sn+'0'+ct;
+        }
+        else{
+            sn=sn+ct;
+        }
+        s_link.innerHTML=sn;
+        list_item.appendChild(s_link);
+        //console.log(list_item);
+        S_List.appendChild(list_item);
+    }
+    //console.log(S_List);
+}
