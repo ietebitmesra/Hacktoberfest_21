@@ -198,21 +198,15 @@ flex-direction: row;
   font-size: 18px;
 }
 
-.slink:link {
-  color:black;
-  font-weight: bold;
-}
-
-.slink:visited {
+.slink {
   color:black;
   font-weight: bold;
 }
 
 .slink:hover {
-  color:cyan;
+  color:rgb(155, 240, 240);
   font-weight: bold;
 }
-
 
 .table_design{
   background-color: #feffff;
@@ -265,4 +259,6 @@ flex-direction: row;
   margin-right: 30px;
 }
 
-
+.active-link{
+  color:cyan;
+}

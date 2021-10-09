@@ -127,7 +127,7 @@ form.addEventListener('submit', async (e)=>{
     // SECONDARY INFO
     const season_num = 1
     const season_disp = document.querySelector('#season-num');
-    season_disp.innerText = `SEASON: ${season_num}`
+    // season_disp.innerText = `SEASON: ${season_num}`
 
     let wid=star_bottom.offsetWidth;
     wid=wid*star_ct*0.1;
@@ -204,7 +204,7 @@ function populate_season_count(s_info){
     let S_List=document.getElementById('season');
     //console.log('Index status:',S_List);
     let n_season=season_tot.length;
-    //console.log(n_season);
+    console.log(n_season);
     S_List.innerHTML='';
     for(let i=0;i<n_season;i++){
         let list_item=document.createElement('li');
@@ -216,6 +216,7 @@ function populate_season_count(s_info){
         let sn='S';
         let ct=i+1;
         s_link.classList.add("slink");
+        // console.dir(s_link)
         if(ct<10){
             sn=sn+'0'+ct;
         }
@@ -226,6 +227,31 @@ function populate_season_count(s_info){
         list_item.appendChild(s_link);
         //console.log(list_item);
         S_List.appendChild(list_item);
-    }
-    //console.log(S_List);
+
+        const season_links = document.querySelectorAll('.slink')
+
+        console.dir(season_links)
+        season_links[0].classList.add('active-link')
+
+        season_links.forEach((item, i)=>
+            item.addEventListener('click', ()=>{
+                disableLinks()
+                item.classList.add('active-link')
+            })
+        )
+
+        
+
+     }
+ }
+
+const disableLinks = ()=>{
+    const season_links = document.querySelectorAll('.slink')
+    season_links.forEach((item)=>
+            item.classList.remove('active-link')
+        )
 }
+
+
+
+ 
