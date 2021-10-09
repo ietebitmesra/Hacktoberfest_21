@@ -165,6 +165,7 @@ const ep_data_fill = async(season_id)=>{
     const l = episode_data.data.length
     headers.innerHTML = heads;
     //console.log(headers);
+    table.innerHTML='';
     table.append(headers);
     for(var i=0; i<l; i++){
         var number = episode_data.data[i].number;
