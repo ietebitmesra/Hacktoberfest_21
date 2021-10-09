@@ -42,7 +42,7 @@ form.addEventListener('submit', async (e)=>{
     // API CALL
     const searchTerm = document.querySelector('#searchText').value;
     const res = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)
-    console.log(res)
+    //console.log(res)
     const bestMatch = res.data[0].show
 
     // ALL API DATA
@@ -136,13 +136,12 @@ form.addEventListener('submit', async (e)=>{
     avg_rating.style.minWidth=wid+50+'px';
 
     // EPISODE TABLE
-    populate_season_count(res);
-    get_season(show_id, season_num)
+    get_season(show_id, season_num);
 
 })
 
-const popShowSection = document.querySelector("#popular-shows")
-const secInfo = document.querySelector("#sec-info")
+const popShowSection = document.querySelector("#popular-shows");
+const secInfo = document.querySelector("#sec-info");
 
 const pop_show_hide = ()=>{
     popShowSection.classList.add('hidden');
@@ -155,6 +154,7 @@ const showSecInfo = ()=>{
 const get_season = async(show_id, season_num)=>{
     const season_data = await axios.get(`https://api.tvmaze.com/shows/${show_id}/seasons`)
     //console.log(season_data);
+    populate_season_count(season_data);
     const season_id = season_data.data[season_num-1].id
     const ep_data = ep_data_fill(season_id)
 }
@@ -192,5 +192,6 @@ const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
 }
 
 function populate_season_count(s_info){
-    console.log('working');
+    console.log('Season info:',s_info);
+    console.log('Data:',s_info.data);
 }
