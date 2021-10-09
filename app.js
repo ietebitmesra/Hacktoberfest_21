@@ -193,7 +193,7 @@ const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
 }
 
 function refill_table(s){
-    console.log('clicked season id: '+ s);
+    //console.log('clicked season id: '+ s);
     ep_data_fill(s);
 }
 
@@ -209,12 +209,13 @@ function populate_season_count(s_info){
     for(let i=0;i<n_season;i++){
         let list_item=document.createElement('li');
         let s_link=document.createElement('a');
-        s_link.href='#';
+        s_link.href='#!';
         let season_id=season_tot[i].id;
         let refill_command="refill_table("+season_id+")";
         s_link.setAttribute("onclick", refill_command);
         let sn='S';
         let ct=i+1;
+        s_link.classList.add("slink");
         if(ct<10){
             sn=sn+'0'+ct;
         }
