@@ -53,7 +53,7 @@
             <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" ><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
           
           <div class="col-11 col-xl-2">
-            <h1 text-align="center"><a href="index.html" class="text-white mb-0">HacktoberFest</a></h1>
+            <h1 text-align="center"><a href="index.html" class="text-white mb-0" style="font-family: Hacktoberfest; font-weight: bolder;">HacktoberFest</a></h1>
           </div>
           <div class="col-12 col-md-10 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
@@ -77,7 +77,6 @@
     </header>
     <!-- NAVBAR END -->
     <section>
-       
     <form id="movieSearchForm" class="searchBar_pos1 searchForm" name="query">
         <input type="search" id="searchText"  placeholder="What movie are you looking for?">
         <button type="submit" id="searchBtn">
@@ -87,7 +86,81 @@
    </section>
 
    <section id="movie_result">
-
+    <div class="container1">
+      <div class="row">
+              <!-- Show Cards Star Here (1) -->
+              <div class="col-lg-3 col-sm-6 col-12">
+                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('Intersteller')" >
+                      <img src="https://d8mkdcmng3.imgix.net/7a5f/dvd-and-bluray-dvd-films-thriller-interstellar-dvd.jpg?auto=format&bg=0FFF&fit=fill&h=600&q=100&w=600&s=b4adb6ccfbcb54df52194d536c0b67eb" class="card-img-top border-0 card__image" alt="...">
+                      <div class="card-body" >
+                        <h5 class="card-title">Intersteller</h5>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-sm-6 col-12">
+                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('Inception')">
+                      <img src="https://images-na.ssl-images-amazon.com/images/S/pv-target-images/685ecb434ec1e6e6caba39375cbfd1b4a6f97bfe575f74b2cfe7a3c6b7eabf05._RI_V_TTW_.jpg" class="card-img-top border-0" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Inception</h5>
+                      </div>
+                  </div>
+              </div>
+              <!-- (6) -->
+              <div class="col-lg-3 col-sm-6 col-12">
+                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('Avatar')">
+                      <img src="https://static1.colliderimages.com/wordpress/wp-content/uploads/2021/07/avatar-sequel-what-we-know.jpg" class="card-img-top border-0" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Avatar</h5>
+                      </div>
+                  </div>
+              </div>
+              <!-- Show Cards ENDS Here -->
+              <!-- (2) -->
+              <div class="col-lg-3 col-sm-6 col-12">
+                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('The Shawshank Redemption')">
+                      <img src="https://m.media-amazon.com/images/I/51zUbui+gbL._AC_.jpg" class="card-img-top border-0" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">The Shawshank Redemption</h5>
+                      </div>
+                  </div>
+              </div>
+        <br><br>
+              <!-- (3) -->
+              <div class="col-lg-3 col-sm-6 col-12">
+                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('Avengers: Infinity War')">
+                      <img src="https://m.media-amazon.com/images/I/711vSozMAAL._SL1200_.jpg" class="card-img-top border-0" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Avengers: Infinity War</h5>
+                      </div>
+                  </div>
+              </div>
+              <!-- (4) -->
+              <div class="col-lg-3 col-sm-6 col-12">
+                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('The Wolf of Wall Street')">
+                      <img src="https://4.bp.blogspot.com/-HWjmRxWUAtE/Ut271G6Uw2I/AAAAAAAAACE/4pjte3eaoF4/s1600/wolf-of-wall-street-movie-uk-poster.jpg" class="card-img-top border-0" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">The Wolf of Wall Street</h5>
+                      </div>
+                  </div>
+              </div>
+              <!-- (5) -->
+              <div class="col-lg-3 col-sm-6 col-12">
+                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('the pursuit of happiness')">
+                      <img src="http://i1.wp.com/www.icrt.com.tw/wordpress/wp-content/uploads/2014/12/the-pursuit-of-happyness-will-smith-movie-banner.jpg" class="card-img-top border-0" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">The Pursuit of Happiness</h5>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-sm-6 col-12">
+                  <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 22rem;" onclick="show_info('Inside Out')">
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHMI3ilHfRuH1SyQBLE5bdWj9549RI4Ud1lwIm_9BAYAUXW_2Y3YsOuUkl6t2I3cr3FqA&usqp=CAU" class="card-img-top border-0" alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title">Inside Out</h5>
+              </div>
+          </div>
+      </div>
+  </div>  
    </section>
 
    <script src="movies.js"></script>
