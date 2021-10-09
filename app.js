@@ -208,6 +208,8 @@ function populate_season_count(s_info){
         let list_item=document.createElement('li');
         let s_link=document.createElement('a');
         s_link.href='#';
+        let season_id=season_tot[i].id;
+        console.log(season_id);
         s_link.setAttribute("onclick", "test()");
         let sn='S';
         let ct=i+1;
