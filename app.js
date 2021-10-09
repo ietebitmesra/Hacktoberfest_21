@@ -198,16 +198,25 @@ function populate_season_count(s_info){
     let S_List=document.getElementById('season');
     //console.log('Index status:',S_List);
     let n_season=season_tot.length;
-    console.log(n_season);
+    //console.log(n_season);
     S_List.innerHTML='';
     for(let i=0;i<n_season;i++){
         let list_item=document.createElement('li');
         let s_link=document.createElement('a');
         s_link.href='#';
         s_link.className += "slink";
+        let sn='S';
+        let ct=i+1;
+        if(ct<10){
+            sn=sn+'0'+ct;
+        }
+        else{
+            sn=sn+ct;
+        }
+        s_link.innerHTML=sn;
         list_item.appendChild(s_link);
         //console.log(list_item);
         S_List.appendChild(list_item);
     }
-    console.log(S_List);
+    //console.log(S_List);
 }
