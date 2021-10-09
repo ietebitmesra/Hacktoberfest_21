@@ -192,6 +192,9 @@ const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
 }
 
 function populate_season_count(s_info){
-    console.log('Season info:',s_info);
-    console.log('Data:',s_info.data);
+    //console.log('Season info:',s_info);
+    let season_tot=s_info.data;
+    console.log('Season wise data:',season_tot);
+    let S_List=document.getElementById('season');
+    console.log('Index status:',S_List);
 }
