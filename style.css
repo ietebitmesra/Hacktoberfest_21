@@ -267,3 +267,15 @@ flex-direction: row;
 }
 
 
+@media screen and (max-width: 600px) {
+  #main-info{
+    align-items: center;
+    flex-direction: column;
+  }
+  #show-prim-info{
+    margin-left: 0;
+  }
+  #show-prim-info h1{
+    text-align: center;
+  }
+}
