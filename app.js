@@ -191,7 +191,7 @@ const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
     table.append(r);
 }
 
-function test(){
+function refill_table(s){
     console.log('test');
 }
 
@@ -209,8 +209,8 @@ function populate_season_count(s_info){
         let s_link=document.createElement('a');
         s_link.href='#';
         let season_id=season_tot[i].id;
-        console.log(season_id);
-        s_link.setAttribute("onclick", "test()");
+        let refill_command="refill_table("+season_id+")";
+        s_link.setAttribute("onclick", refill_command);
         let sn='S';
         let ct=i+1;
         if(ct<10){
