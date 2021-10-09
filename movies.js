@@ -111,7 +111,7 @@ formMovies.addEventListener('submit', async(e) => {
 var similar_movie_object = {}
 
 const getRecom = async(id)=>{
-    const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}`)
+    const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}`)
     const recom_data = res.data.results
     recom_data.forEach((rec, i) => {
             similar_movie_object[i] = {
