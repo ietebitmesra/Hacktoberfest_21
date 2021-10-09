@@ -136,6 +136,7 @@ form.addEventListener('submit', async (e)=>{
     avg_rating.style.minWidth=wid+50+'px';
 
     // EPISODE TABLE
+    populate_season_count(show_id,season_num);
     get_season(show_id, season_num)
 
 })
@@ -153,6 +154,7 @@ const showSecInfo = ()=>{
 
 const get_season = async(show_id, season_num)=>{
     const season_data = await axios.get(`https://api.tvmaze.com/shows/${show_id}/seasons`)
+    console.log(season_data);
     const season_id = season_data.data[season_num-1].id
     console.log(season_data)
     const ep_data = ep_data_fill(season_id)
@@ -190,3 +192,6 @@ const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
     table.append(r);
 }
 
+function populate_season_count(showid,s_no){
+    console.log('working');
+}
