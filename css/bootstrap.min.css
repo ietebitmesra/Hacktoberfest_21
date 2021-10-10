@@ -6642,6 +6642,10 @@ a.close.disabled {
   color: #212529;
 }
 
+/*
+
+COMMENTING OUT THE CAROUSEL COMMANDS SOLVED THE GAP ISSUE
+
 .carousel {
   position: relative;
 }
@@ -6869,7 +6873,7 @@ a.close.disabled {
   padding-bottom: 20px;
   color: #fff;
   text-align: center;
-}
+}*/
 
 @-webkit-keyframes spinner-border {
   to {
