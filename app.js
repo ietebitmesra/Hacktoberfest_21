@@ -42,8 +42,9 @@ form.addEventListener('submit', async (e)=>{
     // API CALL
     const searchTerm = document.querySelector('#searchText').value;
     const res = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)
-    //console.log(res)
+    // console.log(res)
     const bestMatch = res.data[0].show
+    const genres = res.data[0].show.genres;
 
     // ALL API DATA
     const id = bestMatch.id;
@@ -88,6 +89,19 @@ form.addEventListener('submit', async (e)=>{
 
     const avg_rating = document.createElement('p');
     avg_rating.innerHTML= rating;
+
+    //Adding Genres data
+    const Genres = document.createElement('p');
+    let val = "Genres: ";
+    for(var i=0;i<genres.length;i++)
+    {
+        val+=genres[i];
+        if(i!=genres.length-1)
+        val+=', ';
+    }
+    val+=".";
+    Genres.innerHTML= val;
+
     const stars = document.createElement('span');
     const star_bottom= document.createElement('div');
     const star_top= document.createElement('div');
@@ -96,8 +110,6 @@ form.addEventListener('submit', async (e)=>{
     stars.append(star_bottom); 
     stars.append(star_top);
     avg_rating.append(stars);
-    
-
 
     // STYLE CREATED ELEMENTS HERE
     h1.style.fontSize = '50px';
@@ -113,6 +125,8 @@ form.addEventListener('submit', async (e)=>{
     cast.style.fontColor = "white"
 
     avg_rating.style.fontSize='20px';
+    
+    Genres.style.fontSize='20px';
     star_bottom.style='z-index: 1;  position:absolute; display: inline-block; overflow: hidden; white-space: nowrap;';
     star_top.style='z-index: 2;   position:absolute ; overflow: hidden; white-space: nowrap; height:24px; display: inline-block; color:gold;';
 
@@ -121,6 +135,7 @@ form.addEventListener('submit', async (e)=>{
     resultDivInfo.append(h1)
     resultDivInfo.append(p1)
     resultDivInfo.append(avg_rating)
+    resultDivInfo.append(Genres);
     resultDivInfo.append(cast)
     showSecInfo();
     form.reset();
@@ -233,7 +248,7 @@ function populate_season_count(s_info){
 
         const season_links = document.querySelectorAll('.slink')
 
-        console.dir(season_links)
+        // console.dir(season_links)
         season_links[0].classList.add('active-link')
 
         season_links.forEach((item, i)=>
