@@ -254,9 +254,41 @@ const disableLinks = ()=>{
 }
 
 function cast_display(){
-    let cast_member=document.createElement('div');
-    cast_member.style='height:280px;display:inline-block;background-color:white;';
-    cast_member.innerHTML='sample';
+    // <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 18rem;" onclick="show_info('The Big Bang Theory')" >
+    //     <img src="" class="card-img-top border-0 card__image" alt="...">
+    //     <div class="card-body" >
+    //         <h5 class="card-title">The Big Bang Theory</h5>
+    //     </div>
+    // </div>
+    let cast_member=document.createElement('li')
+    let card_div=document.createElement('div');
+    card_div.style.display="inline-block";
+    card_div.classList.add("card");
+    card_div.classList.add("border-0");
+    card_div.classList.add("mb-2");
+    card_div.classList.add("tvcard");
+    card_div.classList.add("cardshow");
+
+    let cm_img=document.createElement('img');
+    cm_img.style.maxWidth='18rem';
+    cm_img.src='https://picsum.photos/200/300'
+    let cm_metadata=document.createElement('div');
+    
+    let cm_name=document.createElement('h5');
+    let cm_character=document.createElement('h6');
+    cm_name.innerHTML='Lorem Ipsum';
+    cm_name.classList.add("card-title");
+
+    cm_character.innerHTML=' Dolor ';
+
+    cm_metadata.appendChild(cm_name);
+    cm_metadata.appendChild(cm_character);
+
+    cm_metadata.classList.add("card-body");
+    card_div.appendChild(cm_img);
+    card_div.appendChild(cm_metadata);
+
+    cast_member.appendChild(card_div);
     console.log(cast_member);
     document.getElementById('cast_data').append(cast_member);
 }
