@@ -265,7 +265,10 @@ flex-direction: row;
   margin-right: 30px;
 }
 
-
+.simTitle{
+  color: white;
+  font-weight: 400;
+}
 
 @media (max-width: 767px) {
   .carousel-inner .carousel-item > div {

@@ -110,16 +110,15 @@ formMovies.addEventListener('submit', async(e) => {
 })
 
 // TO GET SIMILAR MOVIES
-var similar_movie_object = {}
-let items = document.querySelectorAll('.carousel .carousel-item')
+let similar_movie_object = document.querySelectorAll('.carousel .carousel-item')
 
-items.forEach((el) => {
+similar_movie_object.forEach((el) => {
     const minPerSlide = 4
     let next = el.nextElementSibling
     for (var i=1; i<minPerSlide; i++) {
         if (!next) {
             // wrap carousel by using first child
-        	next = items[0]
+        	next = similar_movie_object[0]
       	}
         let cloneChild = next.cloneNode(true)
         el.appendChild(cloneChild.children[0])
