@@ -51,8 +51,9 @@ form.addEventListener('submit', async (e)=>{
     const image = bestMatch.image.medium
     // const premeired = bestMatch.image.medium
     const name = bestMatch.name 
-    const cast_response = await fetch(`https://api.tvmaze.com/shows/${id}/cast`)
+    const cast_response = await fetch(`https://api.tvmaze.com/shows/${id}/cast`);
     const cast_data = await cast_response.json();
+    console.log(cast_data);
     let cast_names = 'Cast : '
     cast_data.map(getNames)
     function getNames(value){
