@@ -259,6 +259,9 @@ var global_castdata,global_showid;
 
 function cast_display(){
     //console.log(global_castdata);
+    
+    document.getElementById('castHeading').classList.add("active-b");
+    document.getElementById('EpisodeHeading').classList.remove("active-b");
     document.getElementById('cast_data').innerHTML='';
     document.getElementById('data-table').innerHTML='';
 
@@ -311,6 +314,9 @@ function cast_display(){
 }
 
 function ep_reload(){
+    
+    document.getElementById('castHeading').classList.remove("active-b");
+    document.getElementById('EpisodeHeading').classList.add("active-b");
     document.getElementById('cast_data').innerHTML='';
     get_season(global_showid,1);
 } 
