@@ -32,6 +32,7 @@ function clear_old_data(){
     document.getElementById('show-image').innerHTML="";
     document.getElementById('show-prim-info').innerHTML="";
     document.getElementById('data-table').innerHTML="";
+    document.getElementById('cast_data').innerHTML="";
 }
 
 //FORM SUBMISSION EVENT LISTENER
