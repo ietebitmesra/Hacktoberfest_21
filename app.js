@@ -53,7 +53,7 @@ form.addEventListener('submit', async (e)=>{
     const name = bestMatch.name 
     const cast_response = await fetch(`https://api.tvmaze.com/shows/${id}/cast`);
     const cast_data = await cast_response.json();
-    console.log(cast_data);
+    global_castdata=cast_data;
     let cast_names = 'Cast : '
     cast_data.map(getNames)
     function getNames(value){
@@ -253,44 +253,51 @@ const disableLinks = ()=>{
         )
 }
 
+var global_castdata;
+
 function cast_display(){
-    // <div class="card border-0 mb-2 tvcard cardshow" style="max-width: 18rem;" onclick="show_info('The Big Bang Theory')" >
-    //     <img src="" class="card-img-top border-0 card__image" alt="...">
-    //     <div class="card-body" >
-    //         <h5 class="card-title">The Big Bang Theory</h5>
-    //     </div>
-    // </div>
-    let cast_member=document.createElement('li')
-    let card_div=document.createElement('div');
-    card_div.style.display="inline-block";
-    card_div.classList.add("card");
-    card_div.classList.add("border-0");
-    card_div.classList.add("mb-2");
-    card_div.classList.add("tvcard");
-    card_div.classList.add("cardshow");
+    console.log(global_castdata);
+    document.getElementById('cast_data').innerHTML='';
+    let cast_count=global_castdata.length;
+    for(let i=0;i<cast_count;i++){
+        let cm_img_api=global_castdata[i].person.image.medium;
 
-    let cm_img=document.createElement('img');
-    cm_img.style.maxWidth='18rem';
-    cm_img.src='https://picsum.photos/200/300'
-    let cm_metadata=document.createElement('div');
-    
-    let cm_name=document.createElement('h5');
-    let cm_character=document.createElement('h6');
-    cm_name.innerHTML='Lorem Ipsum';
-    cm_name.classList.add("card-title");
+        let cast_member=document.createElement('li')
+        let cm_card=document.createElement('div');
+        cm_card.style.display="inline-block";
+        cm_card.classList.add("card");
+        cm_card.classList.add("border-0");
+        cm_card.classList.add("mb-2");
+        cm_card.classList.add("tvcard");
+        cm_card.classList.add("cardshow");
 
-    cm_character.innerHTML=' Dolor ';
+        let cm_img=document.createElement('img');
+        cm_img.style.maxWidth='18rem';
+        cm_img.src=cm_img_api;
+        cm_img.classList.add('card-img-top');
+        cm_img.classList.add('border-0');
+        cm_img.classList.add('card__image');
+        let cm_metadata=document.createElement('div');
+        
+        let cm_name=document.createElement('h5');
+        let cm_character=document.createElement('h6');
+        cm_name.innerHTML='Lorem Ipsum';
+        cm_name.classList.add("card-title");
 
-    cm_metadata.appendChild(cm_name);
-    cm_metadata.appendChild(cm_character);
+        cm_character.innerHTML=' Dolor ';
 
-    cm_metadata.classList.add("card-body");
-    card_div.appendChild(cm_img);
-    card_div.appendChild(cm_metadata);
+        cm_metadata.appendChild(cm_name);
+        cm_metadata.appendChild(cm_character);
 
-    cast_member.appendChild(card_div);
-    console.log(cast_member);
-    document.getElementById('cast_data').append(cast_member);
+        cm_metadata.classList.add("card-body");
+        cm_card.appendChild(cm_img);
+        cm_card.appendChild(cm_metadata);
+
+        cast_member.appendChild(cm_card);
+
+        document.getElementById("cast_data").appendChild(cast_member);
+    }
+
 }
 
  
