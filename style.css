@@ -195,7 +195,6 @@ flex-direction: row;
   background-color: rgb(255, 255, 255,0.2);
   padding-top: 5px;
   padding-bottom: 5px;
-  display: inline-flex;
   flex-wrap: wrap;
   border-radius: 10px;
   font-size: 18px;

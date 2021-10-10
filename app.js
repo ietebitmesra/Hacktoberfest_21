@@ -171,6 +171,7 @@ const showSecInfo = ()=>{
 const get_season = async(show_id, season_num)=>{
     const season_data = await axios.get(`https://api.tvmaze.com/shows/${show_id}/seasons`)
     //console.log(season_data);
+    document.getElementById('season').style.display='inline-flex';
     populate_season_count(season_data);
     const season_id = season_data.data[season_num-1].id
     ep_data_fill(season_id);
