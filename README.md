@@ -172,7 +172,7 @@ Then add a title and description to your pull request that explains your preciou
 
 
 
-# Hacktoberfest tv-series search app
+# Hacktoberfest Tv-series/Movie search app
  
  Link: https://ietebitmesra.github.io/Hacktoberfest_21/
 
@@ -185,31 +185,31 @@ Idea images:
 
 ## About The Project:
 
-This app use [TV Maze api](https://www.tvmaze.com/api) , to get data of TV series, please use it's documentation for reference. We would like the application to be responsive and helpful to it's users by showing complete details.
+This app use [TV Maze api](https://www.tvmaze.com/api) to get data of TV series, and [TMDB api](https://developers.themoviedb.org/3/movies/get-movie-details) to get data of Movies, please use their documentation for reference. We would like the application to be responsive and helpful to it's users by showing complete details.
 
 We would also like to add support for Movies in our app, Find and implement suitable api for movies details along with , info , thumbnail and rating.
 
 **Features:**
 
-1. Add Navbar (Home, Explore, About, etc..(as needed))
+1.~~Add Navbar (Home, Explore, About, etc..(as needed))~~
 
 2. Better background
 
-3. Popular shows on home page
+3. ~~Popular shows on home page~~
 
-4. Present the searched show with basic details (name, summary, rating)
+4.~~Present the searched show with basic details (name, summary, rating)~~
 
-5. Show other details like episodes, seasons, cast, etc. ( Preferably as shown in the last image )
+5. ~~Show other details like episodes, seasons, cast, etc. ( Preferably as shown in the last image )~~
 
-6. List all episodes in episode tabs
+6. ~~List all episodes in episode tabs~~
 
-7. List all seasons in season tab
+7. ~~List all seasons in season tab~~
 
-8. Also may add movie search functionality
+8. ~~Also may add movie search functionality~~
 
-9. Add a movie section in nav-bar/ or may do differently.
+9. ~~Add a movie section in nav-bar/ or may do differently.~~
 
-10. Show basic details of movies
+10. ~~Show basic details of movies~~
 
 11. Show cast of movies
 
@@ -217,27 +217,29 @@ We would also like to add support for Movies in our app, Find and implement suit
 
 13. Make application responsive.
 
-14. Add your favourite tv-series in explore tab :)
+14. ~~Add your favourite tv-series in explore tab :)~~
 
 **Optional Feature:**
 
 1. Add summary for each episode
 
-2. Add date every episode air.
+2. ~~Add date every episode air.~~
 
 3. Present all cast along with photos in cast tag
 
-4. Include other images related to show in gallery tab
+4. ~~Include other images related to show in gallery tab~~
 
 5. Show the platform where the show/movies are streaming
 
 6. Link to YouTube trailer.
 
+**_More features will be added as the project progresses_ **
+
 **Note:**
 
 1. Users may open their own issues and also can implement any other awesome feature if they wish(as long as it is relevant to the project).
 
-2. You may refer to docs of the api at [https://www.tvmaze.com/api](https://www.tvmaze.com/api). The main data from API is already fetched (using axios) and Important details like show Id, which will later be useful for other API calls is already stored in the JavaScript variables.
+2. You may refer to docs of the apis at [https://www.tvmaze.com/api](https://www.tvmaze.com/api) & [https://developers.themoviedb.org/3/movies/get-movie-details](https://developers.themoviedb.org/3/movies/get-movie-details) respectively. The main data from API is already fetched (using axios) and Important details like show Id, which will later be useful for other API calls is already stored in the JavaScript variables.
 
 3. We are using Bootstrap in this app.
 

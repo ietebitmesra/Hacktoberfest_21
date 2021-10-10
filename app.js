@@ -46,13 +46,15 @@ form.addEventListener('submit', async (e)=>{
     const bestMatch = res.data[0].show
 
     // ALL API DATA
-    const id = bestMatch.id
-    const show_id = id
+    const id = bestMatch.id;
+    const show_id = id;
+    global_showid= id;
     const image = bestMatch.image.medium
     // const premeired = bestMatch.image.medium
     const name = bestMatch.name 
-    const cast_response = await fetch(`https://api.tvmaze.com/shows/${id}/cast`)
+    const cast_response = await fetch(`https://api.tvmaze.com/shows/${id}/cast`);
     const cast_data = await cast_response.json();
+    global_castdata=cast_data;
     let cast_names = 'Cast : '
     cast_data.map(getNames)
     function getNames(value){
@@ -127,7 +129,7 @@ form.addEventListener('submit', async (e)=>{
     // SECONDARY INFO
     const season_num = 1
     const season_disp = document.querySelector('#season-num');
-    season_disp.innerText = `SEASON: ${season_num}`
+    // season_disp.innerText = `SEASON: ${season_num}`
 
     let wid=star_bottom.offsetWidth;
     wid=wid*star_ct*0.1;
@@ -154,9 +156,10 @@ const showSecInfo = ()=>{
 const get_season = async(show_id, season_num)=>{
     const season_data = await axios.get(`https://api.tvmaze.com/shows/${show_id}/seasons`)
     //console.log(season_data);
+    document.getElementById('season').style.display='inline-block';
     populate_season_count(season_data);
     const season_id = season_data.data[season_num-1].id
-    const ep_data = ep_data_fill(season_id)
+    ep_data_fill(season_id);
 }
 
 const ep_data_fill = async(season_id)=>{
@@ -204,7 +207,7 @@ function populate_season_count(s_info){
     let S_List=document.getElementById('season');
     //console.log('Index status:',S_List);
     let n_season=season_tot.length;
-    //console.log(n_season);
+    console.log(n_season);
     S_List.innerHTML='';
     for(let i=0;i<n_season;i++){
         let list_item=document.createElement('li');
@@ -216,6 +219,7 @@ function populate_season_count(s_info){
         let sn='S';
         let ct=i+1;
         s_link.classList.add("slink");
+        // console.dir(s_link)
         if(ct<10){
             sn=sn+'0'+ct;
         }
@@ -226,6 +230,93 @@ function populate_season_count(s_info){
         list_item.appendChild(s_link);
         //console.log(list_item);
         S_List.appendChild(list_item);
-    }
-    //console.log(S_List);
+
+        const season_links = document.querySelectorAll('.slink')
+
+        console.dir(season_links)
+        season_links[0].classList.add('active-link')
+
+        season_links.forEach((item, i)=>
+            item.addEventListener('click', ()=>{
+                disableLinks()
+                item.classList.add('active-link')
+            })
+        )
+
+        
+
+     }
+ }
+
+const disableLinks = ()=>{
+    const season_links = document.querySelectorAll('.slink')
+    season_links.forEach((item)=>
+            item.classList.remove('active-link')
+        )
 }
+
+var global_castdata,global_showid;
+
+function cast_display(){
+    //console.log(global_castdata);
+    
+    document.getElementById('castHeading').classList.add("active-b");
+    document.getElementById('EpisodeHeading').classList.remove("active-b");
+    document.getElementById('cast_data').innerHTML='';
+    document.getElementById('data-table').innerHTML='';
+
+    document.getElementById('season').style.display='none';
+
+    let cast_count=global_castdata.length;
+    for(let i=0;i<cast_count;i++){
+        let cm_img_api=global_castdata[i].person.image.medium;
+        let cm_name_api=global_castdata[i].person.name;
+        let cm_character_api=global_castdata[i].character.name;
+
+        let cast_member=document.createElement('li')
+        let cm_card=document.createElement('div');
+        cm_card.style.display="inline-block";
+        cm_card.classList.add("card");
+        cm_card.classList.add("border-0");
+        cm_card.classList.add("mb-2");
+        cm_card.classList.add("tvcard");
+        cm_card.classList.add("cardshow");
+
+        let cm_img=document.createElement('img');
+        cm_img.src=cm_img_api;
+        cm_img.classList.add('cast-card');
+        cm_img.classList.add('border-0');
+        cm_img.classList.add('card__image');
+        let cm_metadata=document.createElement('div');
+        
+        let cm_name=document.createElement('h5');
+        let cm_character=document.createElement('h6');
+        cm_name.innerHTML=cm_name_api;
+        cm_name.classList.add("card-title");
+
+        cm_character.innerHTML=cm_character_api;
+
+        cm_metadata.appendChild(cm_name);
+        cm_metadata.appendChild(cm_character);
+
+        cm_metadata.classList.add("card-body");
+        cm_card.appendChild(cm_img);
+        cm_card.appendChild(cm_metadata);
+
+        cast_member.appendChild(cm_card);
+
+        cm_card.style.width="14rem";
+
+        document.getElementById("cast_data").appendChild(cast_member);
+
+    }
+
+}
+
+function ep_reload(){
+    
+    document.getElementById('castHeading').classList.remove("active-b");
+    document.getElementById('EpisodeHeading').classList.add("active-b");
+    document.getElementById('cast_data').innerHTML='';
+    get_season(global_showid,1);
+} 

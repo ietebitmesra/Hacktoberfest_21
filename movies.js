@@ -3,6 +3,22 @@ const formMovies = document.querySelector('#movieSearchForm');
 const resultSection = document.querySelector('#movie_result');
 const favorteMovieSection  = document.querySelector('#favourite-movies')
 const similar_movie_section = document.querySelector('#similar-movies')
+const btn = document.getElementsByClassName("open");
+function show_info(show_name){
+    document.querySelector('#searchText').value=show_name;
+    let btn_clicked=document.querySelector('#searchBtn');
+    btn_clicked.click();
+}
+
+for(var i=0;i<btn.length;i++)
+{
+    
+btn[i].onclick=function(){
+    document.querySelector('#searchText').value=this.innerText;
+    formMovies.dispatchEvent(new Event('submit'));
+    };
+    
+}
 
 formMovies.addEventListener('submit', async(e) => {
     e.preventDefault();
