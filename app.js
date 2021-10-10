@@ -46,8 +46,9 @@ form.addEventListener('submit', async (e)=>{
     const bestMatch = res.data[0].show
 
     // ALL API DATA
-    const id = bestMatch.id
-    const show_id = id
+    const id = bestMatch.id;
+    const show_id = id;
+    global_showid= id;
     const image = bestMatch.image.medium
     // const premeired = bestMatch.image.medium
     const name = bestMatch.name 
@@ -157,7 +158,7 @@ const get_season = async(show_id, season_num)=>{
     //console.log(season_data);
     populate_season_count(season_data);
     const season_id = season_data.data[season_num-1].id
-    const ep_data = ep_data_fill(season_id)
+    ep_data_fill(season_id);
 }
 
 const ep_data_fill = async(season_id)=>{
@@ -253,14 +254,18 @@ const disableLinks = ()=>{
         )
 }
 
-var global_castdata;
+var global_castdata,global_showid;
 
 function cast_display(){
-    console.log(global_castdata);
+    //console.log(global_castdata);
     document.getElementById('cast_data').innerHTML='';
+    document.getElementById('data-table').innerHTML='';
+    document.getElementById('season').innerHTML='';
     let cast_count=global_castdata.length;
     for(let i=0;i<cast_count;i++){
         let cm_img_api=global_castdata[i].person.image.medium;
+        let cm_name_api=global_castdata[i].person.name;
+        let cm_character_api=global_castdata[i].character.name;
 
         let cast_member=document.createElement('li')
         let cm_card=document.createElement('div');
@@ -272,7 +277,6 @@ function cast_display(){
         cm_card.classList.add("cardshow");
 
         let cm_img=document.createElement('img');
-        cm_img.style.maxWidth='18rem';
         cm_img.src=cm_img_api;
         cm_img.classList.add('card-img-top');
         cm_img.classList.add('border-0');
@@ -281,10 +285,10 @@ function cast_display(){
         
         let cm_name=document.createElement('h5');
         let cm_character=document.createElement('h6');
-        cm_name.innerHTML='Lorem Ipsum';
+        cm_name.innerHTML=cm_name_api;
         cm_name.classList.add("card-title");
 
-        cm_character.innerHTML=' Dolor ';
+        cm_character.innerHTML=cm_character_api;
 
         cm_metadata.appendChild(cm_name);
         cm_metadata.appendChild(cm_character);
@@ -295,9 +299,15 @@ function cast_display(){
 
         cast_member.appendChild(cm_card);
 
+        cast_member.style.width='14rem';
+
         document.getElementById("cast_data").appendChild(cast_member);
+
     }
 
 }
 
- 
+function ep_reload(){
+    document.getElementById('cast_data').innerHTML='';
+    get_season(global_showid,1);
+} 
