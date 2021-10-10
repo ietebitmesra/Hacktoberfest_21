@@ -14,26 +14,72 @@ a.logo {
   font-family: 'Dancing Script', cursive;
 }
 
-form.searchForm {
-  width: 55%;
-  /* height: 100px; */
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  /* align-items: center; */
-  margin: 2rem auto 0;
-  background: white;
-  border-radius: 2rem;
-  overflow: hidden;
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  background: #051b33;
 }
 
-input#searchText {
-  /* width: 60%; */
-    border: none;
-    width: 100%;
-  border-radius: 30px;
-  padding: 7px;
-  outline: none;
+form{
+  position: relative;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  transition: all 1s;
+  width: 50px;
+  height: 50px;
+  background: white;
+  box-sizing: border-box;
+  border-radius: 25px;
+  border: 4px solid white;
+  margin-top: 50px;
+  padding: 1px;
+}
+
+input{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;;
+  height: 42.5px;
+  line-height: 30px;
+  outline: 0;
+  border: 0;
+  display: none;
+  font-size: 1em;
+  border-radius: 20px;
+  padding: 0 20px;
+}
+
+.fa{
+  box-sizing: border-box;
+  padding: 10px;
+  width: 42.5px;
+  height: 42.5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  color: #07051a;
+  text-align: center;
+  font-size: 1.2em;
+  transition: all 1s;
+}
+
+form:hover{
+  width: 500px;
+  cursor: pointer;
+}
+
+form:hover input{
+  display: block;
+}
+
+form:hover .fa{
+  background: #07051a;
+  color: white;
 }
 
 button#searchBtn {
@@ -107,9 +153,9 @@ border-radius: 20px;
     object-fit: cover;
 }
 
-/* #searchForm{
+#searchForm{
   margin-top:50px;
-} */
+}
 
 .hidden{
   display: none;
