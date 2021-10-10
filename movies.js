@@ -1,14 +1,31 @@
-const apiKey = "f985a3ae5df8738bf04a55864c33128c";
+const API_KEY = "f985a3ae5df8738bf04a55864c33128c";
 const formMovies = document.querySelector('#movieSearchForm');
 const resultSection = document.querySelector('#movie_result');
 const favorteMovieSection  = document.querySelector('#favourite-movies')
+const similar_movie_section = document.querySelector('#similar-movies')
+const btn = document.getElementsByClassName("open");
+function show_info(show_name){
+    document.querySelector('#searchText').value=show_name;
+    let btn_clicked=document.querySelector('#searchBtn');
+    btn_clicked.click();
+}
+
+for(var i=0;i<btn.length;i++)
+{
+    
+btn[i].onclick=function(){
+    document.querySelector('#searchText').value=this.innerText;
+    formMovies.dispatchEvent(new Event('submit'));
+    };
+    
+}
 
 formMovies.addEventListener('submit', async(e) => {
     e.preventDefault();
     // API CALL
     const SearchMovie = document.querySelector('#searchText').value;
 
-    const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=` + `${apiKey}&query=` + `${SearchMovie}`);
+    const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=` + `${API_KEY}&query=` + `${SearchMovie}`);
     console.log(res);
     const bestMatch = res.data.results[0];
 
@@ -20,7 +37,7 @@ formMovies.addEventListener('submit', async(e) => {
     let strippedString = summary.replace(/(<([^>]+)>)/gi, "");
 
     // CAST
-    const cast_res = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${apiKey}&language=en-US`);
+    const cast_res = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`);
     console.log(cast_res);
     let cast_names = 'Cast : ';
     for (let i = 0; i < 8; i++) {
@@ -93,6 +110,7 @@ formMovies.addEventListener('submit', async(e) => {
     resultDiv.append(resultDivInfo);
     resultSection.append(resultDiv);
     formMovies.reset();
+    similar_movie_section.classList.remove('hidden')
 
     if (resultSection.childElementCount >= 1) {
         resultSection.removeChild(resultSection.firstChild);
@@ -104,4 +122,52 @@ formMovies.addEventListener('submit', async(e) => {
     wid=Math.ceil(wid); //to make it slightly more accurate
     star_top.style.width=wid+'px';
     avg_rating.style.minWidth=wid+50+'px';
+    make_recommendations(movie_id)
 })
+
+// TO GET SIMILAR MOVIES
+var similar_movie_object = {}
+
+const getRecom = async(id)=>{
+    const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}`)
+    const recom_data = res.data.results
+    recom_data.forEach((rec, i) => {
+            similar_movie_object[i] = {
+                id: rec.id,
+                name: rec.original_title,
+                ratings: rec.vote_average,
+                poster_src: 'https://image.tmdb.org/t/p/w500'+rec.backdrop_path,
+            }
+    })
+}
+
+const rec_car_item1 = document.querySelector('#rec_car_item1 .recs')
+const rec_car_item2 = document.querySelector('#rec_car_item2 .recs')
+const rec_car_item3 = document.querySelector('#rec_car_item3 .recs')
+console.dir(rec_car_item3)
+
+const make_recommendations = async(id)=>{
+    await getRecom(id)
+    for(var i = 0; i < 12; i++){
+        const name = similar_movie_object[i].name
+        const img_src = similar_movie_object[i].poster_src
+        const ratings = similar_movie_object[i].ratings
+        console.log(name)
+        if(i<4){
+            rec_car_item1.children[i].children[0].src = img_src
+            rec_car_item1.children[i].children[0].nextElementSibling.children[0].innerText = name
+            rec_car_item1.children[i].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1)+' ⭐️'
+        }
+        if(i>=4 && i<8){
+            rec_car_item2.children[i-4].children[0].src = img_src
+            rec_car_item2.children[i-4].children[0].nextElementSibling.children[0].innerText = name
+            rec_car_item2.children[i-4].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1)+' ⭐️'
+        }
+        if(i>=8 && i<12){
+            rec_car_item3.children[i-8].children[0].src = img_src
+            rec_car_item3.children[i-8].children[0].nextElementSibling.children[0].innerText = name
+            rec_car_item3.children[i-8].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1)+' ⭐️'
+        }
+    }
+
+}

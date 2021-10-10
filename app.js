@@ -127,7 +127,7 @@ form.addEventListener('submit', async (e)=>{
     // SECONDARY INFO
     const season_num = 1
     const season_disp = document.querySelector('#season-num');
-    season_disp.innerText = `SEASON: ${season_num}`
+    // season_disp.innerText = `SEASON: ${season_num}`
 
     let wid=star_bottom.offsetWidth;
     wid=wid*star_ct*0.1;
@@ -165,6 +165,7 @@ const ep_data_fill = async(season_id)=>{
     const l = episode_data.data.length
     headers.innerHTML = heads;
     //console.log(headers);
+    table.innerHTML='';
     table.append(headers);
     for(var i=0; i<l; i++){
         var number = episode_data.data[i].number;
@@ -191,6 +192,11 @@ const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
     table.append(r);
 }
 
+function refill_table(s){
+    //console.log('clicked season id: '+ s);
+    ep_data_fill(s);
+}
+
 function populate_season_count(s_info){
     //console.log('Season info:',s_info);
     let season_tot=s_info.data;
@@ -198,15 +204,19 @@ function populate_season_count(s_info){
     let S_List=document.getElementById('season');
     //console.log('Index status:',S_List);
     let n_season=season_tot.length;
-    //console.log(n_season);
+    console.log(n_season);
     S_List.innerHTML='';
     for(let i=0;i<n_season;i++){
         let list_item=document.createElement('li');
         let s_link=document.createElement('a');
-        s_link.href='#';
-        s_link.className += "slink";
+        s_link.href='#!';
+        let season_id=season_tot[i].id;
+        let refill_command="refill_table("+season_id+")";
+        s_link.setAttribute("onclick", refill_command);
         let sn='S';
         let ct=i+1;
+        s_link.classList.add("slink");
+        // console.dir(s_link)
         if(ct<10){
             sn=sn+'0'+ct;
         }
@@ -217,6 +227,31 @@ function populate_season_count(s_info){
         list_item.appendChild(s_link);
         //console.log(list_item);
         S_List.appendChild(list_item);
-    }
-    //console.log(S_List);
+
+        const season_links = document.querySelectorAll('.slink')
+
+        console.dir(season_links)
+        season_links[0].classList.add('active-link')
+
+        season_links.forEach((item, i)=>
+            item.addEventListener('click', ()=>{
+                disableLinks()
+                item.classList.add('active-link')
+            })
+        )
+
+        
+
+     }
+ }
+
+const disableLinks = ()=>{
+    const season_links = document.querySelectorAll('.slink')
+    season_links.forEach((item)=>
+            item.classList.remove('active-link')
+        )
 }
+
+
+
+ 
