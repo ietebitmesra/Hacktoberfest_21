@@ -185,7 +185,7 @@ Idea images:
 
 ## About The Project:
 
-This app use [TV Maze api](https://www.tvmaze.com/api) to get data of TV series, and [TMDB api] (https://developers.themoviedb.org/3/movies/get-movie-details) to get data of Movies, please use their documentation for reference. We would like the application to be responsive and helpful to it's users by showing complete details.
+This app use [TV Maze api](https://www.tvmaze.com/api) to get data of TV series, and [TMDB api](https://developers.themoviedb.org/3/movies/get-movie-details) to get data of Movies, please use their documentation for reference. We would like the application to be responsive and helpful to it's users by showing complete details.
 
 We would also like to add support for Movies in our app, Find and implement suitable api for movies details along with , info , thumbnail and rating.
 
@@ -239,7 +239,7 @@ We would also like to add support for Movies in our app, Find and implement suit
 
 1. Users may open their own issues and also can implement any other awesome feature if they wish(as long as it is relevant to the project).
 
-2. You may refer to docs of the api at [https://www.tvmaze.com/api](https://www.tvmaze.com/api). The main data from API is already fetched (using axios) and Important details like show Id, which will later be useful for other API calls is already stored in the JavaScript variables.
+2. You may refer to docs of the apis at [https://www.tvmaze.com/api](https://www.tvmaze.com/api) & [https://developers.themoviedb.org/3/movies/get-movie-details](https://developers.themoviedb.org/3/movies/get-movie-details) respectively. The main data from API is already fetched (using axios) and Important details like show Id, which will later be useful for other API calls is already stored in the JavaScript variables.
 
 3. We are using Bootstrap in this app.
 
