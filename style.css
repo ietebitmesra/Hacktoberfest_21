@@ -8,7 +8,9 @@ body {
   height: auto;
   overflow-x: hidden;
 }
-
+.open{
+  cursor: pointer;
+}
 a.logo {
   font-size: 2.5em;
   font-family: 'Dancing Script', cursive;
