@@ -253,6 +253,12 @@ const disableLinks = ()=>{
         )
 }
 
-
+function cast_display(){
+    let cast_member=document.createElement('div');
+    cast_member.style='height:280px;display:inline-block;background-color:white;';
+    cast_member.innerHTML='sample';
+    console.log(cast_member);
+    document.getElementById('cast_data').append(cast_member);
+}
 
  
