@@ -156,6 +156,7 @@ const showSecInfo = ()=>{
 const get_season = async(show_id, season_num)=>{
     const season_data = await axios.get(`https://api.tvmaze.com/shows/${show_id}/seasons`)
     //console.log(season_data);
+    document.getElementById('season').style.display='inline-block';
     populate_season_count(season_data);
     const season_id = season_data.data[season_num-1].id
     ep_data_fill(season_id);
@@ -260,7 +261,9 @@ function cast_display(){
     //console.log(global_castdata);
     document.getElementById('cast_data').innerHTML='';
     document.getElementById('data-table').innerHTML='';
-    document.getElementById('season').innerHTML='';
+
+    document.getElementById('season').style.display='none';
+
     let cast_count=global_castdata.length;
     for(let i=0;i<cast_count;i++){
         let cm_img_api=global_castdata[i].person.image.medium;
@@ -278,7 +281,7 @@ function cast_display(){
 
         let cm_img=document.createElement('img');
         cm_img.src=cm_img_api;
-        cm_img.classList.add('card-img-top');
+        cm_img.classList.add('cast-card');
         cm_img.classList.add('border-0');
         cm_img.classList.add('card__image');
         let cm_metadata=document.createElement('div');
@@ -299,7 +302,7 @@ function cast_display(){
 
         cast_member.appendChild(cm_card);
 
-        cast_member.style.width='14rem';
+        cm_card.style.width="14rem";
 
         document.getElementById("cast_data").appendChild(cast_member);
 

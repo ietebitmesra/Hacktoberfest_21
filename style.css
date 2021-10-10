@@ -265,3 +265,10 @@ flex-direction: row;
 .active-link{
   color:cyan;
 }
+
+.cast-card {
+  border-radius: 20px;
+  width: 14rem;
+  height: 280px;
+  object-fit: cover;
+}
