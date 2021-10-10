@@ -32,6 +32,9 @@ function clear_old_data(){
     document.getElementById('show-image').innerHTML="";
     document.getElementById('show-prim-info').innerHTML="";
     document.getElementById('data-table').innerHTML="";
+    document.getElementById("cast_data").innerHTML = "";
+    document.getElementById("EpisodeHeading").classList.add("active-b");
+    document.getElementById("castHeading").classList.remove("active-b");
 }
 
 //FORM SUBMISSION EVENT LISTENER
