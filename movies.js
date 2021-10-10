@@ -4,6 +4,12 @@ const resultSection = document.querySelector('#movie_result');
 const favorteMovieSection  = document.querySelector('#favourite-movies')
 const similar_movie_section = document.querySelector('#similar-movies')
 
+function show_info(show_name){
+    document.querySelector('#searchText').value=show_name;
+    let btn_clicked=document.querySelector('#searchBtn');
+    btn_clicked.click();
+}
+
 formMovies.addEventListener('submit', async(e) => {
     e.preventDefault();
     // API CALL
