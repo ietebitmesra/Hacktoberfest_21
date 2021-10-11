@@ -207,7 +207,7 @@ a {
 
 .cardshow{
 border-radius: 38px;
-background: linear-gradient(145deg, #409a97, #36827f);
+background: linear-gradient(145deg, #48A9A6, #48A9A6);
 /* box-shadow:  32px 32px 49px #2c6b68,
              -32px -32px 49px #4cb5b2; */
 color: #fff;
@@ -227,6 +227,8 @@ color: #fff;
 .moviesDetails {
   flex-basis: 80%;
   flex-wrap: wrap;
+div[data-recom]{
+  cursor: pointer;
 }
 
 .site-mobile-menu {
