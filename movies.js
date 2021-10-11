@@ -50,7 +50,7 @@ formMovies.addEventListener('submit', async(e) => {
     let star_layer1="★★★★★★★★★★";
 
     // Trailer
-    const trailer_link = await get_trailer(movie_id);
+    // const trailer_link = await get_trailer(movie_id);
     // DOM ELEMENTS
     const avg_rating = document.createElement('p');
     avg_rating.innerHTML= rating;
@@ -77,7 +77,7 @@ formMovies.addEventListener('submit', async(e) => {
      cast.innerText = cast_names;
      const yt_trailer = document.createElement('a');
      yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
-     yt_trailer.href = trailer_link;
+     yt_trailer.href = 'https://www.google.co.in/';
      yt_trailer.style.color = '#d6d6d6';
 
     // STYLE CREATED ELEMENTS HERE
@@ -176,9 +176,9 @@ const make_recommendations = async(id)=>{
 
 }
 
-const get_trailer = async(id)=>{
-    const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
-    const key = res.data.results[0].key
-    const link = 'https://www.youtube.com/watch?v='+key;
-    return link
-}
+// const get_trailer = async(id)=>{
+//     const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
+//     const key = res.data.results[0].key
+//     const link = 'https://www.youtube.com/watch?v='+key;
+//     return link
+// }
