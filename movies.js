@@ -27,6 +27,7 @@ formMovies.addEventListener('submit', async(e) => {
     const SearchMovie = document.querySelector('#searchText').value;
 
     const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=` + `${API_KEY}&query=` + `${SearchMovie}`);
+    console.log("Res",res);
     const bestMatch = res.data.results[0];
 
     // API DATA
@@ -53,7 +54,16 @@ formMovies.addEventListener('submit', async(e) => {
     // OTT PLATFORMS
     const ottRes = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/watch/providers?api_key=${API_KEY}`);
     console.log(ottRes);
-    const ottNames = ottRes.data.results.IN.flatrate;
+    let ottNames=0;
+    let hasIN=ottRes.data.results;
+    if(hasIN.hasOwnProperty('IN')){
+        console.log('Supports IN');
+        let hasFlat=hasIN.IN;
+        if(hasFlat.hasOwnProperty('flatrate')){
+            console.log('Has flatrate');
+            ottNames=ottRes.data.results.IN.flatrate;
+        }
+    }
 
     // Movie Trailer
     const yt_trailer = document.createElement('a');
