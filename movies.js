@@ -319,9 +319,11 @@ const make_recommendations = async (id) => {
         const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
         const key = res.data.results[0].key
         return key
-        const get_trailer = async (id) => {
-            const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
-            const key = res.data.results[0].key
-            const link = 'https://www.youtube.com/watch?v=' + key;
-            return link
-        }
+    }
+
+    const get_trailer = async (id) => {
+        const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
+        const key = res.data.results[0].key
+        const link = 'https://www.youtube.com/watch?v=' + key;
+        return link
+    }
