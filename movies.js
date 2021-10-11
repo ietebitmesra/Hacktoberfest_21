@@ -4,6 +4,7 @@ const resultSection = document.querySelector('#movie_result');
 const favorteMovieSection  = document.querySelector('#favourite-movies')
 const similar_movie_section = document.querySelector('#similar-movies')
 const btn = document.getElementsByClassName("open");
+const secondry_info = document.querySelector('#sec-info')
 function show_info(show_name){
     document.querySelector('#searchText').value=show_name;
     let btn_clicked=document.querySelector('#searchBtn');
@@ -35,7 +36,7 @@ formMovies.addEventListener('submit', async(e) => {
     const name = bestMatch.title;
     const summary = bestMatch.overview;
     let strippedString = summary.replace(/(<([^>]+)>)/gi, "");
-
+    console.log(movie_id)
     // CAST
     const cast_res = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`);
     console.log(cast_res);
@@ -118,6 +119,7 @@ formMovies.addEventListener('submit', async(e) => {
     resultDiv.append(resultDivInfo);
     resultSection.append(resultDiv);
     formMovies.reset();
+    secondry_info.classList.remove('hidden')
     similar_movie_section.classList.remove('hidden')
 
     if (resultSection.childElementCount >= 1) {
