@@ -24,7 +24,8 @@ window.addEventListener('load',  async (e) => {
         h5.append(MovieRes.data.results[i].original_title);
         div.append(h5);
         
-        var poster = "https://image.tmdb.org/t/p/w200/" + MovieRes.data.results[i].poster_path;
+        let hd='w400';
+        var poster = `https://image.tmdb.org/t/p/${hd}/${MovieRes.data.results[i].poster_path}`;
         movie_img[i].setAttribute('src', poster);
 
         movie_card[i].append(div);
@@ -42,7 +43,8 @@ window.addEventListener('load',  async (e) => {
         h5.append(TvRes.data.results[i].name);
         div.append(h5);
         
-        var poster = "https://image.tmdb.org/t/p/w200/" + TvRes.data.results[i].poster_path;
+        let hd='w400';
+        var poster = `https://image.tmdb.org/t/p/${hd}/${TvRes.data.results[i].poster_path}`;
         tv_img[i].setAttribute('src', poster);
 
         tv_card[i].append(div);

@@ -176,14 +176,15 @@ formMovies.addEventListener('submit', async (e) => {
     make_recommendations(movie_id)
 
     // CAST RENDERING LOOP
-    let cast_count = cast_res.data.cast.length;
-    console.log(cast_count)
-    for (let i = 0; i < cast_count; i++) {
-        let cm_img_api = ''
-        if (cast_res.data.cast[i].profile_path) {
-            cm_img_api = `https://image.tmdb.org/t/p/original${cast_res.data.cast[i].profile_path}`;
+    let cast_count=cast_res.data.cast.length;
+    console.log(cast_count);
+    document.getElementById('cast_data').innerHTML='';
+    for(let i=0;i<cast_count;i++){
+        let cm_img_api;
+        if(cast_res.data.cast[i].profile_path){
+            cm_img_api=`https://image.tmdb.org/t/p/original${cast_res.data.cast[i].profile_path}`; 
         } else {
-            cm_img_api = './images/cast-placefiller.jpg'
+            cm_img_api='./images/cast-placefiller.jpg';
         }
 
         let cm_name_api = cast_res.data.cast[i].name;
