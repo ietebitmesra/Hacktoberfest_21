@@ -19,10 +19,6 @@ for (var i = 0; i < btn.length; i++) {
     };
 
 }
-// console.log(btn);
-
-
-
 
 formMovies.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -122,23 +118,6 @@ formMovies.addEventListener('submit', async (e) => {
         ott_details.append(LOGO);
     }
 
-    const resultDiv = document.createElement('div');
-    const resultDivImg = document.createElement('div');
-    const resultDivInfo = document.createElement('div');
-
-    const img = document.createElement('IMG');
-    img.src = poster;
-    const title = document.createElement('H1');
-    title.innerText = name;
-    const info = document.createElement('p');
-    info.innerText = strippedString;
-    const cast = document.createElement('p');
-    cast.innerText = cast_names;
-    const yt_trailer = document.createElement('a');
-    yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
-    yt_trailer.href = trailer_link;
-    yt_trailer.style.color = '#d6d6d6';
-    console.dir(yt_trailer);
 
     // STYLE CREATED ELEMENTS HERE
     h3.style.display = 'inline';
@@ -270,7 +249,7 @@ const getRecom = async (id) => {
 const rec_car_item1 = document.querySelector('#rec_car_item1 .recs')
 const rec_car_item2 = document.querySelector('#rec_car_item2 .recs')
 const rec_car_item3 = document.querySelector('#rec_car_item3 .recs')
-// console.log(rec_car_item3)
+
 
 const make_recommendations = async (id) => {
     await getRecom(id)
@@ -278,52 +257,43 @@ const make_recommendations = async (id) => {
         const name = similar_movie_object[i].name
         const img_src = similar_movie_object[i].poster_src
         const ratings = similar_movie_object[i].ratings
+
         if (i < 4) {
-
-            if (i < 4) {
-                rec_car_item1.children[i].dataset.recom = name;
-                rec_car_item1.children[i].children[0].src = img_src
-                rec_car_item1.children[i].children[0].nextElementSibling.children[0].innerText = name
-                rec_car_item1.children[i].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1) + ' ⭐️'
-            }
-            if (i >= 4 && i < 8) {
-                rec_car_item2.children[i - 4].dataset.recom = name
-                rec_car_item2.children[i - 4].children[0].src = img_src
-                rec_car_item2.children[i - 4].children[0].nextElementSibling.children[0].innerText = name
-                rec_car_item2.children[i - 4].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1) + ' ⭐️'
-            }
-            if (i >= 8 && i < 12) {
-                rec_car_item3.children[i - 8].dataset.recom = name
-                rec_car_item3.children[i - 8].children[0].src = img_src
-                rec_car_item3.children[i - 8].children[0].nextElementSibling.children[0].innerText = name
-                rec_car_item3.children[i - 8].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1) + ' ⭐️'
-            }
+            rec_car_item1.children[i].dataset.recom = name;
+            rec_car_item1.children[i].children[0].src = img_src
+            rec_car_item1.children[i].children[0].nextElementSibling.children[0].innerText = name
+            rec_car_item1.children[i].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1) + ' ⭐️'
         }
-
+        if (i >= 4 && i < 8) {
+            rec_car_item2.children[i - 4].dataset.recom = name
+            rec_car_item2.children[i - 4].children[0].src = img_src
+            rec_car_item2.children[i - 4].children[0].nextElementSibling.children[0].innerText = name
+            rec_car_item2.children[i - 4].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1) + ' ⭐️'
+        }
+        if (i >= 8 && i < 12) {
+            rec_car_item3.children[i - 8].dataset.recom = name
+            rec_car_item3.children[i - 8].children[0].src = img_src
+            rec_car_item3.children[i - 8].children[0].nextElementSibling.children[0].innerText = name
+            rec_car_item3.children[i - 8].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1) + ' ⭐️'
+        }
     }
-    document.addEventListener("DOMContentLoaded", () => {
-        const rowRec = document.querySelectorAll("div[data-recom]");
 
-        rowRec.forEach(row => {
-            row.addEventListener("click", () => {
-                show_info(row.dataset.recom);
-            });
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const rowRec = document.querySelectorAll("div[data-recom]");
+
+    rowRec.forEach(row => {
+        row.addEventListener("click", () => {
+            show_info(row.dataset.recom);
         });
     });
+});
 
-
-
-
-    //Gets link for movie trailer
-    const get_trailer = async (id) => {
-        const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
-        const key = res.data.results[0].key
-        return key
-    }
-
-    const get_trailer = async (id) => {
-        const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
-        const key = res.data.results[0].key
-        const link = 'https://www.youtube.com/watch?v=' + key;
-        return link
-    }
+//Gets link for movie trailer
+const get_trailer = async (id) => {
+    const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
+    const key = res.data.results[0].key
+    return key
+}
