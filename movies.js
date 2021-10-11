@@ -79,7 +79,9 @@ formMovies.addEventListener('submit', async(e) => {
      const img = document.createElement('IMG');    
      img.src = poster;
      const h3 = document.createElement('H3');
-     h3.innerText = "Watch On : ";
+     h3.innerText = "Watch on:";
+     h3.style.fontSize = '18px'
+     h3.style.fontWeight = 'bold'
      const title = document.createElement('H1');
      title.innerText = name;
      const info = document.createElement('p');
@@ -87,6 +89,7 @@ formMovies.addEventListener('submit', async(e) => {
      const cast = document.createElement('p');
      cast.innerText = cast_names;
      
+     ott_details.style.textAlign='center';
      ott_details.append(h3);
      for (let i = 0; i < ottNames.length; i++) {
          const LOGO = document.createElement('img');
@@ -94,7 +97,9 @@ formMovies.addEventListener('submit', async(e) => {
          LOGO.style.margin = '10px';
          LOGO.style.borderRadius = '10px';
          const logo = `https://image.tmdb.org/t/p/original`+ ottNames[i].logo_path;
-         LOGO.src = logo;         
+         LOGO.src = logo;
+         LOGO.style.width='35px' 
+         LOGO.style.height='35px'         
          ott_details.append(LOGO);
      }
 
@@ -134,7 +139,7 @@ formMovies.addEventListener('submit', async(e) => {
     resultDivInfo.append(avg_rating);
     resultDivInfo.append(cast);
     resultDivInfo.append(yt_trailer);
-    resultDivInfo.append(ott_details);
+    resultDivImg.append(ott_details); //To append watch providers below poster
     resultDiv.append(resultDivImg);
     resultDiv.append(resultDivInfo);
     resultSection.append(resultDiv);
