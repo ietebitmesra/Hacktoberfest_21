@@ -27,7 +27,6 @@ formMovies.addEventListener('submit', async(e) => {
     const SearchMovie = document.querySelector('#searchText').value;
 
     const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=` + `${API_KEY}&query=` + `${SearchMovie}`);
-    console.log(res);
     const bestMatch = res.data.results[0];
 
     // API DATA
@@ -36,10 +35,8 @@ formMovies.addEventListener('submit', async(e) => {
     const name = bestMatch.title;
     const summary = bestMatch.overview;
     let strippedString = summary.replace(/(<([^>]+)>)/gi, "");
-    console.log(movie_id)
     // CAST
     const cast_res = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`);
-    console.log(cast_res);
     let cast_names = 'Cast : ';
     for (let i = 0; i < 8; i++) {
         cast_names += cast_res.data.cast[i].name + ", ";
@@ -82,7 +79,6 @@ formMovies.addEventListener('submit', async(e) => {
      yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
      yt_trailer.href = trailer_link;
      yt_trailer.style.color = '#d6d6d6';
-     console.dir(yt_trailer);
 
     // STYLE CREATED ELEMENTS HERE
     title.style.fontSize = '50px';
@@ -154,7 +150,6 @@ const getRecom = async(id)=>{
 const rec_car_item1 = document.querySelector('#rec_car_item1 .recs')
 const rec_car_item2 = document.querySelector('#rec_car_item2 .recs')
 const rec_car_item3 = document.querySelector('#rec_car_item3 .recs')
-console.dir(rec_car_item3)
 
 const make_recommendations = async(id)=>{
     await getRecom(id)
@@ -162,7 +157,6 @@ const make_recommendations = async(id)=>{
         const name = similar_movie_object[i].name
         const img_src = similar_movie_object[i].poster_src
         const ratings = similar_movie_object[i].ratings
-        console.log(name)
         if(i<4){
             rec_car_item1.children[i].children[0].src = img_src
             rec_car_item1.children[i].children[0].nextElementSibling.children[0].innerText = name

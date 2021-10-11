@@ -9,11 +9,9 @@ window.addEventListener('load',  async (e) => {
 
     // POPULAR MOVIES
     const MovieRes = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=` + `${apiKey}` + `&language=en-US&page=1`);
-    console.log(MovieRes);
 
     // POPULAR TV SHOWS
     const TvRes = await axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=` + `${apiKey}` + `&language=en-US&page=1`);
-    console.log(TvRes);
 
     // MOVIE CARDS
     for (let i = 0; i < 4; i++) {
