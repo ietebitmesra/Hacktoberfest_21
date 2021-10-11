@@ -77,7 +77,7 @@ formMovies.addEventListener('submit', async(e) => {
      cast.innerText = cast_names;
      const yt_trailer = document.createElement('a');
      yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
-     yt_trailer.href = 'https://www.google.co.in/';
+     yt_trailer.href = 'https://www.youtube.com/watch?v='+'Rj_vssRaZlQ';
      yt_trailer.style.color = '#d6d6d6';
 
     // STYLE CREATED ELEMENTS HERE
