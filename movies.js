@@ -52,9 +52,9 @@ formMovies.addEventListener('submit', async(e) => {
     let star_layer0="☆☆☆☆☆☆☆☆☆☆";
     let star_layer1="★★★★★★★★★★";
 
+    // Trailer
+    const trailer_link = await get_trailer(movie_id);
     // DOM ELEMENTS
-    const trailer = document.createElement('a');
-    trailer.innerText = 'Watch Trailer';
     const avg_rating = document.createElement('p');
     avg_rating.innerHTML= rating;
     const stars = document.createElement('span');
@@ -78,6 +78,11 @@ formMovies.addEventListener('submit', async(e) => {
      info.innerText = strippedString;
      const cast = document.createElement('p');
      cast.innerText = cast_names;
+     const yt_trailer = document.createElement('a');
+     yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
+     yt_trailer.href = trailer_link;
+     yt_trailer.style.color = '#d6d6d6';
+     console.dir(yt_trailer);
 
     // STYLE CREATED ELEMENTS HERE
     title.style.fontSize = '50px';
@@ -104,53 +109,12 @@ formMovies.addEventListener('submit', async(e) => {
 
     favorteMovieSection.classList.add('hidden')
     
-    // Movie trailer
-    if(name=='Inception'){
-    trailer.href = 'https://www.youtube.com/watch?v=YoHD9XEInc0';
-    trailer.target = '_blank';
-    }
-
-    if(name=='Avatar'){
-    trailer.href = 'https://www.youtube.com/watch?v=5PSNL1qE6VY';
-    trailer.target = '_blank';
-    }
-
-    if(name=='The Dark Knight Rises'){
-    trailer.href = 'https://www.youtube.com/watch?v=GokKUqLcvD8';
-    trailer.target = '_blank';
-    }
-
-    if(name=='The Wolf of Wall Street'){
-    trailer.href = 'https://www.youtube.com/watch?v=iszwuX1AK6A';
-    trailer.target = '_blank';
-    }
-
-    if(name=='The Pursuit of Happyness'){
-    trailer.href = 'https://www.youtube.com/watch?v=DMOBlEcRuw8';
-    trailer.target = '_blank';
-    }
-
-    if(name=='Inside Out'){
-    trailer.href = 'https://www.youtube.com/watch?v=yRUAzGQ3nSY';
-    trailer.target = '_blank';
-    }
-
-    if(name=='Big Hero 6'){
-    trailer.href = 'https://www.youtube.com/watch?v=z3biFxZIJOQ';
-    trailer.target = '_blank';
-    }
-
-    if(name=='Pulp Fiction'){
-    trailer.href = 'https://www.youtube.com/watch?v=s7EdQ4FqbhY';
-    trailer.target = '_blank';
-    }
-    
     resultDivImg.append(img);
     resultDivInfo.append(title);
     resultDivInfo.append(info);
-    resultDivInfo.append(avg_rating)
+    resultDivInfo.append(avg_rating);
     resultDivInfo.append(cast);
-    resultDivInfo.append(trailer);
+    resultDivInfo.append(yt_trailer);
     resultDiv.append(resultDivImg);
     resultDiv.append(resultDivInfo);
     resultSection.append(resultDiv);
@@ -216,4 +180,11 @@ const make_recommendations = async(id)=>{
         }
     }
 
+}
+
+const get_trailer = async(id)=>{
+    const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
+    const key = res.data.results[0].key
+    const link = 'https://www.youtube.com/watch?v='+key;
+    return link
 }
