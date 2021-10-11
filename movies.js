@@ -53,6 +53,8 @@ formMovies.addEventListener('submit', async(e) => {
     let star_layer1="★★★★★★★★★★";
 
     // DOM ELEMENTS
+    const trailer = document.createElement('a');
+    trailer.innerText = 'Watch Trailer';
     const avg_rating = document.createElement('p');
     avg_rating.innerHTML= rating;
     const stars = document.createElement('span');
@@ -102,11 +104,53 @@ formMovies.addEventListener('submit', async(e) => {
 
     favorteMovieSection.classList.add('hidden')
     
+    // Movie trailer
+    if(name=='Inception'){
+    trailer.href = 'https://www.youtube.com/watch?v=YoHD9XEInc0';
+    trailer.target = '_blank';
+    }
+
+    if(name=='Avatar'){
+    trailer.href = 'https://www.youtube.com/watch?v=5PSNL1qE6VY';
+    trailer.target = '_blank';
+    }
+
+    if(name=='The Dark Knight Rises'){
+    trailer.href = 'https://www.youtube.com/watch?v=GokKUqLcvD8';
+    trailer.target = '_blank';
+    }
+
+    if(name=='The Wolf of Wall Street'){
+    trailer.href = 'https://www.youtube.com/watch?v=iszwuX1AK6A';
+    trailer.target = '_blank';
+    }
+
+    if(name=='The Pursuit of Happyness'){
+    trailer.href = 'https://www.youtube.com/watch?v=DMOBlEcRuw8';
+    trailer.target = '_blank';
+    }
+
+    if(name=='Inside Out'){
+    trailer.href = 'https://www.youtube.com/watch?v=yRUAzGQ3nSY';
+    trailer.target = '_blank';
+    }
+
+    if(name=='Big Hero 6'){
+    trailer.href = 'https://www.youtube.com/watch?v=z3biFxZIJOQ';
+    trailer.target = '_blank';
+    }
+
+    if(name=='Pulp Fiction'){
+    trailer.href = 'https://www.youtube.com/watch?v=s7EdQ4FqbhY';
+    trailer.target = '_blank';
+    }
+    
     resultDivImg.append(img);
     resultDivInfo.append(title);
     resultDivInfo.append(info);
     resultDivInfo.append(avg_rating)
     resultDivInfo.append(cast);
+    resultDivInfo.append(trailer);
     resultDiv.append(resultDivImg);
     resultDiv.append(resultDivInfo);
     resultSection.append(resultDiv);
