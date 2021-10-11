@@ -57,8 +57,13 @@ formMovies.addEventListener('submit', async(e) => {
     // Movie Trailer
     const yt_trailer = document.createElement('a');
     yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
-    yt_trailer.href = 'https://www.youtube.com/watch?v='+(await get_trailer(movie_id));
+    // yt_trailer.href = 'https://www.youtube.com/watch?v='+(await get_trailer(movie_id));
     yt_trailer.style.color = '#d6d6d6';
+    yt_trailer.setAttribute('data-bs-target', '#yt-modal')
+    yt_trailer.setAttribute('data-bs-toggle', 'modal')
+    const yt_modal_in = document.querySelector('#yt-modal-content')
+    yt_modal_in.children[0].src = 'https://www.youtube.com/embed/'+ (await get_trailer(movie_id))
+
 
     const avg_rating = document.createElement('p');
     avg_rating.innerHTML= rating;
