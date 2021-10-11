@@ -285,3 +285,6 @@ flex-direction: row;
     text-align: center;
   }
 }
+a{
+  cursor: pointer;
+}
