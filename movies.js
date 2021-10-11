@@ -54,8 +54,6 @@ formMovies.addEventListener('submit', async(e) => {
     console.log(ottRes);
     const ottNames = ottRes.data.results.IN.flatrate;
 
-    // Trailer
-    // const trailer_link = await get_trailer(movie_id);
     // DOM ELEMENTS
     const avg_rating = document.createElement('p');
     avg_rating.innerHTML= rating;
@@ -94,10 +92,6 @@ formMovies.addEventListener('submit', async(e) => {
          LOGO.src = logo;         
          ott_details.append(LOGO);
      }
-     const yt_trailer = document.createElement('a');
-     yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
-     yt_trailer.href = 'https://www.youtube.com/watch?v='+(await get_trailer(movie_id));
-     yt_trailer.style.color = '#d6d6d6';
 
     // STYLE CREATED ELEMENTS HERE
     h3.style.display = 'inline';
@@ -200,11 +194,4 @@ const make_recommendations = async(id)=>{
         }
     }
 
-}
-
-//Gets link for movie trailer
-const get_trailer = async(id)=>{
-    const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
-    const key = res.data.results[0].key
-    return key
 }
