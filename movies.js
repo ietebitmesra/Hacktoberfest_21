@@ -54,6 +54,8 @@ formMovies.addEventListener('submit', async(e) => {
     console.log(ottRes);
     const ottNames = ottRes.data.results.IN.flatrate;
 
+    // Trailer
+    // const trailer_link = await get_trailer(movie_id);
     // DOM ELEMENTS
     const avg_rating = document.createElement('p');
     avg_rating.innerHTML= rating;
@@ -92,6 +94,10 @@ formMovies.addEventListener('submit', async(e) => {
          LOGO.src = logo;         
          ott_details.append(LOGO);
      }
+    //  const yt_trailer = document.createElement('a');
+    //  yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
+    //  yt_trailer.href = 'https://www.youtube.com/watch?v='+(await get_trailer(movie_id));
+    //  yt_trailer.style.color = '#d6d6d6';
 
     // STYLE CREATED ELEMENTS HERE
     h3.style.display = 'inline';
@@ -128,8 +134,6 @@ formMovies.addEventListener('submit', async(e) => {
     resultDivInfo.append(avg_rating);
     resultDivInfo.append(cast);
     resultDivInfo.append(ott_details);
-
-    resultDivInfo.append(yt_trailer);
     resultDiv.append(resultDivImg);
     resultDiv.append(resultDivInfo);
     resultSection.append(resultDiv);
