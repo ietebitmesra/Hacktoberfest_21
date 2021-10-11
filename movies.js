@@ -27,7 +27,6 @@ formMovies.addEventListener('submit', async(e) => {
     const SearchMovie = document.querySelector('#searchText').value;
 
     const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=` + `${API_KEY}&query=` + `${SearchMovie}`);
-    console.log(res);
     const bestMatch = res.data.results[0];
 
     // API DATA
@@ -36,10 +35,8 @@ formMovies.addEventListener('submit', async(e) => {
     const name = bestMatch.title;
     const summary = bestMatch.overview;
     let strippedString = summary.replace(/(<([^>]+)>)/gi, "");
-    console.log(movie_id)
     // CAST
     const cast_res = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`);
-    console.log(cast_res);
     let cast_names = 'Cast : ';
     for (let i = 0; i < 8; i++) {
         cast_names += cast_res.data.cast[i].name + ", ";
@@ -58,7 +55,7 @@ formMovies.addEventListener('submit', async(e) => {
     const ottNames = ottRes.data.results.IN.flatrate;
 
     // Trailer
-    const trailer_link = await get_trailer(movie_id);
+    // const trailer_link = await get_trailer(movie_id);
     // DOM ELEMENTS
     const avg_rating = document.createElement('p');
     avg_rating.innerHTML= rating;
@@ -97,11 +94,12 @@ formMovies.addEventListener('submit', async(e) => {
          LOGO.src = logo;         
          ott_details.append(LOGO);
      }
-     const yt_trailer = document.createElement('a');
-     yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
-     yt_trailer.href = trailer_link;
-     yt_trailer.style.color = '#d6d6d6';
-     console.dir(yt_trailer);
+
+    //  const yt_trailer = document.createElement('a');
+    //  yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
+    //  yt_trailer.href = 'https://www.youtube.com/watch?v='+(await get_trailer(movie_id));
+    //  yt_trailer.style.color = '#d6d6d6';
+
 
     // STYLE CREATED ELEMENTS HERE
     h3.style.display = 'inline';
@@ -139,7 +137,6 @@ formMovies.addEventListener('submit', async(e) => {
     resultDivInfo.append(cast);
     resultDivInfo.append(ott_details);
 
-    resultDivInfo.append(yt_trailer);
     resultDiv.append(resultDivImg);
     resultDiv.append(resultDivInfo);
     resultSection.append(resultDiv);
@@ -180,7 +177,6 @@ const getRecom = async(id)=>{
 const rec_car_item1 = document.querySelector('#rec_car_item1 .recs')
 const rec_car_item2 = document.querySelector('#rec_car_item2 .recs')
 const rec_car_item3 = document.querySelector('#rec_car_item3 .recs')
-console.dir(rec_car_item3)
 
 const make_recommendations = async(id)=>{
     await getRecom(id)
@@ -188,7 +184,6 @@ const make_recommendations = async(id)=>{
         const name = similar_movie_object[i].name
         const img_src = similar_movie_object[i].poster_src
         const ratings = similar_movie_object[i].ratings
-        console.log(name)
         if(i<4){
             rec_car_item1.children[i].children[0].src = img_src
             rec_car_item1.children[i].children[0].nextElementSibling.children[0].innerText = name
@@ -208,10 +203,9 @@ const make_recommendations = async(id)=>{
 
 }
 
-const get_trailer = async(id)=>{
-    const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
-    const key = res.data.results[0].key
-    const link = 'https://www.youtube.com/watch?v='+key;
-    return link
-}
-
+//Gets link for movie trailer
+// const get_trailer = async(id)=>{
+//     const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
+//     const key = res.data.results[0].key
+//     return key
+// }

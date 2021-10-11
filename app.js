@@ -28,7 +28,6 @@ function show_info(show_name){
 
 //CLEARDIV
 function clear_old_data(){
-    //console.log('clear called');
     document.getElementById('show-image').innerHTML="";
     document.getElementById('show-prim-info').innerHTML="";
     document.getElementById('data-table').innerHTML="";
@@ -45,7 +44,6 @@ form.addEventListener('submit', async (e)=>{
     // API CALL
     const searchTerm = document.querySelector('#searchText').value;
     const res = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)
-    // console.log(res)
     const bestMatch = res.data[0].show
     const genres = res.data[0].show.genres;
 
@@ -173,7 +171,6 @@ const showSecInfo = ()=>{
 
 const get_season = async(show_id, season_num)=>{
     const season_data = await axios.get(`https://api.tvmaze.com/shows/${show_id}/seasons`)
-    //console.log(season_data);
     document.getElementById('season').style.display='inline-flex';
     populate_season_count(season_data);
     const season_id = season_data.data[season_num-1].id
@@ -182,10 +179,8 @@ const get_season = async(show_id, season_num)=>{
 
 const ep_data_fill = async(season_id)=>{
     const episode_data = await axios.get(`https://api.tvmaze.com/seasons/${season_id}/episodes`)
-    //console.log(episode_data.data[0])
     const l = episode_data.data.length
     headers.innerHTML = heads;
-    //console.log(headers);
     table.innerHTML='';
     table.append(headers);
     for(var i=0; i<l; i++){
@@ -214,18 +209,13 @@ const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
 }
 
 function refill_table(s){
-    //console.log('clicked season id: '+ s);
     ep_data_fill(s);
 }
 
 function populate_season_count(s_info){
-    //console.log('Season info:',s_info);
     let season_tot=s_info.data;
-    console.log('Season wise data:',season_tot);
     let S_List=document.getElementById('season');
-    //console.log('Index status:',S_List);
     let n_season=season_tot.length;
-    console.log(n_season);
     S_List.innerHTML='';
     for(let i=0;i<n_season;i++){
         let list_item=document.createElement('li');
@@ -237,7 +227,6 @@ function populate_season_count(s_info){
         let sn='S';
         let ct=i+1;
         s_link.classList.add("slink");
-        // console.dir(s_link)
         if(ct<10){
             sn=sn+'0'+ct;
         }
@@ -246,12 +235,10 @@ function populate_season_count(s_info){
         }
         s_link.innerHTML=sn;
         list_item.appendChild(s_link);
-        //console.log(list_item);
         S_List.appendChild(list_item);
 
         const season_links = document.querySelectorAll('.slink')
 
-        // console.dir(season_links)
         season_links[0].classList.add('active-link')
 
         season_links.forEach((item, i)=>
@@ -276,8 +263,6 @@ const disableLinks = ()=>{
 var global_castdata,global_showid;
 
 function cast_display(){
-    //console.log(global_castdata);
-    
     document.getElementById('castHeading').classList.add("active-b");
     document.getElementById('EpisodeHeading').classList.remove("active-b");
     document.getElementById('cast_data').innerHTML='';
