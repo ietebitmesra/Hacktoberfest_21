@@ -1,27 +1,30 @@
 const API_KEY = "f985a3ae5df8738bf04a55864c33128c";
 const formMovies = document.querySelector('#movieSearchForm');
 const resultSection = document.querySelector('#movie_result');
-const favorteMovieSection  = document.querySelector('#favourite-movies')
+const favorteMovieSection = document.querySelector('#favourite-movies')
 const similar_movie_section = document.querySelector('#similar-movies')
 const btn = document.getElementsByClassName("open");
 const secondry_info = document.querySelector('#sec-info')
-function show_info(show_name){
-    document.querySelector('#searchText').value=show_name;
-    let btn_clicked=document.querySelector('#searchBtn');
+function show_info(show_name) {
+    document.querySelector('#searchText').value = show_name;
+    let btn_clicked = document.querySelector('#searchBtn');
     btn_clicked.click();
 }
 
-for(var i=0;i<btn.length;i++)
-{
-    
-btn[i].onclick=function(){
-    document.querySelector('#searchText').value=this.innerText;
-    formMovies.dispatchEvent(new Event('submit'));
-    };
-    
-}
+for (var i = 0; i < btn.length; i++) {
 
-formMovies.addEventListener('submit', async(e) => {
+    btn[i].onclick = function () {
+        document.querySelector('#searchText').value = this.innerText;
+        formMovies.dispatchEvent(new Event('submit'));
+    };
+
+}
+// console.log(btn);
+
+
+
+
+formMovies.addEventListener('submit', async (e) => {
     e.preventDefault();
     // API CALL
     const SearchMovie = document.querySelector('#searchText').value;
@@ -49,49 +52,49 @@ formMovies.addEventListener('submit', async(e) => {
     let rating = "Rating: " + bestMatch.vote_average + "&nbsp&nbsp";
     let star_ct = bestMatch.vote_average;
 
-    let star_layer0="☆☆☆☆☆☆☆☆☆☆";
-    let star_layer1="★★★★★★★★★★";
+    let star_layer0 = "☆☆☆☆☆☆☆☆☆☆";
+    let star_layer1 = "★★★★★★★★★★";
 
     // Trailer
     const trailer_link = await get_trailer(movie_id);
     // DOM ELEMENTS
     const avg_rating = document.createElement('p');
-    avg_rating.innerHTML= rating;
+    avg_rating.innerHTML = rating;
     const stars = document.createElement('span');
-    const star_bottom= document.createElement('div');
-    const star_top= document.createElement('div');
-    star_bottom.innerHTML=star_layer0;
-    star_top.innerHTML=star_layer1;
-    stars.append(star_bottom); 
+    const star_bottom = document.createElement('div');
+    const star_top = document.createElement('div');
+    star_bottom.innerHTML = star_layer0;
+    star_top.innerHTML = star_layer1;
+    stars.append(star_bottom);
     stars.append(star_top);
     avg_rating.append(stars);
 
-     const resultDiv = document.createElement('div');
-     const resultDivImg = document.createElement('div');
-     const resultDivInfo = document.createElement('div');
-     
-     const img = document.createElement('IMG');    
-     img.src = poster;
-     const title = document.createElement('H1');
-     title.innerText = name;
-     const info = document.createElement('p');
-     info.innerText = strippedString;
-     const cast = document.createElement('p');
-     cast.innerText = cast_names;
-     const yt_trailer = document.createElement('a');
-     yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
-     yt_trailer.href = trailer_link;
-     yt_trailer.style.color = '#d6d6d6';
-     console.dir(yt_trailer);
+    const resultDiv = document.createElement('div');
+    const resultDivImg = document.createElement('div');
+    const resultDivInfo = document.createElement('div');
+
+    const img = document.createElement('IMG');
+    img.src = poster;
+    const title = document.createElement('H1');
+    title.innerText = name;
+    const info = document.createElement('p');
+    info.innerText = strippedString;
+    const cast = document.createElement('p');
+    cast.innerText = cast_names;
+    const yt_trailer = document.createElement('a');
+    yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
+    yt_trailer.href = trailer_link;
+    yt_trailer.style.color = '#d6d6d6';
+    console.dir(yt_trailer);
 
     // STYLE CREATED ELEMENTS HERE
     title.style.fontSize = '50px';
     img.style.borderRadius = "10px";
     img.style.width = "220px";
 
-    info.style.fontFamily= 'Courgette, cursive';
-    info.style.fontSize= '25px';
-    info.style.fontWeight= '100';
+    info.style.fontFamily = 'Courgette, cursive';
+    info.style.fontSize = '25px';
+    info.style.fontWeight = '100';
 
     cast.style.fontFamily = 'Arial, Helvetica, sans-serif';
     cast.style.fontWeight = '100';
@@ -103,12 +106,12 @@ formMovies.addEventListener('submit', async(e) => {
     resultDivImg.style.margin = "30px"
     resultDiv.style.alignItems = "center";
 
-    avg_rating.style.fontSize='20px';
-    star_bottom.style='z-index: 1;  position:absolute; display: inline-block; overflow: hidden; white-space: nowrap;';
-    star_top.style='z-index: 2;   position:absolute ; overflow: hidden; white-space: nowrap; height:24px; display: inline-block; color:gold;';
+    avg_rating.style.fontSize = '20px';
+    star_bottom.style = 'z-index: 1;  position:absolute; display: inline-block; overflow: hidden; white-space: nowrap;';
+    star_top.style = 'z-index: 2;   position:absolute ; overflow: hidden; white-space: nowrap; height:24px; display: inline-block; color:gold;';
 
     favorteMovieSection.classList.add('hidden')
-    
+
     resultDivImg.append(img);
     resultDivInfo.append(title);
     resultDivInfo.append(info);
@@ -127,65 +130,80 @@ formMovies.addEventListener('submit', async(e) => {
     }
 
 
-    let wid=star_bottom.offsetWidth;
-    wid=wid*star_ct*0.1;
-    wid=Math.ceil(wid); //to make it slightly more accurate
-    star_top.style.width=wid+'px';
-    avg_rating.style.minWidth=wid+50+'px';
+    let wid = star_bottom.offsetWidth;
+    wid = wid * star_ct * 0.1;
+    wid = Math.ceil(wid); //to make it slightly more accurate
+    star_top.style.width = wid + 'px';
+    avg_rating.style.minWidth = wid + 50 + 'px';
     make_recommendations(movie_id)
 })
 
 // TO GET SIMILAR MOVIES
 var similar_movie_object = {}
 
-const getRecom = async(id)=>{
+const getRecom = async (id) => {
     const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}`)
     const recom_data = res.data.results
     recom_data.forEach((rec, i) => {
-            similar_movie_object[i] = {
-                id: rec.id,
-                name: rec.original_title,
-                ratings: rec.vote_average,
-                poster_src: 'https://image.tmdb.org/t/p/w500'+rec.backdrop_path,
-            }
+        similar_movie_object[i] = {
+            id: rec.id,
+            name: rec.original_title,
+            ratings: rec.vote_average,
+            poster_src: 'https://image.tmdb.org/t/p/w500' + rec.backdrop_path,
+        }
     })
 }
 
 const rec_car_item1 = document.querySelector('#rec_car_item1 .recs')
 const rec_car_item2 = document.querySelector('#rec_car_item2 .recs')
 const rec_car_item3 = document.querySelector('#rec_car_item3 .recs')
-console.dir(rec_car_item3)
+// console.log(rec_car_item3)
 
-const make_recommendations = async(id)=>{
+const make_recommendations = async (id) => {
     await getRecom(id)
-    for(var i = 0; i < 12; i++){
+    for (var i = 0; i < 12; i++) {
         const name = similar_movie_object[i].name
         const img_src = similar_movie_object[i].poster_src
         const ratings = similar_movie_object[i].ratings
-        console.log(name)
-        if(i<4){
+
+        if (i < 4) {
+            rec_car_item1.children[i].dataset.recom = name;
             rec_car_item1.children[i].children[0].src = img_src
             rec_car_item1.children[i].children[0].nextElementSibling.children[0].innerText = name
-            rec_car_item1.children[i].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1)+' ⭐️'
+            rec_car_item1.children[i].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1) + ' ⭐️'
         }
-        if(i>=4 && i<8){
-            rec_car_item2.children[i-4].children[0].src = img_src
-            rec_car_item2.children[i-4].children[0].nextElementSibling.children[0].innerText = name
-            rec_car_item2.children[i-4].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1)+' ⭐️'
+        if (i >= 4 && i < 8) {
+            rec_car_item2.children[i - 4].dataset.recom = name
+            rec_car_item2.children[i - 4].children[0].src = img_src
+            rec_car_item2.children[i - 4].children[0].nextElementSibling.children[0].innerText = name
+            rec_car_item2.children[i - 4].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1) + ' ⭐️'
         }
-        if(i>=8 && i<12){
-            rec_car_item3.children[i-8].children[0].src = img_src
-            rec_car_item3.children[i-8].children[0].nextElementSibling.children[0].innerText = name
-            rec_car_item3.children[i-8].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1)+' ⭐️'
+        if (i >= 8 && i < 12) {
+            rec_car_item3.children[i - 8].dataset.recom = name
+            rec_car_item3.children[i - 8].children[0].src = img_src
+            rec_car_item3.children[i - 8].children[0].nextElementSibling.children[0].innerText = name
+            rec_car_item3.children[i - 8].children[0].nextElementSibling.children[1].innerText = ratings.toFixed(1) + ' ⭐️'
         }
     }
 
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const rowRec = document.querySelectorAll("div[data-recom]");
 
-const get_trailer = async(id)=>{
+    rowRec.forEach(row => {
+        row.addEventListener("click", () => {
+            show_info(row.dataset.recom);
+        });
+    });
+});
+
+
+
+
+const get_trailer = async (id) => {
     const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
     const key = res.data.results[0].key
-    const link = 'https://www.youtube.com/watch?v='+key;
+    const link = 'https://www.youtube.com/watch?v=' + key;
     return link
 }
 
