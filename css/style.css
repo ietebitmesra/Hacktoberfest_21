@@ -213,7 +213,9 @@ background: linear-gradient(145deg, #48A9A6, #48A9A6);
 color: #fff;
 }
 
-
+div[data-recom]{
+  cursor: pointer;
+}
 
 .site-mobile-menu {
   width: 300px;
