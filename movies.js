@@ -98,6 +98,7 @@ formMovies.addEventListener('submit', async(e) => {
          ott_details.append(LOGO);
      }
 
+
     // STYLE CREATED ELEMENTS HERE
     h3.style.display = 'inline';
     title.style.fontSize = '50px';
