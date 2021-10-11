@@ -49,6 +49,11 @@ formMovies.addEventListener('submit', async(e) => {
     let star_layer0="☆☆☆☆☆☆☆☆☆☆";
     let star_layer1="★★★★★★★★★★";
 
+    // OTT PLATFORMS
+    const ottRes = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/watch/providers?api_key=${API_KEY}`);
+    console.log(ottRes);
+    const ottNames = ottRes.data.results.IN.flatrate;
+
     // Trailer
     // const trailer_link = await get_trailer(movie_id);
     // DOM ELEMENTS
@@ -66,21 +71,36 @@ formMovies.addEventListener('submit', async(e) => {
      const resultDiv = document.createElement('div');
      const resultDivImg = document.createElement('div');
      const resultDivInfo = document.createElement('div');
+     const ott_details = document.createElement('div');
      
      const img = document.createElement('IMG');    
      img.src = poster;
+     const h3 = document.createElement('H3');
+     h3.innerText = "Watch On : ";
      const title = document.createElement('H1');
      title.innerText = name;
      const info = document.createElement('p');
      info.innerText = strippedString;
      const cast = document.createElement('p');
      cast.innerText = cast_names;
+     
+     ott_details.append(h3);
+     for (let i = 0; i < ottNames.length; i++) {
+         const LOGO = document.createElement('img');
+         LOGO.style.display = 'inline';
+         LOGO.style.margin = '10px';
+         LOGO.style.borderRadius = '10px';
+         const logo = `https://image.tmdb.org/t/p/original`+ ottNames[i].logo_path;
+         LOGO.src = logo;         
+         ott_details.append(LOGO);
+     }
      const yt_trailer = document.createElement('a');
      yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
      yt_trailer.href = 'https://www.youtube.com/watch?v='+(await get_trailer(movie_id));
      yt_trailer.style.color = '#d6d6d6';
 
     // STYLE CREATED ELEMENTS HERE
+    h3.style.display = 'inline';
     title.style.fontSize = '50px';
     img.style.borderRadius = "10px";
     img.style.width = "220px";
@@ -98,22 +118,28 @@ formMovies.addEventListener('submit', async(e) => {
     resultDiv.style.display = "flex";
     resultDivImg.style.margin = "30px"
     resultDiv.style.alignItems = "center";
+    resultDiv.style.margin = "20px";
+    resultDiv.style.marginTop = "40px";
 
     avg_rating.style.fontSize='20px';
     star_bottom.style='z-index: 1;  position:absolute; display: inline-block; overflow: hidden; white-space: nowrap;';
     star_top.style='z-index: 2;   position:absolute ; overflow: hidden; white-space: nowrap; height:24px; display: inline-block; color:gold;';
 
     favorteMovieSection.classList.add('hidden')
-    
+
     resultDivImg.append(img);
+
     resultDivInfo.append(title);
     resultDivInfo.append(info);
     resultDivInfo.append(avg_rating);
     resultDivInfo.append(cast);
+    resultDivInfo.append(ott_details);
+
     resultDivInfo.append(yt_trailer);
     resultDiv.append(resultDivImg);
     resultDiv.append(resultDivInfo);
     resultSection.append(resultDiv);
+
     formMovies.reset();
     secondry_info.classList.remove('hidden')
     similar_movie_section.classList.remove('hidden')
