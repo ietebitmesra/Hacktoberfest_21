@@ -92,15 +92,20 @@ box-shadow: 3px 3px 6px #b8b9be,-3px -3px 6px #fff;
 }
 
 .card{
-border-radius: 20px;
+border-radius: 15px;
 /* box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #fff; */
 background-color: #48A9A6;
 margin: 20px auto 0;
 /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
 }
 
+.card:hover{
+box-shadow: 3px 3px 10px #b8b9be, -3px -3px 6px #fff;
+transition: all 0.3s;
+}
+
 .card-img, .card-img-top{
-border-radius: 20px;
+border-radius: 15px;
 }
 
 .card-img-top {
@@ -144,6 +149,7 @@ border-radius: 20px;
 
 table{
   margin-top: 35px;
+  border-radius: 10px;
 }
 
 td, th{
@@ -154,7 +160,7 @@ td, th{
 
 th{
   color: #000;
-  font-size: 22px;
+  font-size: 30px;
 }
 
 #sec-info{
