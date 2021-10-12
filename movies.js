@@ -375,8 +375,23 @@ const get_trailer = async (id) => {
 }
 yt-modal
 
-const show_cm_metadata = async(act_id)=>{
-    //console.log(act_id);
+
+function clear_metadata(){
+    document.getElementById("am-title").innerHTML='';
+    document.getElementById("am-body").innerHTML='';
+    document.getElementById("actorpic").src='';
+}
+
+async function show_cm_metadata(act_id){
+    clear_metadata();
     const actor_data=await axios.get(`https://api.themoviedb.org/3/person/${act_id}?api_key=${API_KEY}&language=en-US`);
-    console.log(actor_data.data.name);
+    console.log(actor_data);
+    document.getElementById("am-title").innerHTML=actor_data.data.name;
+    document.getElementById("am-body").innerHTML=actor_data.data.biography;
+    let img_link='./images/cast-placefiller.jpg';
+    if(actor_data.data.profile_path){
+        let endpt=actor_data.data.profile_path;
+        img_link=`https://image.tmdb.org/t/p/w400/${endpt}`;
+    }
+    document.getElementById("actorpic").src=img_link;
 }
