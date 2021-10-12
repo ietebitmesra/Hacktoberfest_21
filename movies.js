@@ -98,6 +98,7 @@ formMovies.addEventListener('submit', async(e) => {
      h3.innerText = "Watch on:";
      h3.style.fontSize = '18px'
      h3.style.fontWeight = 'bold'
+     h3.style.display = 'inline'
      const title = document.createElement('H1');
      title.innerText = name;
      const info = document.createElement('p');

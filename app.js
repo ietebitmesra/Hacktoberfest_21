@@ -11,7 +11,7 @@
 //SEE CODE PROPERLY YOU'LL GET IDEA OF MOST OF IT
 //MAKE PROPER COMMENTS WHERE-EVER NECESSARY
 
-
+const API_KEY = "f985a3ae5df8738bf04a55864c33128c";
 const form = document.querySelector('.searchForm');
 const resultDiv = document.querySelector('#main-info')
 const resultDivImg = document.querySelector('#show-image')
@@ -43,35 +43,52 @@ form.addEventListener('submit', async (e)=>{
     clear_old_data();
     // API CALL
     const searchTerm = document.querySelector('#searchText').value;
-    const res = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)
-    const bestMatch = res.data[0].show
-    const genres = res.data[0].show.genres;
+    const res = await axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${searchTerm}`);
+    const bestMatch = res.data.results[0];
+    const genres_id = bestMatch.genre_ids;
+    const genreRes = await axios.get(`https://api.themoviedb.org/3/genre/tv/list?api_key=${API_KEY}&language=en-US`);
 
     // ALL API DATA
     const id = bestMatch.id;
     const show_id = id;
     global_showid= id;
-    const image = bestMatch.image.medium
+    const image = `https://image.tmdb.org/t/p/w200/` + bestMatch.poster_path;
     // const premeired = bestMatch.image.medium
     const name = bestMatch.name 
-    const cast_response = await fetch(`https://api.tvmaze.com/shows/${id}/cast`);
-    const cast_data = await cast_response.json();
+    
+    //CAST
+    const cast_response = await axios.get(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${API_KEY}&language=en-US`);
+    console.log(cast_response);
+    const cast_data = cast_response.data.cast;
     global_castdata=cast_data;
-    let cast_names = 'Cast : '
-    cast_data.map(getNames)
-    function getNames(value){
-        cast_names = cast_names+value.person.name+", ";
+    var cast_names = 'Cast : '
+    for (let i = 0; i < cast_data.length; i++) {
+        cast_names = cast_names + cast_data[i].name + ", ";
     }
     cast_names = cast_names.substring(0,cast_names.length-2)
 
-    let rating = "Rating: " + bestMatch.rating.average + "&nbsp&nbsp";
-    let star_ct = bestMatch.rating.average;
+    let rating = "Rating: " + bestMatch.vote_average + "&nbsp&nbsp";
+    let star_ct = bestMatch.vote_average;
 
     let star_layer0="☆☆☆☆☆☆☆☆☆☆";
     let star_layer1="★★★★★★★★★★";
 
-    const summary = bestMatch.summary
+    const summary = bestMatch.overview;
     let strippedString = summary.replace(/(<([^>]+)>)/gi, "");
+
+    // OTT PLATFORMS
+    const ottRes = await axios.get(`https://api.themoviedb.org/3/tv/${show_id}/watch/providers?api_key=${API_KEY}`);
+    console.log(ottRes);
+    let ottNames=0;
+    let hasIN=ottRes.data.results;
+    if(hasIN.hasOwnProperty('IN')){
+        console.log('Supports IN');
+        let hasFlat=hasIN.IN;
+        if(hasFlat.hasOwnProperty('flatrate')){
+            console.log('Has flatrate');
+            ottNames=ottRes.data.results.IN.flatrate;
+        }
+    }
 
     // Hiding popular shows section
         pop_show_hide();
@@ -86,7 +103,7 @@ form.addEventListener('submit', async (e)=>{
     p1.innerText = strippedString;
     const cast = document.createElement('cast');
     cast.innerText = cast_names;
-    
+    const ott_details = document.createElement('div');
 
     const avg_rating = document.createElement('p');
     avg_rating.innerHTML= rating;
@@ -94,10 +111,10 @@ form.addEventListener('submit', async (e)=>{
     //Adding Genres data
     const Genres = document.createElement('p');
     let val = "Genres: ";
-    for(var i=0;i<genres.length;i++)
+    for(var i=0;i<genres_id.length;i++)
     {
-        val+=genres[i];
-        if(i!=genres.length-1)
+        val+=genreRes.data.genres[i].name;
+        if(i!=genres_id.length-1)
         val+=', ';
     }
     val+=".";
@@ -115,9 +132,17 @@ form.addEventListener('submit', async (e)=>{
     // STYLE CREATED ELEMENTS HERE
     h1.style.fontSize = '50px';
 
+    const h3 = document.createElement('H3');
+    h3.innerText = "Watch on:";
+    h3.style.fontSize = '18px'
+    h3.style.fontWeight = 'bold'
+
     p1.style.fontFamily= 'Courgette, cursive';
     p1.style.fontSize= '22px';
-    p1.style.fontWeight= '100'
+    p1.style.fontWeight= '100';
+
+    img.style.borderRadius = "15px";
+    img.style.width = "250px";
 
     cast.style.fontFamily = 'Arial, Helvetica, sans-serif'
     cast.style.fontWeight = '100'
@@ -131,8 +156,23 @@ form.addEventListener('submit', async (e)=>{
     star_bottom.style='z-index: 1;  position:absolute; display: inline-block; overflow: hidden; white-space: nowrap;';
     star_top.style='z-index: 2;   position:absolute ; overflow: hidden; white-space: nowrap; height:24px; display: inline-block; color:gold;';
 
+    ott_details.style.textAlign='center';
+    ott_details.append(h3);
+     for (let i = 0; i < ottNames.length; i++) {
+         const LOGO = document.createElement('img');
+         LOGO.style.display = 'inline';
+         LOGO.style.margin = '10px';
+         LOGO.style.borderRadius = '10px';
+         const logo = `https://image.tmdb.org/t/p/original`+ ottNames[i].logo_path;
+         LOGO.src = logo;
+         LOGO.style.width='35px' 
+         LOGO.style.height='35px'         
+         ott_details.append(LOGO);
+     }
+
     // APPEND ELEMENTS TO WEB PAGE
     resultDivImg.append(img)
+    resultDivImg.append(ott_details); //To append watch providers below poster
     resultDivInfo.append(h1)
     resultDivInfo.append(p1)
     resultDivInfo.append(avg_rating)
@@ -143,7 +183,7 @@ form.addEventListener('submit', async (e)=>{
 
 
     // SECONDARY INFO
-    const season_num = 1
+    const season_num = 1;
     const season_disp = document.querySelector('#season-num');
     // season_disp.innerText = `SEASON: ${season_num}`
 
@@ -170,59 +210,61 @@ const showSecInfo = ()=>{
 }
 
 const get_season = async(show_id, season_num)=>{
-    const season_data = await axios.get(`https://api.tvmaze.com/shows/${show_id}/seasons`)
+    const season_data = await axios.get(`https://api.themoviedb.org/3/tv/${show_id}/season/${season_num}?api_key=${API_KEY}&language=en-US`);
+    console.log(season_data);
     document.getElementById('season').style.display='inline-flex';
-    populate_season_count(season_data);
-    const season_id = season_data.data[season_num-1].id
-    ep_data_fill(season_id);
+    populate_season_count(show_id);
+    const season_id = season_data.data.id
+    ep_data_fill(show_id, season_num, season_data);
 }
 
-const ep_data_fill = async(season_id)=>{
-    const episode_data = await axios.get(`https://api.tvmaze.com/seasons/${season_id}/episodes`)
-    const l = episode_data.data.length
+const ep_data_fill = async(show_id, season_num, season_data)=>{
+    const tv_data = await axios.get(`https://api.themoviedb.org/3/tv/${show_id}?api_key=${API_KEY}&language=en-US`);
+    const l = season_data.data.episodes.length;
     headers.innerHTML = heads;
     table.innerHTML='';
     table.append(headers);
     for(var i=0; i<l; i++){
-        var number = episode_data.data[i].number;
-        var date = episode_data.data[i].airdate;
-        var name = episode_data.data[i].name;
-        var runtime = episode_data.data[i].runtime;
-        tableGenerator(number, name, date, runtime)
+        var number = i+1;
+        var date = season_data.data.episodes[i].air_date;
+        var name = season_data.data.episodes[i].name;
+        tableGenerator(number, name, date);
     }
 }
-
 
  // GENERATION OF TABLES
 const table = document.querySelector('#data-table')
 const headers = document.querySelector('#table-headers')
 const table_data = document.querySelector('#table-data')
 
-const heads = '<th style="width: 13%;padding-left:30px">Number</th><th style="width: 30%;">Date</th><th style="width: 50%;">Name</th><th style="width: 17%;">Runtime</th>';
+const heads = '<th style="width: 13%;padding-left:30px;text-align: center; border-top-left-radius: 10px;">Number</th><th style="width: 30%;text-align: center">Date</th><th style="width: 50%;text-align: center; border-top-right-radius: 10px;">Name</th>';
 
 
-const tableGenerator = (ep_number, ep_name, ep_date, ep_runtime)=>{
-    var r = document.createElement('tr')
-    var row = `<td style="padding-left:30px">${ep_number}</td><td>${ep_date}</td><td>${ep_name}</td><td>${ep_runtime}</td>`
+const tableGenerator = (ep_number, ep_name, ep_date)=>{
+    var r = document.createElement('tr');
+    var row = `<td style="padding-left:30px">${ep_number}</td><td>${ep_date}</td><td>${ep_name}</td>`;
     r.innerHTML = row;
+    r.style.textAlign = "center";
     table.append(r);
 }
 
-function refill_table(s){
-    ep_data_fill(s);
+const refill_table = async(show_id, season_num) => {
+    const season_data = await axios.get(`https://api.themoviedb.org/3/tv/${show_id}/season/${season_num}?api_key=${API_KEY}&language=en-US`);
+    ep_data_fill(show_id, season_num, season_data);
 }
 
-function populate_season_count(s_info){
-    let season_tot=s_info.data;
-    let S_List=document.getElementById('season');
-    let n_season=season_tot.length;
+const populate_season_count = async(show_id) => {
+    const tv_data = await axios.get(`https://api.themoviedb.org/3/tv/${show_id}?api_key=${API_KEY}&language=en-US`);
+    const total_seasons = tv_data.data.number_of_seasons;
+    let S_List = document.getElementById('season');
+    let curr_season = 1;
     S_List.innerHTML='';
-    for(let i=0;i<n_season;i++){
+    for(let i=0;i<total_seasons;i++){
         let list_item=document.createElement('li');
         let s_link=document.createElement('a');
         s_link.href='#!';
-        let season_id=season_tot[i].id;
-        let refill_command="refill_table("+season_id+")";
+        let season_id=tv_data.data.seasons[i].id;
+        let refill_command="refill_table("+show_id+ ", " +curr_season+ ")";
         s_link.setAttribute("onclick", refill_command);
         let sn='S';
         let ct=i+1;
@@ -247,9 +289,8 @@ function populate_season_count(s_info){
                 item.classList.add('active-link')
             })
         )
-
         
-
+        curr_season++;
      }
  }
 
@@ -272,9 +313,9 @@ function cast_display(){
 
     let cast_count=global_castdata.length;
     for(let i=0;i<cast_count;i++){
-        let cm_img_api=global_castdata[i].person.image.medium;
-        let cm_name_api=global_castdata[i].person.name;
-        let cm_character_api=global_castdata[i].character.name;
+        let cm_img_api = `https://image.tmdb.org/t/p/w200/` + global_castdata[i].profile_path;
+        let cm_name_api=global_castdata[i].name;
+        let cm_character_api=global_castdata[i].character;
 
         let cast_member=document.createElement('li')
         let cm_card=document.createElement('div');
