@@ -54,12 +54,18 @@ form.addEventListener('submit', async (e)=>{
     global_showid= id;
     const image = `https://image.tmdb.org/t/p/w200/` + bestMatch.poster_path;
     // const premeired = bestMatch.image.medium
-    const name = bestMatch.name 
+    const name = bestMatch.name;
+    const credit_response = await axios.get(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${API_KEY}&language=en-US`);
+    //console.log(credit_response);
+
+    //CREW
+    const crew_data = credit_response.data.crew;
+    console.log(crew_data)
+    global_crewdata=crew_data;
     
     //CAST
-    const cast_response = await axios.get(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${API_KEY}&language=en-US`);
-    console.log(cast_response);
-    const cast_data = cast_response.data.cast;
+    
+    const cast_data = credit_response.data.cast;
     global_castdata=cast_data;
     var cast_names = 'Cast : '
     for (let i = 0; i < cast_data.length; i++) {
@@ -306,7 +312,9 @@ var global_castdata,global_showid;
 function cast_display(){
     document.getElementById('castHeading').classList.add("active-b");
     document.getElementById('EpisodeHeading').classList.remove("active-b");
+    document.getElementById('crewHeading').classList.remove("active-b");
     document.getElementById('cast_data').innerHTML='';
+    document.getElementById('crew_data').innerHTML='';
     document.getElementById('data-table').innerHTML='';
 
     document.getElementById('season').style.display='none';
@@ -357,10 +365,78 @@ function cast_display(){
 
 }
 
-function ep_reload(){
+function crew_display(){
+    console.log('Crew Called')
+
+    document.getElementById('crewHeading').classList.add("active-b");
+    document.getElementById('castHeading').classList.remove("active-b");
+    document.getElementById('EpisodeHeading').classList.remove("active-b");
+    document.getElementById('crew_data').innerHTML='';
+    document.getElementById('cast_data').innerHTML='';
+    document.getElementById('data-table').innerHTML='';
+    document.getElementById('season').style.display='none';
+
+    let crew_count=global_crewdata.length;
+    console.log(global_crewdata);
+    console.log(global_crewdata.length);
+    console.log(global_crewdata[0].name)
     
+    for(let i=0;i<crew_count;i++){
+        let cm_img_api;
+            if(global_crewdata[i].profile_path){
+                cm_img_api=`https://image.tmdb.org/t/p/original${global_crewdata[i].profile_path}`; 
+            } else {
+                cm_img_api='./images/cast-placefiller.jpg';
+            }
+        //let cm_img_api=global_crewdata[i].person.image.medium;
+        let cm_name_api=global_crewdata[i].name;
+        let cm_character_api=global_crewdata[i].job;
+
+        let cast_member=document.createElement('li')
+        let cm_card=document.createElement('div');
+        cm_card.style.display="inline-block";
+        cm_card.classList.add("card");
+        cm_card.classList.add("border-0");
+        cm_card.classList.add("mb-2");
+        cm_card.classList.add("tvcard");
+        cm_card.classList.add("cardshow");
+
+        let cm_img=document.createElement('img');
+        cm_img.src=cm_img_api;
+        cm_img.classList.add('cast-card');
+        cm_img.classList.add('border-0');
+        cm_img.classList.add('card__image');
+        let cm_metadata=document.createElement('div');
+        
+        let cm_name=document.createElement('h5');
+        let cm_character=document.createElement('h6');
+        cm_name.innerHTML=cm_name_api;
+        cm_name.classList.add("card-title");
+
+        cm_character.innerHTML=cm_character_api;
+
+        cm_metadata.appendChild(cm_name);
+        cm_metadata.appendChild(cm_character);
+
+        cm_metadata.classList.add("card-body");
+        cm_card.appendChild(cm_img);
+        cm_card.appendChild(cm_metadata);
+
+        cast_member.appendChild(cm_card);
+
+        cm_card.style.width="14rem";
+
+        document.getElementById("crew_data").appendChild(cast_member);
+
+    }
+
+}
+
+function ep_reload(){
+    document.getElementById("crewHeading").classList.remove("active-b");
     document.getElementById('castHeading').classList.remove("active-b");
     document.getElementById('EpisodeHeading').classList.add("active-b");
     document.getElementById('cast_data').innerHTML='';
+    document.getElementById('crew_data').innerHTML='';
     get_season(global_showid,1);
 } 
