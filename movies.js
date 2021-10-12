@@ -4,7 +4,6 @@ const resultSection = document.querySelector('#movie_result');
 const favorteMovieSection = document.querySelector('#favourite-movies')
 const similar_movie_section = document.querySelector('#similar-movies')
 const btn = document.getElementsByClassName("open");
-const see_more = document.querySelector('#see_more')
 const secondry_info = document.querySelector('#sec-info')
 function show_info(show_name) {
     document.querySelector('#searchText').value = show_name;
@@ -185,10 +184,9 @@ formMovies.addEventListener('submit', async (e) => {
 
     // CAST RENDERING LOOP
     let cast_count=cast_res.data.cast.length;
-    see_more.classList.remove('d-none')
     console.log(cast_count);
     document.getElementById('cast_data').innerHTML='';
-    for(let i=0;i<5;i++){
+    for(let i=0;i<cast_count;i++){
         let cm_img_api;
         if(cast_res.data.cast[i].profile_path){
             cm_img_api=`https://image.tmdb.org/t/p/original${cast_res.data.cast[i].profile_path}`; 
@@ -236,59 +234,6 @@ formMovies.addEventListener('submit', async (e) => {
         document.getElementById("cast_data").appendChild(cast_member);
 
     }
-
-    see_more.addEventListener('click',function(e){
-        e.preventDefault();
-        see_more.classList.add('d-none')
-        for(let i=5;i<cast_count;i++){
-            let cm_img_api;
-            if(cast_res.data.cast[i].profile_path){
-                cm_img_api=`https://image.tmdb.org/t/p/original${cast_res.data.cast[i].profile_path}`; 
-            } else {
-                cm_img_api='./images/cast-placefiller.jpg';
-            }
-    
-            let cm_name_api = cast_res.data.cast[i].name;
-            let cm_character_api = cast_res.data.cast[i].character;
-    
-            let cast_member = document.createElement('li')
-            let cm_card = document.createElement('div');
-            cm_card.style.display = "inline-block";
-            cm_card.classList.add("card");
-            cm_card.classList.add("border-0");
-            cm_card.classList.add("mb-2");
-            cm_card.classList.add("tvcard");
-            cm_card.classList.add("cardshow");
-    
-            let cm_img = document.createElement('img');
-            cm_img.src = cm_img_api;
-            cm_img.classList.add('cast-card');
-            cm_img.classList.add('border-0');
-            cm_img.classList.add('card__image');
-            let cm_metadata = document.createElement('div');
-    
-            let cm_name = document.createElement('h5');
-            let cm_character = document.createElement('h6');
-            cm_name.innerHTML = cm_name_api;
-            cm_name.classList.add("card-title");
-    
-            cm_character.innerHTML = cm_character_api;
-    
-            cm_metadata.appendChild(cm_name);
-            cm_metadata.appendChild(cm_character);
-    
-            cm_metadata.classList.add("card-body");
-            cm_card.appendChild(cm_img);
-            cm_card.appendChild(cm_metadata);
-    
-            cast_member.appendChild(cm_card);
-    
-            cm_card.style.width = "14rem";
-    
-            document.getElementById("cast_data").appendChild(cast_member);
-    
-        }
-    })
 
 
 })
@@ -357,6 +302,13 @@ document.addEventListener("DOMContentLoaded", () => {
 //Gets link for movie trailer
 const get_trailer = async (id) => {
     const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
-    const key = res.data.results[0].key
+    const results = res.data.results
+    var key = res.data.results[0].key
+    results.forEach((item)=>{
+        if(item.type === 'Trailer'){
+            key = item.key
+            return key
+        }
+    })
     return key
 }
