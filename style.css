@@ -16,6 +16,17 @@ a.logo {
   font-family: 'Dancing Script', cursive;
 }
 
+.hov{transition: all .4s ease-in-out;}
+
+.hov:hover {
+      
+  transform: scale(1.1);
+
+/* position:relative;
+
+height:200px !important ; */
+}
+
 form.searchForm {
   width: 55%;
   /* height: 100px; */
