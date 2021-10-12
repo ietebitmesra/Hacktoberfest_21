@@ -186,7 +186,7 @@ formMovies.addEventListener('submit', async (e) => {
     // CAST RENDERING LOOP
     let cast_count=cast_res.data.cast.length;
     see_more.classList.remove('d-none')
-    console.log(cast_count);
+    //console.log(cast_count);
     document.getElementById('cast_data').innerHTML='';
     for(let i=0;i<5;i++){
         let cm_img_api;
@@ -195,6 +195,8 @@ formMovies.addEventListener('submit', async (e) => {
         } else {
             cm_img_api='./images/cast-placefiller.jpg';
         }
+
+        let actorId=cast_res.data.cast[i].id;
 
         let cm_name_api = cast_res.data.cast[i].name;
         let cm_character_api = cast_res.data.cast[i].character;
@@ -233,6 +235,10 @@ formMovies.addEventListener('submit', async (e) => {
 
         cm_card.style.width = "14rem";
 
+        cast_member.setAttribute("onclick",`show_cm_metadata('${actorId}')`);
+        cast_member.setAttribute("data-toggle","modal");
+        cast_member.setAttribute("data-target","#actor-modal");
+        //console.log(cast_member);
         document.getElementById("cast_data").appendChild(cast_member);
 
     }
@@ -366,4 +372,11 @@ const get_trailer = async (id) => {
         }
     })
     return key
+}
+yt-modal
+
+const show_cm_metadata = async(act_id)=>{
+    //console.log(act_id);
+    const actor_data=await axios.get(`https://api.themoviedb.org/3/person/${act_id}?api_key=${API_KEY}&language=en-US`);
+    console.log(actor_data.data.name);
 }
