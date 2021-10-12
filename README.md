@@ -108,14 +108,14 @@ Before making any changes and/or in an appropriate interval, run the following c
 # Fetch all remote repositories and delete any deleted remote branches
 $ git fetch --all --prune
 
-# Switch to `main` branch
-$ git checkout main
+# Switch to `master` branch
+$ git checkout master
 
-# Reset local `main` branch to match the `upstream` repository's `main` branch
-$ git reset --hard upstream/main
+# Reset local `master` branch to match the `upstream` repository's `master` branch
+$ git reset --hard upstream/master
 
 # Push changes to your forked `Hacktoberfest-21` repo
-$ git push origin main
+$ git push origin master
 ```
 
 ### 5. Ready Steady Go... :turtle: :rabbit2:
@@ -124,7 +124,7 @@ Once you have completed these steps, you are ready to start contributing by chec
 
 ### 6. Create a new branch :bangbang:
 
-Whenever you are going to contribute. Please create a separate branch using command and keep your `main` branch clean (i.e. synced with remote branch).
+Whenever you are going to contribute. Please create a separate branch using command and keep your `master` branch clean (i.e. synced with remote branch).
 
 ```sh
 # It will create a new branch with name Branch_Name and switch to branch Folder_Name
@@ -211,11 +211,11 @@ We would also like to add support for Movies in our app, Find and implement suit
 
 10. ~~Show basic details of movies~~
 
-11. Show cast of movies
+11. ~~Show cast of movies~~
 
 12. Make UI better
 
-13. Make application responsive.
+13. ~~Make application responsive.~~
 
 14. ~~Add your favourite tv-series in explore tab :)~~
 
@@ -225,13 +225,13 @@ We would also like to add support for Movies in our app, Find and implement suit
 
 2. ~~Add date every episode air.~~
 
-3. Present all cast along with photos in cast tag
+3. ~~Present all cast along with photos in cast tag~~
 
 4. ~~Include other images related to show in gallery tab~~
 
-5. Show the platform where the show/movies are streaming
+5. ~~Show the platform where the show/movies are streaming~~
 
-6. Link to YouTube trailer.
+6. ~~Link to YouTube trailer.~~
 
 **_More features will be added as the project progresses_ **
 
