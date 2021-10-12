@@ -357,6 +357,13 @@ document.addEventListener("DOMContentLoaded", () => {
 //Gets link for movie trailer
 const get_trailer = async (id) => {
     const res = await axios.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`)
-    const key = res.data.results[0].key
+    const results = res.data.results
+    var key = res.data.results[0].key
+    results.forEach((item)=>{
+        if(item.type === 'Trailer'){
+            key = item.key
+            return key
+        }
+    })
     return key
 }
