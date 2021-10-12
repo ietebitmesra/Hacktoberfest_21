@@ -17,6 +17,7 @@ for (var i = 0; i < btn.length; i++) {
     btn[i].onclick = function () {
         document.querySelector('#searchText').value = this.innerText;
         formMovies.dispatchEvent(new Event('submit'));
+        window.scrollTo(0, 0)
     };
 
 }
@@ -362,6 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
     rowRec.forEach(row => {
         row.addEventListener("click", () => {
             show_info(row.dataset.recom);
+            window.scrollTo(0, 0)
         });
     });
 });
