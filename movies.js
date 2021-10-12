@@ -99,7 +99,9 @@ formMovies.addEventListener('submit', async (e) => {
     const img = document.createElement('IMG');
     img.src = poster;
     const h3 = document.createElement('H3');
-    h3.innerText = "Watch on:";
+    if(ottNames.length>0){
+        h3.innerText = "Watch on:";
+    }
     h3.style.fontSize = '18px'
     h3.style.fontWeight = 'bold'
     const title = document.createElement('H1');
