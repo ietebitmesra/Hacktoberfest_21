@@ -87,7 +87,6 @@ formMovies.addEventListener('submit', async (e) => {
     stars.append(star_top);
     avg_rating.append(stars);
 
-<<<<<<< HEAD
     const resultDiv = document.createElement('div');
     const resultDivImg = document.createElement('div');
     const resultDivInfo = document.createElement('div');
@@ -126,40 +125,6 @@ formMovies.addEventListener('submit', async (e) => {
         LOGO.style.height = '35px'
         ott_details.append(LOGO);
     }
-=======
-     const resultDiv = document.createElement('div');
-     const resultDivImg = document.createElement('div');
-     const resultDivInfo = document.createElement('div');
-     const ott_details = document.createElement('div');
-     
-     const img = document.createElement('IMG');    
-     img.src = poster;
-     const h3 = document.createElement('H3');
-     h3.innerText = "Watch on:";
-     h3.style.fontSize = '18px'
-     h3.style.fontWeight = 'bold'
-     h3.style.display = 'inline'
-     const title = document.createElement('H1');
-     title.innerText = name;
-     const info = document.createElement('p');
-     info.innerText = strippedString;
-     const cast = document.createElement('p');
-     cast.innerText = cast_names;
-     
-     ott_details.style.textAlign='center';
-     ott_details.append(h3);
-     for (let i = 0; i < ottNames.length; i++) {
-         const LOGO = document.createElement('img');
-         LOGO.style.display = 'inline';
-         LOGO.style.margin = '10px';
-         LOGO.style.borderRadius = '10px';
-         const logo = `https://image.tmdb.org/t/p/original`+ ottNames[i].logo_path;
-         LOGO.src = logo;
-         LOGO.style.width='35px' 
-         LOGO.style.height='35px'         
-         ott_details.append(LOGO);
-     }
->>>>>>> d0adf24d374ba7c188784e2b03a036b0a7ac2727
 
 
     // STYLE CREATED ELEMENTS HERE
