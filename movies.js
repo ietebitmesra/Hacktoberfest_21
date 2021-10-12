@@ -186,7 +186,7 @@ formMovies.addEventListener('submit', async (e) => {
     // CAST RENDERING LOOP
     let cast_count=cast_res.data.cast.length;
     see_more.classList.remove('d-none')
-    console.log(cast_count);
+    //console.log(cast_count);
     document.getElementById('cast_data').innerHTML='';
     for(let i=0;i<5;i++){
         let cm_img_api;
@@ -195,6 +195,8 @@ formMovies.addEventListener('submit', async (e) => {
         } else {
             cm_img_api='./images/cast-placefiller.jpg';
         }
+
+        
 
         let cm_name_api = cast_res.data.cast[i].name;
         let cm_character_api = cast_res.data.cast[i].character;
@@ -233,6 +235,11 @@ formMovies.addEventListener('submit', async (e) => {
 
         cm_card.style.width = "14rem";
 
+        let actorId=cast_res.data.cast[i].id;
+        cast_member.setAttribute("onclick",`show_cm_metadata('${actorId}')`);
+        cast_member.setAttribute("data-toggle","modal");
+        cast_member.setAttribute("data-target","#actor-modal");
+        //console.log(cast_member);
         document.getElementById("cast_data").appendChild(cast_member);
 
     }
@@ -285,6 +292,11 @@ formMovies.addEventListener('submit', async (e) => {
     
             cm_card.style.width = "14rem";
     
+            let actorId=cast_res.data.cast[i].id;
+            cast_member.setAttribute("onclick",`show_cm_metadata('${actorId}')`);
+            cast_member.setAttribute("data-toggle","modal");
+            cast_member.setAttribute("data-target","#actor-modal");
+
             document.getElementById("cast_data").appendChild(cast_member);
     
         }
@@ -366,4 +378,26 @@ const get_trailer = async (id) => {
         }
     })
     return key
+}
+yt-modal
+
+
+function clear_metadata(){
+    document.getElementById("am-title").innerHTML='';
+    document.getElementById("am-body").innerHTML='';
+    document.getElementById("actorpic").src='';
+}
+
+async function show_cm_metadata(act_id){
+    clear_metadata();
+    const actor_data=await axios.get(`https://api.themoviedb.org/3/person/${act_id}?api_key=${API_KEY}&language=en-US`);
+    console.log(actor_data);
+    document.getElementById("am-title").innerHTML=actor_data.data.name;
+    document.getElementById("am-body").innerHTML=actor_data.data.biography;
+    let img_link='./images/cast-placefiller.jpg';
+    if(actor_data.data.profile_path){
+        let endpt=actor_data.data.profile_path;
+        img_link=`https://image.tmdb.org/t/p/w400/${endpt}`;
+    }
+    document.getElementById("actorpic").src=img_link;
 }
