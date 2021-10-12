@@ -235,6 +235,8 @@ formMovies.addEventListener('submit', async (e) => {
         cast_member.appendChild(cm_card);
 
         cm_card.style.width = "14rem";
+        cm_name.style.fontSize = '1.2rem';
+        cm_character.style.fontSize = '0.86rem';
 
         let actorId=cast_res.data.cast[i].id;
         cast_member.setAttribute("onclick",`show_cm_metadata('${actorId}')`);
