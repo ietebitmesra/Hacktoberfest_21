@@ -229,7 +229,7 @@ This app use [TMDB api](https://developers.themoviedb.org/3/tv/get-tv-details) t
 
 5. ~~Show the platform where the show/movies are streaming~~
 
-6. ~~Link to YouTube trailer.~~
+6. ~~Link to YouTube trailer.~~ 
 
 **_More features will be added as the project progresses_ **
 
