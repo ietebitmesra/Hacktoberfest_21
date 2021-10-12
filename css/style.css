@@ -217,6 +217,22 @@ div[data-recom]{
   cursor: pointer;
 }
 
+.movie-result {
+  width: 100vw;
+}
+.moviesInfoContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.moviesImg {
+  flex-wrap: wrap;
+  flex-basis: 15%;
+}
+.moviesDetails {
+  flex-basis: 80%;
+  flex-wrap: wrap;
+}
+
 .site-mobile-menu {
   width: 300px;
   position: fixed;
