@@ -185,7 +185,7 @@ Idea images:
 
 ## About The Project:
 
-This app use [TMDB api](https://developers.themoviedb.org/3/tv/get-tv-details) to get data of TV series, and [TMDB api](https://developers.themoviedb.org/3/movies/get-movie-details) to get data of Movies, please use their documentation for reference. We would like the application to be responsive and helpful to it's users by showing complete details.
+This app use [Tv shows api](https://developers.themoviedb.org/3/tv/get-tv-details) to get data of TV series, and [Movies api](https://developers.themoviedb.org/3/movies/get-movie-details) to get data of Movies, please use their documentation for reference. We would like the application to be responsive and helpful to it's users by showing complete details.
 
 **Features:**
 
