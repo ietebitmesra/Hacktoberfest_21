@@ -196,7 +196,7 @@ formMovies.addEventListener('submit', async (e) => {
             cm_img_api='./images/cast-placefiller.jpg';
         }
 
-        let actorId=cast_res.data.cast[i].id;
+        
 
         let cm_name_api = cast_res.data.cast[i].name;
         let cm_character_api = cast_res.data.cast[i].character;
@@ -235,6 +235,7 @@ formMovies.addEventListener('submit', async (e) => {
 
         cm_card.style.width = "14rem";
 
+        let actorId=cast_res.data.cast[i].id;
         cast_member.setAttribute("onclick",`show_cm_metadata('${actorId}')`);
         cast_member.setAttribute("data-toggle","modal");
         cast_member.setAttribute("data-target","#actor-modal");
@@ -291,6 +292,11 @@ formMovies.addEventListener('submit', async (e) => {
     
             cm_card.style.width = "14rem";
     
+            let actorId=cast_res.data.cast[i].id;
+            cast_member.setAttribute("onclick",`show_cm_metadata('${actorId}')`);
+            cast_member.setAttribute("data-toggle","modal");
+            cast_member.setAttribute("data-target","#actor-modal");
+
             document.getElementById("cast_data").appendChild(cast_member);
     
         }
