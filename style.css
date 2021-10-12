@@ -4,7 +4,7 @@
 body {
   padding-top: 1rem;
   margin: 0;
-  background-color: #2D6967 ;
+ 
   height: auto;
   overflow-x: hidden;
 }
@@ -55,7 +55,7 @@ button#searchBtn {
   }
 }
 .navbar{
-  background-color: #2D6967 ;
+  background-color: #fdfdfd ;
 }
 .navbar-brand{
   color: white;
@@ -94,7 +94,7 @@ box-shadow: 3px 3px 6px #b8b9be,-3px -3px 6px #fff;
 .card{
 border-radius: 20px;
 /* box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #fff; */
-background-color: #48A9A6;
+background-color: #000000;
 margin: 20px auto 0;
 /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
 }
@@ -131,7 +131,7 @@ border-radius: 20px;
 }
 
 #sec-ul li a:hover{
-  background-color: #1F2041;
+  background-color: #ffffff;
   border-radius: 30px;
   padding: 5px 20px;
 }
@@ -147,7 +147,7 @@ table{
 }
 
 td, th{
-  border: 2px solid black;
+  border: 2px solid rgb(255, 255, 255);
   color: #b3b3b3;
   padding: 5px
 }
@@ -192,7 +192,7 @@ flex-direction: row;
 }
 
 .season_design{
-  background-color: rgb(255, 255, 255,0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   padding-top: 5px;
   padding-bottom: 5px;
   flex-wrap: wrap;
@@ -203,7 +203,7 @@ flex-direction: row;
 }
 
 .slink {
-  color:black;
+  color:rgb(253, 253, 253);
   font-weight: bold;
 }
 
@@ -218,7 +218,7 @@ flex-direction: row;
 } 
 
 .table_design td{
-  color: black;
+  color: rgb(255, 255, 255);
   border: 0px solid white;
 }
 
