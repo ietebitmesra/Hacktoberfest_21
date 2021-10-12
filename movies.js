@@ -363,6 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
     rowRec.forEach(row => {
         row.addEventListener("click", () => {
             show_info(row.dataset.recom);
+            window.scrollTo(0, 0)
         });
     });
 });
