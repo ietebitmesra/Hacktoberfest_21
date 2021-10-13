@@ -43,6 +43,7 @@ formMovies.addEventListener('submit', async (e) => {
     for (let i = 0; i < 8; i++) {
         cast_names += cast_res.data.cast[i].name + ", ";
     }
+    cast_names = cast_names.substring(0,cast_names.length-2)
     //console.log(cast_names);
 
     // RATING
