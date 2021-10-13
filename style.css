@@ -305,3 +305,49 @@ flex-direction: row;
 a{
   cursor: pointer;
 }
+
+.genre-list{
+  list-style: none;
+  /* display: flex; */
+  text-align: center;
+  max-width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 50px auto;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+
+.genre-btns{
+  border-radius: 40px;
+  /* box-shadow: 13px 13px 20px #cbced1,
+            -13px -13px 20px #ffffff; */
+  padding: 5px 12px;
+  display: inline;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.genre-btns{
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px rgb(0, 0, 0,0.2),
+              -3px -3px 20px rgb(0, 0, 0,0.4);
+  margin-right: 15px;
+  color: #fff;
+}
+
+.genre-btns:hover{
+  box-shadow: inset 3px 3px 20px rgb(0, 0, 0,0.2),
+             inset -3px -3px 20px rgb(0, 0, 0,0.4);
+  background-color: #1c413f;
+  cursor: pointer;
+}
+
+.active-c{
+  box-shadow: inset 3px 3px 20px rgb(0, 0, 0,0.2),
+             inset -3px -3px 20px rgb(0, 0, 0,0.4);
+  background-color: #1c413f;
+}
+
