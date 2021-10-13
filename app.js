@@ -45,8 +45,9 @@ form.addEventListener('submit', async (e)=>{
     const searchTerm = document.querySelector('#searchText').value;
     const res = await axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${searchTerm}`);
     const bestMatch = res.data.results[0];
-    const genres_id = bestMatch.genre_ids;
+    const genreIDs = bestMatch.genre_ids;
     const genreRes = await axios.get(`https://api.themoviedb.org/3/genre/tv/list?api_key=${API_KEY}&language=en-US`);
+    console.log(genreRes);
 
     // ALL API DATA
     const id = bestMatch.id;
@@ -117,10 +118,13 @@ form.addEventListener('submit', async (e)=>{
     //Adding Genres data
     const Genres = document.createElement('p');
     let val = "Genres: ";
-    for(var i=0;i<genres_id.length;i++)
+    for(var i=0;i<genreIDs.length;i++)
     {
-        val+=genreRes.data.genres[i].name;
-        if(i!=genres_id.length-1)
+        for (let j = 0; j < genreRes.data.genres.length; j++) {
+            if (genreRes.data.genres[j].id == genreIDs[i])
+                val += genreRes.data.genres[j].name;
+        }
+        if(i!=genreIDs.length-1)
         val+=', ';
     }
     val+=".";
@@ -234,7 +238,8 @@ const ep_data_fill = async(show_id, season_num, season_data)=>{
         var number = i+1;
         var date = season_data.data.episodes[i].air_date;
         var name = season_data.data.episodes[i].name;
-        tableGenerator(number, name, date);
+        var ratings = season_data.data.episodes[i].vote_average;
+        tableGenerator(number, name, date, ratings);
     }
 }
 
@@ -243,12 +248,11 @@ const table = document.querySelector('#data-table')
 const headers = document.querySelector('#table-headers')
 const table_data = document.querySelector('#table-data')
 
-const heads = '<th style="width: 13%;padding-left:30px;text-align: center; border-top-left-radius: 10px;">Number</th><th style="width: 30%;text-align: center">Date</th><th style="width: 50%;text-align: center; border-top-right-radius: 10px;">Name</th>';
+const heads = '<th style="width: 13%;padding-left:30px;text-align: center; border-top-left-radius: 10px;">Number</th><th style="width: 30%;text-align: center">Date</th><th style="width: 50%;text-align: center;">Name</th><th style="width: 50%;text-align: center;  border-top-right-radius: 10px;">Ratings</th>';
 
-
-const tableGenerator = (ep_number, ep_name, ep_date)=>{
+const tableGenerator = (ep_number, ep_name, ep_date, ep_ratings)=>{
     var r = document.createElement('tr');
-    var row = `<td style="padding-left:30px">${ep_number}</td><td>${ep_date}</td><td>${ep_name}</td>`;
+    var row = `<td style="padding-left:30px">${ep_number}</td><td>${ep_date}</td><td>${ep_name}</td><td>${ep_ratings}</td>`;
     r.innerHTML = row;
     r.style.textAlign = "center";
     table.append(r);
