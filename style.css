@@ -328,14 +328,19 @@ a{
   display: inline;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-.genre-btns{
+  margin-right: 15px;
   border-radius: 10px;
+  background-color: #48A9A6;
+  color: #fff;
+  font-size: 1.25rem;
   box-shadow: 3px 3px 20px rgb(0, 0, 0,0.2),
               -3px -3px 20px rgb(0, 0, 0,0.4);
-  margin-right: 15px;
-  color: #fff;
+}
+
+.active-c{
+  box-shadow: inset 3px 3px 20px rgb(0, 0, 0,0.2),
+             inset -3px -3px 20px rgb(0, 0, 0,0.4);
+  background-color: #1c413f;
 }
 
 .genre-btns:hover{
@@ -345,9 +350,17 @@ a{
   cursor: pointer;
 }
 
-.active-c{
-  box-shadow: inset 3px 3px 20px rgb(0, 0, 0,0.2),
-             inset -3px -3px 20px rgb(0, 0, 0,0.4);
-  background-color: #1c413f;
+.mv_img {
+	width: 400px;
+  display: block;
+  padding-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.no_mv {
+  color: white;
+  text-align: center;
+}
+
 
