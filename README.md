@@ -185,9 +185,7 @@ Idea images:
 
 ## About The Project:
 
-This app use [TV Maze api](https://www.tvmaze.com/api) to get data of TV series, and [TMDB api](https://developers.themoviedb.org/3/movies/get-movie-details) to get data of Movies, please use their documentation for reference. We would like the application to be responsive and helpful to it's users by showing complete details.
-
-We would also like to add support for Movies in our app, Find and implement suitable api for movies details along with , info , thumbnail and rating.
+This app use [Tv shows api](https://developers.themoviedb.org/3/tv/get-tv-details) to get data of TV series, and [Movies api](https://developers.themoviedb.org/3/movies/get-movie-details) to get data of Movies, please use their documentation for reference. We would like the application to be responsive and helpful to it's users by showing complete details.
 
 **Features:**
 
@@ -211,7 +209,7 @@ We would also like to add support for Movies in our app, Find and implement suit
 
 10. ~~Show basic details of movies~~
 
-11. Show cast of movies
+11. ~~Show cast of movies~~
 
 12. Make UI better
 
@@ -229,9 +227,9 @@ We would also like to add support for Movies in our app, Find and implement suit
 
 4. ~~Include other images related to show in gallery tab~~
 
-5. Show the platform where the show/movies are streaming
+5. ~~Show the platform where the show/movies are streaming~~
 
-6. Link to YouTube trailer.
+6. ~~Link to YouTube trailer.~~ 
 
 **_More features will be added as the project progresses_ **
 
@@ -239,7 +237,7 @@ We would also like to add support for Movies in our app, Find and implement suit
 
 1. Users may open their own issues and also can implement any other awesome feature if they wish(as long as it is relevant to the project).
 
-2. You may refer to docs of the apis at [https://www.tvmaze.com/api](https://www.tvmaze.com/api) & [https://developers.themoviedb.org/3/movies/get-movie-details](https://developers.themoviedb.org/3/movies/get-movie-details) respectively. The main data from API is already fetched (using axios) and Important details like show Id, which will later be useful for other API calls is already stored in the JavaScript variables.
+2. You may refer to docs of the apis at [https://developers.themoviedb.org/3/tv/get-tv-details](https://developers.themoviedb.org/3/tv/get-tv-details) & [https://developers.themoviedb.org/3/movies/get-movie-details](https://developers.themoviedb.org/3/movies/get-movie-details) respectively. The main data from API is already fetched (using axios) and Important details like show Id, which will later be useful for other API calls is already stored in the JavaScript variables.
 
 3. We are using Bootstrap in this app.
 
