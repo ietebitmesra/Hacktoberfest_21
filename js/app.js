@@ -238,7 +238,7 @@ const ep_data_fill = async(show_id, season_num, season_data)=>{
         var number = i+1;
         var date = season_data.data.episodes[i].air_date;
         var name = season_data.data.episodes[i].name;
-        var ratings = season_data.data.episodes[i].vote_average;
+        var ratings = season_data.data.episodes[i].vote_average.toFixed(1)+'  ⭐️';
         tableGenerator(number, name, date, ratings);
     }
 }
