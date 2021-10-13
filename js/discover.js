@@ -112,35 +112,68 @@ genre_ul.addEventListener('click',(e)=>{
 let movieList=document.getElementById("suggested-mv-list");
 
 const displayMovie = async(genre)=>{
+    movieList.innerHTML='';
     var gen= genre.toString()
     const res = await axios.get(BASE_URL+gen+'&page=1')
     console.log(res);
     let mv_list=res.data.results;
-    console.log(mv_list);
+    //console.log(mv_list);
     if(mv_list.length==0){
-        console.log('Nothing there!');
-    }
-    for(let i=0;i<mv_list.length;i++){
-        let mv_cont=document.createElement("div");
-        mv_cont.classList.add("col-lg-3");
-        mv_cont.classList.add("col-sm-6");
-        mv_cont.classList.add("col-12");
-
-        let mvcard=document.createElement("div");
-        mvcard.classList.add("card");
-        mvcard.classList.add("border-0");
-        mvcard.classList.add("mb-2");
-        mvcard.classList.add("tv-card");
-
+        let no_res=document.createElement("div");
         let mv_img=document.createElement("img");
-        mv_img.src="https://picsum.photos/200/300";
-
-        mvcard.appendChild(mv_img);
-
-        mv_cont.appendChild(mvcard);
-
-        //console.log(mv_cont);
-        movieList.appendChild(mv_cont);
+        let no_mv=document.createElement("div");
+        mv_img.style.width="400px";
+        mv_img.style.display="block";
+        mv_img.style.paddingTop="40px";
+        mv_img.style.marginLeft='auto';
+        mv_img.style.marginRight='auto';
+        mv_img.src=`./images/EmptyFolder.png`;
+        no_mv.innerHTML="No movies available!";
+        no_mv.style.color='white';
+        no_mv.style.textAlign='center';
+        no_res.appendChild(mv_img);
+        no_res.appendChild(no_mv);
+        movieList.appendChild(no_res);
     }
-    console.log('ok');
+    else{
+        for(let i=0;i<mv_list.length;i++){
+            let mv_cont=document.createElement("div");
+            mv_cont.classList.add("col-lg-3");
+            mv_cont.classList.add("col-sm-6");
+            mv_cont.classList.add("col-12");
+
+            let mvcard=document.createElement("div");
+            mvcard.classList.add("card");
+            mvcard.classList.add("border-0");
+            mvcard.classList.add("mb-2");
+            mvcard.classList.add("tv-card");
+
+            let mv_img=document.createElement("img");
+            mv_img.classList.add("card-img-top");
+            mv_img.classList.add("border-0");
+            if(mv_list[i].poster_path){
+                mv_img.src=`https://image.tmdb.org/t/p/w400/${mv_list[i].poster_path}`;
+            }
+            else{
+                mv_img.src="./images/cast-placefiller.jpg";
+            }
+
+            let mv_name=document.createElement("div");
+            mv_name.classList.add("card-body");
+            
+            let mv_name_title=document.createElement("h5");
+            mv_name_title.innerHTML=mv_list[i].original_title;
+            mv_name_title.classList.add("card-title");
+            mv_name_title.style.color="white";
+
+            mv_name.appendChild(mv_name_title);
+
+            mvcard.appendChild(mv_img);
+            mvcard.appendChild(mv_name);
+
+            mv_cont.appendChild(mvcard);
+
+            movieList.appendChild(mv_cont);
+        }
+    }
 }
