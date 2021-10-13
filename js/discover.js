@@ -109,8 +109,38 @@ genre_ul.addEventListener('click',(e)=>{
     displayMovie(selectedGenre)
 })
 
+let movieList=document.getElementById("suggested-mv-list");
+
 const displayMovie = async(genre)=>{
     var gen= genre.toString()
     const res = await axios.get(BASE_URL+gen+'&page=1')
-    console.log(res)
+    console.log(res);
+    let mv_list=res.data.results;
+    console.log(mv_list);
+    if(mv_list.length==0){
+        console.log('Nothing there!');
+    }
+    for(let i=0;i<mv_list.length;i++){
+        let mv_cont=document.createElement("div");
+        mv_cont.classList.add("col-lg-3");
+        mv_cont.classList.add("col-sm-6");
+        mv_cont.classList.add("col-12");
+
+        let mvcard=document.createElement("div");
+        mvcard.classList.add("card");
+        mvcard.classList.add("border-0");
+        mvcard.classList.add("mb-2");
+        mvcard.classList.add("tv-card");
+
+        let mv_img=document.createElement("img");
+        mv_img.src="https://picsum.photos/200/300";
+
+        mvcard.appendChild(mv_img);
+
+        mv_cont.appendChild(mvcard);
+
+        //console.log(mv_cont);
+        movieList.appendChild(mv_cont);
+    }
+    console.log('ok');
 }
