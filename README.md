@@ -195,7 +195,7 @@ This app use [Tv shows api](https://developers.themoviedb.org/3/tv/get-tv-detail
 
 3. ~~Popular shows on home page~~
 
-4.~~Present the searched show with basic details (name, summary, rating)~~
+4. ~~Present the searched show with basic details (name, summary, rating)~~
 
 5. ~~Show other details like episodes, seasons, cast, etc. ( Preferably as shown in the last image )~~
 
@@ -213,7 +213,7 @@ This app use [Tv shows api](https://developers.themoviedb.org/3/tv/get-tv-detail
 
 12. Make UI better
 
-13. Make application responsive.
+13. ~~Make application responsive.~~
 
 14. ~~Add your favourite tv-series in explore tab :)~~
 
@@ -223,7 +223,7 @@ This app use [Tv shows api](https://developers.themoviedb.org/3/tv/get-tv-detail
 
 2. ~~Add date every episode air.~~
 
-3. Present all cast along with photos in cast tag
+3. ~~Present all cast along with photos in cast tag~~
 
 4. ~~Include other images related to show in gallery tab~~
 
