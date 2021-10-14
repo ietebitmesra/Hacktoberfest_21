@@ -57,7 +57,6 @@ movieBtn.addEventListener("click", async (e) => {
   e.preventDefault();
 
   movie_genre_ul.classList.remove('hidden');
-  tv_genre_ul.classList.add('hidden');
 
   movie_genre_ul.addEventListener("click", (e) => {
     if (e.target !== movie_genre_ul) {

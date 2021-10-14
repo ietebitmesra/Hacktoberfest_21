@@ -146,6 +146,7 @@ form.addEventListener('submit', async (e)=>{
     h3.innerText = "Watch on:";
     h3.style.fontSize = '18px'
     h3.style.fontWeight = 'bold'
+    h3.style.display = 'inline';
 
     p1.style.fontFamily= 'Courgette, cursive';
     p1.style.fontSize= '22px';
