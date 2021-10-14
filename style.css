@@ -122,8 +122,8 @@ border-radius: 15px;
 
 .card-img-top {
     width: 100%;
-    height: 300px;
-    object-fit: contain;
+    height: 280px;
+    object-fit: cover;
 }
 
 /* #searchForm{
