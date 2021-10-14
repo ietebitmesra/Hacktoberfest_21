@@ -285,7 +285,7 @@ The special prizes include : -
 
  # Prize distribution criteria
 
-- First 5 contributors who have made pull requests in all 3 mentioned tasks.
+- First 5 contributors who have made pull requests.
 
 - Winners will be selected on the basis of
 
