@@ -285,7 +285,7 @@ The special prizes include : -
 
  # Prize distribution criteria
 
-- First 5 contributors who have made pull requests.
+- First 5 contributors who have made pull requests in all 3 mentioned tasks.
 
 - Winners will be selected on the basis of
 
@@ -311,4 +311,3 @@ View Your contribution at:
 **Humble Request !important**
 
 All the enthusiastic contributors are requested to add their part carefully following the proper code block which is to be to be copy-pasted and then edited. Also, before sending a PR, it would be great if you yourself render the html page at least once to see how your changes are manifested. There have been instances where a single contribution destroyed the entire layout of the page, even affecting others' contributions.
-
