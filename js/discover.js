@@ -1,6 +1,6 @@
 const API_KEY = "f985a3ae5df8738bf04a55864c33128c";
-const MOVIE_BASE_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=`;
-const TV_BASE_URL = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=`;
+const MOVIE_BASE_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&include_adult=false&vote_average.gte=6.5&with_original_language=en&with_genres=`;
+const TV_BASE_URL = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&include_adult=false&vote_average.gte=6.5&with_genres=`;
 const movieGenreList = [
   { id: 28, name: "Action", },
   { id: 12, name: "Adventure", },
