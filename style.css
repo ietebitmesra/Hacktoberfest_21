@@ -130,8 +130,9 @@ border-radius: 15px;
   margin-top:50px;
 } */
 
+/* set hidden with !important to override other display css */
 .hidden{
-  display: none;
+  display: none !important;
 }
 
 #searchResult{
@@ -338,10 +339,11 @@ a{
               -3px -3px 20px rgb(0, 0, 0,0.4);
 }
 
+/* set to !important to override other styles */
 .active-c{
   box-shadow: inset 3px 3px 20px rgb(0, 0, 0,0.2),
-             inset -3px -3px 20px rgb(0, 0, 0,0.4);
-  background-color: #1c413f;
+             inset -3px -3px 20px rgb(0, 0, 0,0.4) !important;
+  background-color: #1c413f !important;
 }
 
 .genre-btns:hover{
