@@ -22,6 +22,8 @@ window.addEventListener('load',  async (e) => {
         h5.classList.add('card-title');
 
         h5.append(MovieRes.data.results[i].original_title);
+        h5.style.textAlign = "center";
+        h5.style.fontSize = "1.15rem";
         div.append(h5);
         
         let hd='w400';
@@ -38,6 +40,8 @@ window.addEventListener('load',  async (e) => {
         div.classList.add('card-body');
 
         var h5 = document.createElement('H5');
+        h5.style.textAlign = "center";
+        h5.style.fontSize = "1.15rem";
         h5.classList.add('card-title');
 
         h5.append(TvRes.data.results[i].name);
