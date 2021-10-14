@@ -98,15 +98,17 @@ genreList.forEach(item => {
 })
 
 genre_ul.addEventListener('click',(e)=>{
-    var selectedGenre = []
-    e.target.classList.toggle('active-c')
-    for(var i = 3; i< genre_ul.childNodes.length; i++)
-    {
-        if(genre_ul.childNodes[i].classList.contains('active-c'))
-            selectedGenre.push(genre_ul.childNodes[i].id.slice(6))
+    if (e.target !== genre_ul) { // This if prevents the ul box from being toggleable
+        var selectedGenre = []
+        e.target.classList.toggle('active-c')
+        for(var i = 3; i< genre_ul.childNodes.length; i++)
+        {
+            if(genre_ul.childNodes[i].classList.contains('active-c'))
+                selectedGenre.push(genre_ul.childNodes[i].id.slice(6))
+        }
+        console.log(selectedGenre)
+        displayMovie(selectedGenre)
     }
-    console.log(selectedGenre)
-    displayMovie(selectedGenre)
 })
 
 let movieList=document.getElementById("suggested-mv-list");
@@ -121,16 +123,11 @@ const displayMovie = async(genre)=>{
     if(mv_list.length==0){
         let no_res=document.createElement("div");
         let mv_img=document.createElement("img");
+        mv_img.className="mv_img"
         let no_mv=document.createElement("div");
-        mv_img.style.width="400px";
-        mv_img.style.display="block";
-        mv_img.style.paddingTop="40px";
-        mv_img.style.marginLeft='auto';
-        mv_img.style.marginRight='auto';
+        no_mv.className="no_mv";
         mv_img.src=`./images/EmptyFolder.png`;
         no_mv.innerHTML="No movies available!";
-        no_mv.style.color='white';
-        no_mv.style.textAlign='center';
         no_res.appendChild(mv_img);
         no_res.appendChild(no_mv);
         movieList.appendChild(no_res);
