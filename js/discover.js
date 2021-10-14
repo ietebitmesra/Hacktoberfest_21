@@ -1,5 +1,5 @@
 const API_KEY = "f985a3ae5df8738bf04a55864c33128c";
-const BASE_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=`
+const BASE_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_original_language=en&sort_by=popularity.desc&include_adult=false&vote_average.gte=6.5&with_genres=`
 const genreList  = [
     {
         "id": 28,
