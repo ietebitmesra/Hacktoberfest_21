@@ -391,3 +391,10 @@ a{
              inset -3px -3px 20px rgb(0, 0, 0,0.4);
   background-color: #1c413f;
 }
+
+#pageBar {
+  display: flex;
+  justify-content: center;
+  margin: 3rem;
+  font-size: 1.35rem;
+}
