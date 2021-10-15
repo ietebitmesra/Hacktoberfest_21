@@ -11,12 +11,45 @@ window.addEventListener('load',  async (e) => {
     const topRatedMovieRes = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`)
     const freeToWatchMovieRes = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&region=IN&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&watch_region=IN&with_watch_monetization_types=free`)
 
-    const popMovieResult = popMovieRes.data.results
+    //console.log('TR',topRatedMovieRes);
+    //console.log('FTW',freeToWatchMovieRes);
+
+    const popMovieResult = popMovieRes.data.results;
+    divclear('popular');
     popMovieResult.forEach(item => {
-        divAppender('popular', item.poster_path, item.original_title)
-    })
+        divAppender('popular', item.poster_path, item.original_title);
+    });
+
+    const trendMovieResult = trendMovieRes.data.results;
+    divclear('trending');
+    trendMovieResult.forEach(item=>{
+        divAppender('trending',item.poster_path, item.original_title);
+    });
+
+    const upcomingMovieResult = upcomingMovieRes.data.results;
+    divclear('upcoming');
+    upcomingMovieResult.forEach(item=>{
+        divAppender('upcoming',item.poster_path, item.original_title);
+    });
+
+    const topRatedMovieResult = topRatedMovieRes.data.results;
+    divclear('top-rated');
+    topRatedMovieResult.forEach(item=>{
+        divAppender('top-rated',item.poster_path, item.original_title);
+    });
+
+    const freeToWatchMovieResult = freeToWatchMovieRes.data.results;
+    divclear('free');
+    freeToWatchMovieResult.forEach(item=>{
+        divAppender('free',item.poster_path, item.original_title);
+    });
 });
 
+
+const divclear = (container_class) =>{
+    //added this to remove old data
+    document.querySelector(`.${container_class}`).innerHTML='';
+}
 
 const divAppender = (container_class, img_src_path, title)=>{
     const pop_div = document.createElement("div");
