@@ -462,13 +462,3 @@ a{
              inset -3px -3px 20px rgb(0, 0, 0,0.4);
   background-color: #1c413f;
 }
-
-/* hiding horizontal scrollbar inside div */
-.exp-cont::-webkit-scrollbar {
-  display: none; /*Chrome , Safari, Opers*/
-}
-
-.exp-cont{
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
