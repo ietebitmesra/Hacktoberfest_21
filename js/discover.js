@@ -211,14 +211,17 @@ const displayMovie = async (genre) => {
       }, false)
 
       let mvcard = document.createElement("div");
+      
       mvcard.classList.add("card");
       mvcard.classList.add("border-0");
       mvcard.classList.add("mb-2");
       mvcard.classList.add("tv-card");
+      mvcard.classList.add("cardshow");
 
       mv_img = document.createElement("img");
       mv_img.classList.add("card-img-top");
       mv_img.classList.add("border-0");
+      
       if (mv_list[i].poster_path) {
         mv_img.src = `https://image.tmdb.org/t/p/w400/${mv_list[i].poster_path}`;
       } else {
