@@ -462,3 +462,7 @@ a{
              inset -3px -3px 20px rgb(0, 0, 0,0.4);
   background-color: #1c413f;
 }
+
+.exp-cont::-webkit-scrollbar {
+  display: none;
+}
