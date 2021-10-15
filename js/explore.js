@@ -64,3 +64,38 @@ const divAppender = (container_class, img_src_path, title)=>{
     const container = document.querySelector(`.${container_class}`)
     container.append(pop_div);
 }
+const element1 = document.querySelector(".popular");
+const element2 = document.querySelector(".trending");
+const element3 = document.querySelector(".upcoming");
+const element4 = document.querySelector(".top-rated");
+const element5 = document.querySelector(".free");
+element1.addEventListener('wheel', (event) => {
+  event.preventDefault();
+  element1.scrollBy({
+    left: event.deltaY < 0 ? -30 : 30,
+  });
+});
+element2.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    element2.scrollBy({
+      left: event.deltaY < 0 ? -30 : 30,
+    });
+  });
+  element3.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    element3.scrollBy({
+      left: event.deltaY < 0 ? -30 : 30,
+    });
+  });
+  element4.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    element4.scrollBy({
+      left: event.deltaY < 0 ? -30 : 30,
+    });
+  });
+  element5.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    element5.scrollBy({
+      left: event.deltaY < 0 ? -30 : 30,
+    });
+  });
