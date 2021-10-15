@@ -391,3 +391,74 @@ a{
              inset -3px -3px 20px rgb(0, 0, 0,0.4);
   background-color: #1c413f;
 }
+
+.exp-sec{
+  max-width: 1000px;
+  height: auto;
+  margin: auto auto;
+  padding: 10px;
+  position: relative;
+}
+
+.exp-cont{
+  min-height: 250px;
+  border-radius: 10px;
+  display: flex;
+  box-shadow: inset 3px 3px 20px rgb(0, 0, 0,0.2),
+             inset -3px -3px 20px rgb(0, 0, 0,0.4);
+  background-color: #1c413f;
+  overflow-x: auto; 
+  align-items: center;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.exp-sec-info{
+  margin-top: 50px; 
+}
+
+.exp-sec .display-6{
+  display: inline;
+  margin-right: 30px;
+}
+
+.exp-cont div{
+  margin-right: 20px;
+}
+
+.exp-cont div img{
+  border-radius: 15px;
+  height: 200px;
+}
+.exp-cont div h6{
+  color: white;
+  margin-top: 10px;
+}
+
+.exp-btn{
+  all: unset;
+  margin-bottom: 15px;
+  background-color:#48A9A6;
+  width: 50px;
+  margin: 10px;
+  border-radius: 7px;
+  text-align: center;
+  padding: 7px;
+  font-weight: 600;
+  box-shadow: 3px 3px 20px rgb(0, 0, 0,0.2),
+              -3px -3px 20px rgb(0, 0, 0,0.4);
+  color: white;
+}
+
+.exp-btn:hover{
+  box-shadow: inset 3px 3px 20px rgb(0, 0, 0,0.2),
+  inset -3px -3px 20px rgb(0, 0, 0,0.4);
+  background-color: #1c413f;
+}
+
+.active-d{
+  box-shadow: inset 3px 3px 20px rgb(0, 0, 0,0.2),
+             inset -3px -3px 20px rgb(0, 0, 0,0.4);
+  background-color: #1c413f;
+}
