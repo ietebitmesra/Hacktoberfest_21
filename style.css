@@ -463,6 +463,12 @@ a{
   background-color: #1c413f;
 }
 
+/* hiding horizontal scrollbar inside div */
 .exp-cont::-webkit-scrollbar {
-  display: none;
+  display: none; /*Chrome , Safari, Opers*/
+}
+
+.exp-cont{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
