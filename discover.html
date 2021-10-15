@@ -86,8 +86,8 @@
 
      
      <div class="chooseSection">
-      <button id="tv" class="discover">TV shows</button>
       <button id="movies" class="discover">Movies</button>
+      <button id="tv" class="discover">TV shows</button>
     </div>x 
 
       <div class="">
@@ -127,9 +127,34 @@
            </div>
        </div>  
        </section>
- 
 
-     <script src="js/discover.js"></script>
+      <section class="hidden">
+        <form id="movieSearchForm" class="searchBar_pos1 searchForm" name="query">
+          <input type="search" id="searchText" placeholder="What movie are you looking for?">
+          <input type="search" id="searchType" placeholder="What movie are you looking for?">
+          <button type="submit" id="searchBtn">
+            <i class="fa fa-search searchIcon"></i>
+          </button>
+        </form>
+      </section>
+
+      <section id="movie_result">
+
+      </section>
+
+    <!-- Youtube Modal -->
+    <div class="modal fade" id="yt-modal" tabindex="-1" aria-labelledby="yt-modalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="yt-modal-content">
+          <iframe width="560" height="315" src="" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/discover.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js" integrity="sha512-lTLt+W7MrmDfKam+r3D2LURu0F47a3QaW5nF0c6Hl0JDZ57ruei+ovbg7BrZ+0bjVJ5YgzsAWE+RreERbpPE1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    </body>
  </html>
