@@ -21,7 +21,7 @@ a.logo {
 .hov:hover {
       
   transform: scale(1.1);
-
+postiton: relative
 /* position:relative;
 
 height:200px !important ; */
@@ -29,7 +29,7 @@ height:200px !important ; */
 
 form.searchForm {
   width: 55%;
-  /* height: 100px; */
+  height: 100px;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
