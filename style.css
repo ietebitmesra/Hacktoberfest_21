@@ -181,21 +181,32 @@ th{
 }
 
 .container .head-row {
-display: flex;
-justify-content: space-between;
-flex-direction: row;
-  flex-wrap: nowrap;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (max-width: 979px) {
-  .container .head-row {
-    justify-content: flex-start;
-    margin: 0 20px;
-    }
+nav ul {
+  padding: 0;
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-    form#searchForm {
-      width: 80%;
-    }
+@media (min-width: 979px) {
+  header .container {
+    max-width: 100%;
+  }
+  .container .head-row {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  form#searchForm {
+    width: 80%;
+  }
+  .head-row>div {
+    max-width: fit-content;
+  }
 }
 
 #main-info{display:flex;}
