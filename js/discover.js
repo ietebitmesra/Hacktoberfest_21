@@ -5,6 +5,12 @@ const formMovies = document.querySelector('#movieSearchForm');
 const resultSection = document.querySelector('#movie_result');
 const suggestedMovieSection = document.querySelector('#suggested-movies');
 const suggestedTvSection = document.querySelector('#suggested-tv');
+
+// PAGINATION BAR
+var pageItems = document.querySelectorAll('.page-item');
+var prevBtn = document.querySelector('.previousBtn');
+var nextBtn = document.querySelector('.nextBtn');
+
 function show_info(show_name, type = 'movie') {
   document.querySelector('#searchText').value = show_name;
   document.querySelector('#searchType').value = type;
@@ -86,6 +92,39 @@ movieBtn.addEventListener("click", async (e) => {
 
   // select all movie genres by default is empty array
   displayMovie(selectedMovieGenre);
+
+  for (let i = 4; i < pageItems.length-1; i++) {
+    pageItems[i].classList.add('hidden');
+  }
+  for (let i = 1; i <= 3; i++) {
+    pageItems[i].classList.remove('hidden');
+  }
+  
+  var currPage=1, limitPage = 3;
+  nextBtn.addEventListener('click', () => {
+    if(currPage === 10) {
+      nextBtn.innerHTML = '<li class="page-item nextBtn"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+    }
+    else if (currPage < (10 - limitPage)) {
+      pageItems[currPage].classList.add('hidden');
+      pageItems[currPage+limitPage].classList.remove('hidden');
+      currPage++;
+    }
+    else {
+      currPage++;
+    }
+  });
+  
+  prevBtn.addEventListener('click', () => {
+    if (currPage === 1) {
+      prevBtn.innerHTML = '<li class="page-item previousBtn"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+    }
+    else {
+      pageItems[currPage+limitPage-1].classList.add('hidden');
+      pageItems[currPage-1].classList.remove('hidden');
+      currPage--;
+    }
+  });
 });
 
 // TV SHOW BUTTON
@@ -111,6 +150,39 @@ tvBtn.addEventListener("click", async (e) => {
 
   // select all tv genres by default
   displayTV(selectedTvGenre);
+
+  for (let i = 4; i < pageItems.length-1; i++) {
+    pageItems[i].classList.add('hidden');
+  }
+  for (let i = 1; i <= 3; i++) {
+    pageItems[i].classList.remove('hidden');
+  }
+  
+  var currPage=1, limitPage = 3;
+  nextBtn.addEventListener('click', () => {
+    if(currPage === 10) {
+      nextBtn.innerHTML = '<li class="page-item nextBtn"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+    }
+    else if (currPage < (10 - limitPage)) {
+      pageItems[currPage].classList.add('hidden');
+      pageItems[currPage+limitPage].classList.remove('hidden');
+      currPage++;
+    }
+    else {
+      currPage++;
+    }
+  });
+  
+  prevBtn.addEventListener('click', () => {
+    if (currPage === 1) {
+      prevBtn.innerHTML = '<li class="page-item previousBtn"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+    }
+    else {
+      pageItems[currPage+limitPage-1].classList.add('hidden');
+      pageItems[currPage-1].classList.remove('hidden');
+      currPage--;
+    }
+  });
 });
 
 const tv_genre_ul = document.querySelector(".tv-genre-list");
@@ -235,6 +307,7 @@ const displayMovie = async (genre) => {
       mv_name_title.innerHTML = mv_list[i].original_title;
       mv_name_title.classList.add("card-title");
       mv_name_title.style.color = "white";
+      mv_name_title.style.textAlign = "center";
 
       mv_name.appendChild(mv_name_title);
 
@@ -301,6 +374,7 @@ const displayTV = async (genre) => {
       tv_name_title.innerHTML = tv_list[i].name;
       tv_name_title.classList.add("card-title");
       tv_name_title.style.color = "white";
+      tv_name_title.style.textAlign = "center";
 
       tv_name.appendChild(tv_name_title);
 
@@ -518,3 +592,4 @@ const get_trailer = async (id, SearchType) => {
   })
   return key
 }
+
