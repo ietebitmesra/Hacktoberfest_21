@@ -108,7 +108,7 @@ form.addEventListener('submit', async (e)=>{
     h1.innerText = name;
     const p1 = document.createElement('p');
     p1.innerText = strippedString;
-    const cast = document.createElement('cast');
+    const cast = document.createElement('p');
     cast.innerText = cast_names;
     const ott_details = document.createElement('div');
 
@@ -266,20 +266,33 @@ const refill_table = async(show_id, season_num) => {
 
 const populate_season_count = async(show_id) => {
     const tv_data = await axios.get(`https://api.themoviedb.org/3/tv/${show_id}?api_key=${API_KEY}&language=en-US`);
-    const trailer_res = await axios.get(`https://api.themoviedb.org/3/tv/${show_id}/season/1/videos?api_key=${API_KEY}&language=en-US`);
-    const trailer = trailer_res.data.results[0];
-    console.log(trailer);
+    const trailer_data = await axios.get(`https://api.themoviedb.org/3/tv/${show_id}/videos?api_key=${API_KEY}&language=en-US`);
     
-    if(trailer && trailer.type === 'Trailer'){
-        const yt_trailer = document.createElement('a');
-        yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
-        yt_trailer.style.color = '#d6d6d6';
-        yt_trailer.setAttribute('data-bs-target', '#yt-modal')
-        yt_trailer.setAttribute('data-bs-toggle', 'modal')
-        const yt_modal_in = document.querySelector('#yt-modal-content')
-        yt_modal_in.children[0].src = `https://www.youtube.com/embed/${trailer.key}` 
-        resultDivInfo.appendChild(yt_trailer)
-    }
+    const trailer_res = trailer_data.data.results
+
+    if(trailer_data){
+    var trailer = trailer_res[0];
+    console.log(trailer_data);
+    
+    trailer_res.forEach(item => {
+        if(item.type === 'Trailer'){
+            trailer = item;
+            
+        }
+        
+    })
+    const yt_trailer = document.createElement('a');
+            yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
+            yt_trailer.style.color = '#d6d6d6';
+            yt_trailer.setAttribute('data-bs-target', '#yt-modal')
+            yt_trailer.setAttribute('data-bs-toggle', 'modal')
+            const yt_modal_in = document.querySelector('#yt-modal-content')
+            yt_modal_in.children[0].src = `https://www.youtube.com/embed/${trailer.key}` 
+            resultDivInfo.appendChild(yt_trailer)
+   
+}
+
+
     const total_seasons = tv_data.data.number_of_seasons;
     let S_List = document.getElementById('season');
     let curr_season = 1;
