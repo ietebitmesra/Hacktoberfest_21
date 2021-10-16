@@ -266,6 +266,20 @@ const refill_table = async(show_id, season_num) => {
 
 const populate_season_count = async(show_id) => {
     const tv_data = await axios.get(`https://api.themoviedb.org/3/tv/${show_id}?api_key=${API_KEY}&language=en-US`);
+    const trailer_res = await axios.get(`https://api.themoviedb.org/3/tv/${show_id}/season/1/videos?api_key=${API_KEY}&language=en-US`);
+    const trailer = trailer_res.data.results[0];
+    console.log(trailer);
+    
+    if(trailer && trailer.type === 'Trailer'){
+        const yt_trailer = document.createElement('a');
+        yt_trailer.innerHTML = `<i class="fas fa-play"></i><span style="margin-left: 10px"><b>Watch Trailer</b></span>`;
+        yt_trailer.style.color = '#d6d6d6';
+        yt_trailer.setAttribute('data-bs-target', '#yt-modal')
+        yt_trailer.setAttribute('data-bs-toggle', 'modal')
+        const yt_modal_in = document.querySelector('#yt-modal-content')
+        yt_modal_in.children[0].src = `https://www.youtube.com/embed/${trailer.key}` 
+        resultDivInfo.appendChild(yt_trailer)
+    }
     const total_seasons = tv_data.data.number_of_seasons;
     let S_List = document.getElementById('season');
     let curr_season = 1;
