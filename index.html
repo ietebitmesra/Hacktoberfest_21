@@ -204,7 +204,8 @@
    <section id="searchResult">
     <div id="main-info">
       <div id="show-image"></div>
-      <div id="show-prim-info"></div>
+      <div id="show-prim-info">
+      </div>
     </div>
     <div id="sec-info" class="hidden" >
         <ul style="list-style: none;" id="sec-ul" class="inline-ul">
@@ -213,6 +214,7 @@
           <li id="crewHeading" ><a href="#!" onclick="crew_display()"><span>Crew</span></a></li>
         </ul>
         <ul id="season"  class="inline-ul season_design"></ul>
+        
         <h5 id="season-num" style="font-weight: bold;" class="mt-5"></h5>
         <h5 id="season-num" style="font-weight: bold;" class="mt-5"></h5>
         <table id="data-table" style="width: 100%;" class="table_design">
@@ -223,6 +225,19 @@
         <ul id="crew_data" class="inline-ul"> </ul>
     </div>
    </section>
+
+   <!-- Youtube Modal -->
+  <div class="modal fade" id="yt-modal" tabindex="-1" aria-labelledby="yt-modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" id="yt-modal-content">
+        <iframe width="560" height="315" src="" title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
 
    <script src="js/app.js"></script>
    <script src="libs/jquery-3.3.1.min.js"></script>
