@@ -463,6 +463,20 @@ a{
   background-color: #1c413f;
 }
 
+.active-e {
+  box-shadow: inset 3px 3px 20px rgb(0, 0, 0,0.2),
+             inset -3px -3px 20px rgb(0, 0, 0,0.4);
+  background-color: #1c413f;
+  border-radius: 10px;
+  margin-right: 30px;
+  color: #fff;
+  height: 3.5rem;
+  width: auto;
+  padding: 8px 15px;
+  border: 0px;
+  font-size: 1.5rem;
+}
+
 #pageBar {
   display: flex;
   justify-content: center;
@@ -471,4 +485,18 @@ a{
 
 .page-item {
   font-size: 1.4rem;
+}
+
+.explore {
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px rgb(0, 0, 0,0.2),
+              -3px -3px 20px rgb(0, 0, 0,0.4);
+  margin-right: 30px;
+  color: #fff;
+  background-color: #2D6967;
+  height: 3.5rem;
+  width: auto;
+  padding: 8px 15px;
+  border: 0px;
+  font-size: 1.5rem;
 }
