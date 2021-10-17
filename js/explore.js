@@ -56,6 +56,9 @@ moviesBtn.addEventListener('click', async (e) => {
   moviesBtn.classList.remove('explore');
   tvBtn.classList.add('explore');
   tvBtn.classList.remove('active-e');
+
+  document.querySelector('.upcoming-heading').classList.remove('hidden');
+  document.querySelector('.upcoming').classList.remove('hidden');
   // POPULAR MOVIES
     const popMovieRes = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=` + `${apiKey}` + `&language=en-US&with_original_language=en&page=1`);
     const trendMovieRes = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`)
