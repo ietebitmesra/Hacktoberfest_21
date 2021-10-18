@@ -28,7 +28,7 @@ formMovies.addEventListener('submit', async (e) => {
     const SearchMovie = document.querySelector('#searchText').value;
 
     const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=` + `${API_KEY}&query=` + `${SearchMovie}`);
-    console.log("Res", res);
+    //console.log("Res", res);
     const bestMatch = res.data.results[0];
 
     // API DATA
@@ -39,6 +39,7 @@ formMovies.addEventListener('submit', async (e) => {
     let strippedString = summary.replace(/(<([^>]+)>)/gi, "");
     // CAST
     const cast_res = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`);
+    //console.log(cast_res);
     let cast_names = 'Cast : ';
     for (let i = 0; i < 8; i++) {
         cast_names += cast_res.data.cast[i].name + ", ";
@@ -59,13 +60,28 @@ formMovies.addEventListener('submit', async (e) => {
     let ottNames = 0;
     let hasIN = ottRes.data.results;
     if (hasIN.hasOwnProperty('IN')) {
-        console.log('Supports IN');
+        //console.log('Supports IN');
         let hasFlat = hasIN.IN;
         if (hasFlat.hasOwnProperty('flatrate')) {
-            console.log('Has flatrate');
+            //console.log('Has flatrate');
             ottNames = ottRes.data.results.IN.flatrate;
         }
     }
+
+    //Genres
+    const genre = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`);
+    //console.log(genre);
+    const Genres = document.createElement('p');
+    let gen_list = 'Genres: ';
+    const gen_data = genre.data.genres;
+    global_gendata = gen_data
+    for(let i=0;i<gen_data.length;i++){
+        gen_list += genre.data.genres[i].name + ', ';
+    }
+    gen_list = gen_list.substring(0,gen_list.length-2)
+    //console.log(gen_list);
+    Genres.innerHTML= gen_list;
+
 
     // Movie Trailer
     const yt_trailer = document.createElement('a');
@@ -135,6 +151,8 @@ formMovies.addEventListener('submit', async (e) => {
     img.style.borderRadius = "10px";
     img.style.width = "220px";
 
+    Genres.style.fontSize='20px';
+
     info.style.fontFamily = 'Courgette, cursive';
     info.style.fontSize = '25px';
     info.style.fontWeight = '100';
@@ -162,6 +180,7 @@ formMovies.addEventListener('submit', async (e) => {
     resultDivInfo.append(title);
     resultDivInfo.append(info);
     resultDivInfo.append(avg_rating);
+    resultDivInfo.append(Genres);
     resultDivInfo.append(cast);
     resultDivInfo.append(yt_trailer);
     resultDivImg.append(ott_details); //To append watch providers below poster
