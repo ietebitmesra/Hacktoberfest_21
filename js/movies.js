@@ -56,17 +56,9 @@ formMovies.addEventListener('submit', async (e) => {
 
     // OTT PLATFORMS
     const ottRes = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/watch/providers?api_key=${API_KEY}`);
-    console.log(ottRes);
-    let ottNames = 0;
-    let hasIN = ottRes.data.results;
-    if (hasIN.hasOwnProperty('IN')) {
-        //console.log('Supports IN');
-        let hasFlat = hasIN.IN;
-        if (hasFlat.hasOwnProperty('flatrate')) {
-            //console.log('Has flatrate');
-            ottNames = ottRes.data.results.IN.flatrate;
-        }
-    }
+    let countries = ottRes.data.results;
+    let ottNames = countries.IN?.flatrate || {};
+    let ottLink = countries.IN?.link || '';
 
     //Genres
     const genre = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`);
@@ -118,11 +110,11 @@ formMovies.addEventListener('submit', async (e) => {
     const img = document.createElement('IMG');
     img.src = poster;
     const h3 = document.createElement('H3');
-    if(ottNames.length>0){
+    if (ottNames.length > 0){
         h3.innerText = "Watch on:";
     }
-    h3.style.fontSize = '18px'
-    h3.style.fontWeight = 'bold'
+    h3.style.fontSize = '18px';
+    h3.style.fontWeight = 'bold';
     const title = document.createElement('H1');
     title.innerText = name;
     const info = document.createElement('p');
@@ -147,8 +139,10 @@ formMovies.addEventListener('submit', async (e) => {
         LOGO.style.display = 'inline';
         LOGO.style.margin = '10px';
         LOGO.style.borderRadius = '10px';
+        LOGO.style.cursor = 'pointer';
         const logo = `https://image.tmdb.org/t/p/original` + ottNames[i].logo_path;
         LOGO.src = logo;
+        LOGO.onclick = () => window.location.href = ottLink;
         LOGO.style.width = '35px'
         LOGO.style.height = '35px'
         ott_details.append(LOGO);
@@ -183,8 +177,8 @@ formMovies.addEventListener('submit', async (e) => {
     resultDiv.style.marginTop = "40px";
 
     avg_rating.style.fontSize = '20px';
-    star_bottom.style = 'z-index: 1;  position:absolute; display: inline-block; overflow: hidden; white-space: nowrap;';
-    star_top.style = 'z-index: 2;   position:absolute ; overflow: hidden; white-space: nowrap; height:24px; display: inline-block; color:gold;';
+    star_bottom.style = 'z-index: 1; position:absolute; display: inline-block; overflow: hidden; white-space: nowrap;';
+    star_top.style = 'z-index: 2; position:absolute ; overflow: hidden; white-space: nowrap; height:24px; display: inline-block; color:gold;';
 
     favorteMovieSection.classList.add('hidden')
 
