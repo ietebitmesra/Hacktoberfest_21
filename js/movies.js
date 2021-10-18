@@ -113,6 +113,16 @@ formMovies.addEventListener('submit', async (e) => {
     info.innerText = strippedString;
     const cast = document.createElement('p');
     cast.innerText = cast_names;
+    const addBtn = document.createElement('button');
+
+    addBtn.classList.add('btn', 'btn-primary');
+    addBtn.setAttribute('type', 'button'); 
+    addBtn.innerText = 'ADD TO LIST'; 
+    
+    const deleteBtn = document.createElement('button');
+    deleteBtn.classList.add('btn', 'btn-danger');
+    deleteBtn.setAttribute('type', 'button'); 
+    deleteBtn.innerText = 'DELETE FROM LIST'; 
 
     ott_details.style.textAlign = 'center';
     ott_details.append(h3);
@@ -145,6 +155,9 @@ formMovies.addEventListener('submit', async (e) => {
     cast.style.display = 'block';
     cast.style.fontColor = "white";
 
+    addBtn.style.margin = "20px 0px";
+    deleteBtn.style.margin = "20px 20px";
+
     resultDiv.style.display = "flex";
     resultDivImg.style.margin = "30px"
     resultDiv.style.alignItems = "center";
@@ -163,6 +176,8 @@ formMovies.addEventListener('submit', async (e) => {
     resultDivInfo.append(info);
     resultDivInfo.append(avg_rating);
     resultDivInfo.append(cast);
+    resultDivInfo.append(addBtn);
+    resultDivInfo.append(deleteBtn);
     resultDivInfo.append(yt_trailer);
     resultDivImg.append(ott_details); //To append watch providers below poster
     resultDiv.append(resultDivImg);
@@ -306,6 +321,46 @@ formMovies.addEventListener('submit', async (e) => {
         }
     })
 
+    // ADD TO MY LIST
+    addBtn.addEventListener('click', () => {
+        var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+        if (existingEntries == null) existingEntries = [];
+        var flag=false;
+        existingEntries.forEach((e, i) => {
+            if (e.name === name) {
+                flag=true;
+            }
+        })
+
+        if (flag === false) {
+            alert('Item added to My List');
+            var title = name;
+            var img = poster;
+            var entry = {
+                "name" : title,
+                "image": img
+            };
+            localStorage.setItem("entry", JSON.stringify(entry));
+            existingEntries.push(entry);
+            localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+        }
+        else {
+            alert('Item already present in My List');
+        }
+    });
+    deleteBtn.addEventListener('click', () => {
+        var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+        if (existingEntries == null) existingEntries = [];
+        else {
+            existingEntries.forEach((e, i) => {
+                if (e.name === name) {
+                    existingEntries.splice(i, 1);   
+                }
+            });
+        }
+        localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+        console.log(existingEntries);
+    });
 
 })
 
@@ -384,7 +439,7 @@ const get_trailer = async (id) => {
     })
     return key
 }
-yt-modal
+// yt-modal
 
 
 function clear_metadata(){
