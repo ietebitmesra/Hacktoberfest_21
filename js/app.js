@@ -261,7 +261,37 @@ form.addEventListener('submit', async (e)=>{
         localStorage.setItem("allEntries", JSON.stringify(existingEntries));
         console.log(existingEntries);
     });
+
+    // SIMILAR MOVIES
+    document.querySelector('section.exp-sec').classList.remove('hidden');
+    const similar_Movies = await axios.get(`https://api.themoviedb.org/3/tv/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`);
+    const similar_movies_result = similar_Movies.data.results;
+
+    similar_movies_result.forEach(item => {
+        divAppender('similar', item.poster_path, item.name);
+    });
 })
+
+const divAppender = (container_class, img_src_path, title)=>{
+    const pop_div = document.createElement("div");
+    const pop_img = document.createElement("img");
+    const pop_name = document.createElement("h6");
+    pop_div.append(pop_img);
+    pop_div.append(pop_name);
+    pop_img.height = '200px';
+    pop_img.src = 'https://image.tmdb.org/t/p/w500/'+img_src_path;
+    pop_name.innerText = title;
+
+    const container = document.querySelector(`.${container_class}`)
+    container.append(pop_div);
+
+    container.addEventListener('wheel', (event) => {
+        event.preventDefault();
+        container.scrollBy({
+          left: event.deltaY < 0 ? -30 : 30,
+        });
+    });
+}
 
 const popShowSection = document.querySelector("#popular-shows");
 const secInfo = document.querySelector("#sec-info");
