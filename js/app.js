@@ -47,7 +47,6 @@ form.addEventListener('submit', async (e)=>{
     const bestMatch = res.data.results[0];
     const genreIDs = bestMatch.genre_ids;
     const genreRes = await axios.get(`https://api.themoviedb.org/3/genre/tv/list?api_key=${API_KEY}&language=en-US`);
-    console.log(genreRes);
 
     // ALL API DATA
     const id = bestMatch.id;
@@ -57,7 +56,6 @@ form.addEventListener('submit', async (e)=>{
     // const premeired = bestMatch.image.medium
     const name = bestMatch.name;
     const credit_response = await axios.get(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${API_KEY}&language=en-US`);
-    //console.log(credit_response);
 
     //CREW
     const crew_data = credit_response.data.crew;
@@ -85,17 +83,9 @@ form.addEventListener('submit', async (e)=>{
 
     // OTT PLATFORMS
     const ottRes = await axios.get(`https://api.themoviedb.org/3/tv/${show_id}/watch/providers?api_key=${API_KEY}`);
-    console.log(ottRes);
-    let ottNames=0;
-    let hasIN=ottRes.data.results;
-    if(hasIN.hasOwnProperty('IN')){
-        console.log('Supports IN');
-        let hasFlat=hasIN.IN;
-        if(hasFlat.hasOwnProperty('flatrate')){
-            console.log('Has flatrate');
-            ottNames=ottRes.data.results.IN.flatrate;
-        }
-    }
+    let countries = ottRes.data.results;
+    let ottNames = countries.IN?.flatrate || {};
+    let ottLink = countries.IN?.link || '';
 
     // Hiding popular shows section
         pop_show_hide();
@@ -176,8 +166,8 @@ form.addEventListener('submit', async (e)=>{
     deleteBtn.style.margin = "20px 20px";
     
     Genres.style.fontSize='20px';
-    star_bottom.style='z-index: 1;  position:absolute; display: inline-block; overflow: hidden; white-space: nowrap;';
-    star_top.style='z-index: 2;   position:absolute ; overflow: hidden; white-space: nowrap; height:24px; display: inline-block; color:gold;';
+    star_bottom.style='z-index: 1; position:absolute; display: inline-block; overflow: hidden; white-space: nowrap;';
+    star_top.style='z-index: 2; position:absolute ; overflow: hidden; white-space: nowrap; height:24px; display: inline-block; color:gold;';
 
     ott_details.style.textAlign='center';
     ott_details.append(h3);
@@ -186,8 +176,10 @@ form.addEventListener('submit', async (e)=>{
          LOGO.style.display = 'inline';
          LOGO.style.margin = '10px';
          LOGO.style.borderRadius = '10px';
+         LOGO.style.cursor = 'pointer';
          const logo = `https://image.tmdb.org/t/p/original`+ ottNames[i].logo_path;
          LOGO.src = logo;
+         LOGO.onclick = () => window.location.href = ottLink;
          LOGO.style.width='35px' 
          LOGO.style.height='35px'         
          ott_details.append(LOGO);
