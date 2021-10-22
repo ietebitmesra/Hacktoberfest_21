@@ -1,5 +1,5 @@
 
-# HacktoberFest-2021 🏆
+# HacktoberFest-2021 🏆 (OLD: Not Participating)
 
 #### 🎯 HacktoberFest - The month long festival for developers
 
