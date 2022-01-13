@@ -162,7 +162,7 @@ $ git push -u origin BranchName
 ```
 
 Finally, go to your repository in the browser and click on `compare and pull requests`.
-Then add a title and description to your pull request that explains your precious effor
+Then add a title and description to your pull request that explains your precious efforts.
  
  
  
