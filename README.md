@@ -1,7 +1,7 @@
 
 # HacktoberFest-2021 🏆
 
-#### 🎯 HacktoberFest - The month long festival for developerss
+#### 🎯 HacktoberFest - The month long festival for developers
 
 - This repository aims to give an introduction as to how the Open Source World functions. Use this project to make your first contribution to an open-source project on GitHub. Practice making your first pull request to a public repository before doing the real thing!
 
@@ -162,7 +162,7 @@ $ git push -u origin BranchName
 ```
 
 Finally, go to your repository in the browser and click on `compare and pull requests`.
-Then add a title and description to your pull request that explains your precious effor
+Then add a title and description to your pull request that explains your precious efforts.
  
  
  
